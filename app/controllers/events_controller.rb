@@ -3,6 +3,8 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).order(created_at: :desc)
     # @events = Event.all
+    @hobby = Hobby.find(params[:hobby_id])
+
     authorize @events
 
   end
@@ -21,7 +23,7 @@ class EventsController < ApplicationController
     authorize @event
     # raise
     if @event.save
-      redirect_to hobby_events_path
+      redirect_to hobby_path(@hobby)
     else
       render :new
     end
