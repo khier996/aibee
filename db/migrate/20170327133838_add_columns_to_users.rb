@@ -8,6 +8,5 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :birthdate, :date
     add_column :users, :admin, :boolean, default: false
 
-    t.timestamps
   end
 end
