@@ -5,7 +5,7 @@
   <div class="new-event-form form-group">
    <div class="well form-horizontal" style="max-width: 800px">
 
-        <%= simple_form_for(@event) do |f| %>
+        <%= simple_form_for([@hobby, @event]) do |f| %>
             <%= f.input :price, placeholder: "Price", class: "form-control", label: false %>
             <%= f.input :start_time, placeholder: 'Start time', class: "form-control"%>
             <%= f.input :end_time, placeholder: 'End time', class: "form-control"%>

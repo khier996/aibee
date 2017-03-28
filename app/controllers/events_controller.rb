@@ -2,23 +2,26 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-    @events = Event.all
-    authorize @event
+    # @events = Event.all
+    authorize @events
 
   end
 
   def new
-    @event = Event.new(event_params)
+    @hobby = Hobby.find(params[:hobby_id])
+    @event = Event.new
     authorize @event
   end
 
   def create
+    @hobby = Hobby.find(params[:hobby_id])
 
     @event = Event.new(event_params)
-    @event.hobby_id = current_user[:id]
+    @event.hobby_id = @hobby[:id]
     authorize @event
+    # raise
     if @event.save
-      redirect_to events_path
+      redirect_to hobby_events_path
     else
       render :new
     end

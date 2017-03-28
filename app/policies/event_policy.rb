@@ -5,7 +5,7 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
     return true
   end
 
