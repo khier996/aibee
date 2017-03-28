@@ -22,9 +22,12 @@ class HobbiesController < ApplicationController
     @hobby.likes = 0
 
     authorize @hobby
-    @hobby.save
 
-    redirect_to hobby_path(@hobby)
+    if @hobby.save
+      redirect_to hobby_path(@hobby)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -39,6 +42,6 @@ class HobbiesController < ApplicationController
   end
 
   def hobby_params
-    params.require('hobby').permit(:title, :description, :summary, :address)
+    params.require('hobby').permit(:title, :description, :summary, :address, photos: [])
   end
 end
