@@ -1,19 +1,30 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 
+  def index?
+    return true
+  end
+
+  def new?
+    return true
+  end
+
   def create?
-    record.user == user
+    return true
+
   end
 
   def update?
-    record.user == user
+    return true
+
   end
 
   def destroy?
-    record.user == user
+    return true
+
   end
 end
