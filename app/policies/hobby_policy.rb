@@ -1,8 +1,12 @@
 class HobbyPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
+  end
+
+  def index
+    return true
   end
 
   def create?
