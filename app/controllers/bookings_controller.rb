@@ -1,20 +1,25 @@
 class BookingsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
-
-    # look for a booking with current_user.id and @event.id
-    @existing_booking = Booking.where(event_id: @event.id, user_id: current_user.id)
-    # if we find it, stop and say that a booking is already made
-    if @existing_booking
-      flash[:notice] = "You already made a booking for this event"
-    # else, proceed
+    # event host cannot book his own event
+    if current_user.id == @event.hobby.user_id
+      flash[:notice] = "You cannot book your own event"
+      redirect_to hobby_path(@event.hobby)
     else
-      @booking = Booking.new(booking_params)
-      if @booking.save
-         flash[:notice] = "Your booking has been created"
-        redirect_to
+      # event cannot be booked twice the by one person
+      existing_booking = Booking.where(event_id: @event.id, user_id: current_user.id)
+      if existing_booking
+        flash[:notice] = "You already made a booking for this event"
+        redirect_to hobby_path(@event.hobby)
       else
-        render ""
+        @booking = Booking.new(booking_params)
+        @booking.status = "accepted"
+        if @booking.save
+          flash[:notice] = "You booked a new event"
+          redirect_to hobbies_path
+        else
+
+        end
       end
     end
   end
@@ -26,6 +31,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    require(:booking).permit(:pax, :status)
+    require(:booking).permit(:pax)
   end
 end
