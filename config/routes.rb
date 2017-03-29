@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-
-  mount Attachinary::Engine => "/attachinary"
-
-
-  devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  # root route
   root to: 'pages#home'
 
+  # libraries
+  mount Attachinary::Engine => "/attachinary"
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  # routes with resources
   resources :hobbies do
     resources :events, only: [:new, :create, :edit, :update, :destroy] do
       resources :bookings, only: [:create, :update, :destroy]
@@ -17,10 +17,9 @@ Rails.application.routes.draw do
   get('/dashboard_host', {to: 'pages#dashboard_host'})
 
 
+
   get '/dashboard_guest', to: 'pages#dashboard_guest'
-
-resources :hobbies, only:[:index, :show]
-
 end
-#
+
+
 
