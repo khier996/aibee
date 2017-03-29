@@ -3,6 +3,9 @@
   <%= f.input :description %>
   <%= f.input :summary %>
   <%= f.input :address %>
+
+  <%= f.input :categories, :collection => @categories, input_html: {multiple: true}, class: "form-control" %>
+
   <%= f.input :photos, as: :attachinary %>
   <%= f.submit %>
 <% end %>

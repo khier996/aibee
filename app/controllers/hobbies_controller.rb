@@ -1,5 +1,5 @@
 class HobbiesController < ApplicationController
-  before_action :set_hobby, only: [:show, :edit]
+  before_action :set_hobby, only: [:show, :edit, :destroy]
 
   def index
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
@@ -12,19 +12,20 @@ class HobbiesController < ApplicationController
 
   def new
     @hobby = Hobby.new
+    @categories = Category.all
     authorize @hobby
   end
 
   def create
     @hobby = Hobby.new(hobby_params)
-    @hobby.user_id = current_user[:id]
-    @hobby.review_count = 0
-    @hobby.average_score = 0
-    @hobby.likes = 0
-
     authorize @hobby
+    @hobby.user_id = current_user[:id]
+    @hobby.review_count = @hobby.average_score = @hobby.likes = 0
+    @hobby.deleted = @hobby.hidden = false
+
 
     if @hobby.save
+      params[:hobby][:categories][1..-1].each { |category_id| HobbyCategory.create(category_id: category_id, hobby_id: @hobby.id) }
       redirect_to hobby_path(@hobby)
     else
       render :new
@@ -33,6 +34,14 @@ class HobbiesController < ApplicationController
 
   def edit
     authorize @hobby
+  end
+
+  def destroy
+    authorize @hobby
+    @hobby.deleted = @hobby.hidden = true
+    @hobby.save
+
+    redirect_to '/'
   end
 
 
