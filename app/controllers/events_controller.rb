@@ -46,7 +46,6 @@ class EventsController < ApplicationController
     authorize @event
 
     redirect_to hobby_path(@hobby)
-
   end
 
   def destroy
