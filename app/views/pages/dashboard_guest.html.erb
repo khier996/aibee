@@ -1,44 +1,66 @@
-<div class="past-events">
-  <h1>Past events:</h1>
+<h1 class="text-center">Guest Dashboard</h1>
 
-  <% @past_events.each do |event| %>
-    <p> Hobby: <%= event.hobby.title %> </p>
-    <p> Price: <%= event.price %> </p>
-    <p> Start time: <%= event.start_time %> </p>
-    <p> End time: <%= event.end_time %> </p>
+<div class="container">
+  <main class="host-dashboard padded">
 
-  <% end %>
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Reviews pending</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Future events</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">Past events</label>
 
 
+
+    <section id="content1">
+      <div class="notifications">
+        <% @notifications.each do |notification| %>
+          <div>
+            Title: <%= notification.event.hobby.title %>
+            Start time: <%= notification.event.start_time %>
+            <%= simple_form_for([notification.event.hobby, notification.event, notification]) do |f| %>
+              <%= f.input :review, collection: (1..5) %>
+              <%= f.input :comment %>
+              <%= f.submit "Review" %>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+    </section>
+
+    <section id="content2">
+      <div class="future-events">
+        <h1>Future events:</h1>
+          <% @future_events.each do |event| %>
+            <p> Hobby: <%= event.hobby.title %> </p>
+            <p> Price: <%= event.price %> </p>
+            <p> Start time: <%= event.start_time %> </p>
+            <p> End time: <%= event.end_time %> </p>
+
+          <% end %>
+      </div>
+    </section>
+
+
+    <section id="content3">
+      <div class="past-events">
+        <% @past_events.each do |event| %>
+          <p> Hobby: <%= event.hobby.title %> </p>
+          <p> Price: <%= event.price %> </p>
+          <p> Start time: <%= event.start_time %> </p>
+          <p> End time: <%= event.end_time %> </p>
+        <% end %>
+      </div>
+    </section>
+  </main>
 </div>
 
 
-<div class="future-events">
-<h1>Future events:</h1>
-  <% @future_events.each do |event| %>
-    <p> Hobby: <%= event.hobby.title %> </p>
-    <p> Price: <%= event.price %> </p>
-    <p> Start time: <%= event.start_time %> </p>
-    <p> End time: <%= event.end_time %> </p>
-
-  <% end %>
-</div>
 
 
-<div class="notifications">
-  <h1>Notifications</h1>
-  <% @notifications.each do |notification| %>
-    <div>
-      Title: <%= notification.event.hobby.title %>
-      Start time: <%= notification.event.start_time %>
-      <%= simple_form_for([notification.event.hobby, notification.event, notification]) do |f| %>
-        <%= f.input :review, collection: (1..5) %>
-        <%= f.input :comment %>
-        <%= f.submit "Review" %>
-      <% end %>
-    </div>
 
-  <% end %>
-</div>
 
 
