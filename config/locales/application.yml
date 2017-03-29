@@ -1,0 +1,12 @@
+# attachinary
+CLOUDINARY_URL: "cloudinary://667837923798222:fsu5EuTY-_gvVA-ZiiXKWfF-SLA@ditcseeex"
+
+# facebook
+development:
+ FB_ID: "1109904985803838"
+ FB_SECRET: "4b3699b1623ff2bbe43cffd054c9e76d"
+
+production:
+ FB_ID: "1109903942470609"
+ FB_SECRET: "2e70e8f5744be11950ff859d19c46792"
+
