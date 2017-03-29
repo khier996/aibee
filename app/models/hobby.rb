@@ -4,6 +4,7 @@ class Hobby < ApplicationRecord
   belongs_to :user
   has_many :events
   has_many :hobby_categories
+  has_many :categories, through: :hobby_categories
 
   validates :title, presence: true
   validates :description, presence: true

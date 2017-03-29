@@ -1,5 +1,8 @@
 <a href="<%= edit_hobby_path  %>">Update</a>
 <a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
+<%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %>
+
+
 
 <div class="container">
 
