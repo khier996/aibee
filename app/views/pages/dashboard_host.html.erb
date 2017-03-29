@@ -1,0 +1,78 @@
+<h1 class="text-center">Dashboard host</h1>
+
+<div class="container">
+  <main class="host-dashboard padded">
+
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Hobbies</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Events</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">Pending</label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4">Frank lives here</label>
+
+    <section id="content1">
+      <p>
+        Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+      </p>
+    </section>
+
+    <section id="content2">
+
+      <div class="container">
+      <% if @events.present? %>
+        <div class="container text-center padded">
+          <h2>Your new event!</h2>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <% @events.each do |event| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+              <div class="card-description">
+                <h2><%= event.price %></h2>
+                <h3><%= event.start_time %></h3>
+                <p><%= event.end_time %></p>
+                <p><%= event.min_pax %></p>
+                <p><%= event.max_pax %></p>
+
+              </div>
+              <!-- <#%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %> -->
+            </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+          <% else %>
+            <div class="container text-center" style="margin-top: 100px">
+             <h3 id="empty">No events scheduled yet</h3>
+            </div>
+          <% end %>
+      </div>
+
+    </section>
+
+    <section id="content3">
+      <p>
+        Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+      </p>
+      <p>
+        Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+      </p>
+    </section>
+
+    <section id="content4">
+      <p>
+        Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+      </p>
+    </section>
+
+  </main>
+
+</div>

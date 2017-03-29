@@ -32,15 +32,30 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @hobby = Hobby.find(params[:hobby_id])
     authorize @event
+
+
   end
 
   def update
+    @hobby = Hobby.find(params[:hobby_id])
+
+    @event = Event.find(params[:id])
+    @event.update(event_params)
     authorize @event
+
+    redirect_to hobby_path(@hobby)
   end
 
   def destroy
     authorize @event
+    event = Event.find(params[:id])
+    event.destroy
+
+    redirect_to hobby_path(@hobby)
+
+    # men_path(Man.all)
 
   end
 

@@ -2,7 +2,11 @@
 <a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
 <%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %>
 
+<div class="container">
+  <h2><%= @hobby.description %></h2>
 
+
+</div>
 
 <div class="container">
 
@@ -26,7 +30,7 @@
             <p><%= event.max_pax %></p>
 
           </div>
-          <%= link_to("Update", edit_hobby_event_path(event), class: "btn btn-primary card-link") %>
+          <%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
         </div>
         </div>
         <% end %>
