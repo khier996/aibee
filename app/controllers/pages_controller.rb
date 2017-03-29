@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard_guest
+    @current_user = current_user
     @past_events = current_user.events.where("end_time <=  ?",  Time.now.to_date)
     @future_events = current_user.events.where("start_time >  ?",  Time.now.to_date)
     @notifications = current_user.bookings.where(review: nil)

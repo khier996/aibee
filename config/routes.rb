@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get('/dashboard_host', {to: 'pages#dashboard_host'})
-  get '/dashboard_guest', to: 'pages#dashboard_guest'
 
+  get '/dashboard_guest', to: 'pages#dashboard_guest'
 
 end
 
