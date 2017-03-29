@@ -32,10 +32,7 @@ class PagesController < ApplicationController
 
 
     # authorize @event
-    # event = Event.find(params[:id])
-    # event.destroy
 
-    # redirect_to hobby_path(@hobby)
 
     # men_path(Man.all)
 
@@ -45,7 +42,10 @@ class PagesController < ApplicationController
 
     # @hobby = request.find(params[:id])
 
+
   end
+
+
 end
 
 
