@@ -2,6 +2,13 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@hobbies) do |hobby, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def dashboard_guest

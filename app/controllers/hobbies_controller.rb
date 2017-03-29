@@ -8,7 +8,15 @@ class HobbiesController < ApplicationController
   def show
     authorize @hobby
     @events = @hobby.events
+
+    @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@hobbies) do |hobby, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
   end
+end
 
   def new
     @hobby = Hobby.new
