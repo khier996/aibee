@@ -42,8 +42,9 @@
                 <p><%= event.max_pax %></p>
 
               </div>
-              <!-- <#%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %> -->
-              <%= link_to "Delete event", hobby_event_path(event.hobby, event), method: :delete, data: { confirm: "Are you sure?" } %>
+
+              <%= link_to("Update event", edit_hobby_event_path(event.hobby, event), class: "btn btn-primary card-link") %>
+              <%= link_to "Delete event", hobby_event_path(event.hobby, event), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning card-link" %>
             </div>
             </div>
             <% end %>
