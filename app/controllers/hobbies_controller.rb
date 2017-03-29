@@ -7,6 +7,7 @@ class HobbiesController < ApplicationController
 
   def show
     authorize @hobby
+    @events = @hobby.events
   end
 
   def new
