@@ -49,11 +49,14 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    @hobby = Hobby.find(params[:hobby_id])
     authorize @event
-    event = Event.find(params[:id])
-    event.destroy
 
-    redirect_to hobby_path(@hobby)
+    redirect_to dashboard_host_path
+
+    # redirect_to hobby_path(@hobby)
 
     # men_path(Man.all)
 
