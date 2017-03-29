@@ -1,15 +1,15 @@
+<!-- action links -->
 <a href="<%= edit_hobby_path  %>">Update</a>
 <a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
 <%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %>
 
+<!-- hobby description -->
 <div class="container">
   <h2><%= @hobby.description %></h2>
-
-
 </div>
 
+<!-- event -->
 <div class="container">
-
   <!-- <#%= render 'pages/search_form'%> -->
 
   <% if @events.present? %>
@@ -42,5 +42,8 @@
      <h3 id="empty">No events scheduled yet</h3>
     </div>
   <% end %>
+</div>
 
+<!-- event booking -->
+<div class="container">
 </div>
