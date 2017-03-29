@@ -39,7 +39,8 @@
             <p> Price: <%= event.price %> </p>
             <p> Start time: <%= event.start_time %> </p>
             <p> End time: <%= event.end_time %> </p>
-
+            <%#= booking = event.bookings.where(user_id: @current_user.id).first %>
+            <%#= link_to "Cancel", hobby_event_booking_path([event.hobby, event, booking]) %>
           <% end %>
       </div>
     </section>

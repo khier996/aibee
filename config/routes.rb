@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   get '/dashboard_guest', to: 'pages#dashboard_guest'
 
-
 end
 
 

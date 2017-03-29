@@ -30,6 +30,9 @@ class BookingsController < ApplicationController
   def destroy
   end
 
+  def cancel
+  end
+
   def booking_params
     require(:booking).permit(:pax)
   end
