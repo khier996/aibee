@@ -1,54 +1,43 @@
 
-// *,
-// *:after,
-// *:before {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
+// // *,
+// // *:after,
+// // *:before {
+// //   margin: 0;
+// //   padding: 0;
+// //   box-sizing: border-box;
+// // }
+
+// /**
+//  * Basics Styles
+//  */
+// // html {
+// //   font-size: 62.5%;
+// // }
+// // body {
+// //   background-color: #eee;
+// //   font-family: Roboto;
+// //   font-weight: 400;
+// //   font-size: 1.6em;
+// //   line-height: 1.6;
+// //   color: #666;
+// // }
+
+
+
+// .wrapper {
+//   max-width: 400px;
+//   margin: 50px auto;
+//   padding-left: 1em;
+//   padding-right: 1em;
 // }
 
-/**
- * Basics Styles
- */
-// html {
-//   font-size: 62.5%;
+// /**
+//  * Helpers
+//  */
+// .border-tlr-radius {
+//   border-top-left-radius: 2px;
+//   border-top-right-radius: 2px;
 // }
-// body {
-//   background-color: #eee;
-//   font-family: Roboto;
-//   font-weight: 400;
-//   font-size: 1.6em;
-//   line-height: 1.6;
-//   color: #666;
-// }
-
-a {
-  text-decoration: none;
-  color: #3498db;
-}
-  a:hover {
-    color: #2980b9;
-  }
-
-h2 {
-  line-height: 1.2;
-  margin-bottom: 1.6rem;
-}
-
-.wrapper {
-  max-width: 400px;
-  margin: 50px auto;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-/**
- * Helpers
- */
-.border-tlr-radius {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-}
 
 .text-center { text-align: center; }
 

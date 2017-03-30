@@ -32,7 +32,13 @@
               <div >
                 <div class="card__meta">
                   <a href="#"><%= hobby.title %></a>
-                  <p><%= hobby.average_score %></p>
+                  <% if hobby.average_score != 0.0 %>
+                    <p>
+                      <%= hobby.average_score %>
+                    </p>
+                  <% else %>
+                    <p>No reviews yet</p>
+                  <% end %>
                 </div>
 
                 <article class="card__article">
