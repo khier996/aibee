@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_attachment :photo
 
   has_many :requests, through: :hobbies, source: :events
+  has_many :user_categories
+  has_many :categories, through: :user_categories
 
 
   has_many :hobbies

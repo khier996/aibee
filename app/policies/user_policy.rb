@@ -5,6 +5,18 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    return true
+  end
+
+  def create?
+    return true
+  end
+
+  def update?
+    record.user == user
+  end
+
   def show?
     return true
   end
@@ -14,3 +26,7 @@ class UserPolicy < ApplicationPolicy
   end
 
 end
+
+
+
+
