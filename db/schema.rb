@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170330063403) do
+=======
+ActiveRecord::Schema.define(version: 20170329095034) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +78,8 @@ ActiveRecord::Schema.define(version: 20170330063403) do
     t.integer  "review_count"
     t.boolean  "deleted"
     t.boolean  "hidden"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_hobbies_on_user_id", using: :btree
   end
 
