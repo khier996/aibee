@@ -4,9 +4,7 @@ class EventsController < ApplicationController
     @events = policy_scope(Event).order(created_at: :desc)
     # @events = Event.all
     @hobby = Hobby.find(params[:hobby_id])
-
     authorize @events
-
   end
 
   def new

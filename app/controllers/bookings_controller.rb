@@ -15,10 +15,9 @@ class BookingsController < ApplicationController
         @booking = Booking.new(booking_params)
         @booking.status = "accepted"
         if @booking.save
-          flash[:notice] = "You booked a new event"
+          flash[:notice] = "You booked this event"
           redirect_to hobbies_path
         else
-
         end
       end
     end
@@ -28,9 +27,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def cancel
   end
 
   def booking_params

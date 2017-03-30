@@ -2,21 +2,17 @@
 <a href="<%= edit_hobby_path  %>">Update</a>
 <a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
 <%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %>
-
 <!-- hobby description -->
 <div class="container">
   <h2><%= @hobby.description %></h2>
 </div>
-
 <!-- event -->
 <div class="container">
   <!-- <#%= render 'pages/search_form'%> -->
-
   <% if @events.present? %>
     <div class="container text-center padded">
       <h2>Your new event!</h2>
     </div>
-
     <div class="container">
       <div class="row">
         <% @events.each do |event| %>
@@ -28,7 +24,6 @@
             <p><%= event.end_time %></p>
             <p><%= event.min_pax %></p>
             <p><%= event.max_pax %></p>
-
           </div>
           <%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
         </div>
@@ -36,14 +31,13 @@
         <% end %>
       </div>
     </div>
-
   <% else %>
     <div class="container text-center" style="margin-top: 100px">
      <h3 id="empty">No events scheduled yet</h3>
     </div>
   <% end %>
 </div>
-
-<!-- event booking -->
-<div class="container">
+<!-- leads to event booking compare events index-->
+<div class="wrapper_form container">
+  <%= link_to("Join #{@hobby.user.first_name}'s event", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
 </div>
