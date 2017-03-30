@@ -1,12 +1,14 @@
 <div class="new-search-form">
 
   <%= form_tag(hobbies_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :Search_Hobby, nil, placeholder: "Search Hobby" %>
-  <%= select_tag(:Shanghai, options_for_select([['Shanghai'], ['Beijing'], ['Tianjin'], ['Chongqing'], ['Dalian'], ['Qingdao'],['Guangzhou']]))%>
+  <%= text_field_tag :title, nil, placeholder: "Search Hobby" %>
+  <%= select_tag(:city, options_for_select([['Shanghai'], ['Beijing'], ['Tianjin'], ['Chongqing'], ['Dalian'], ['Qingdao'],['Guangzhou']]),prompt: "City")%>
+  <%= select_tag(:category, options_for_select([['Woodworking'], ['Cooking'], ['Pottery'], ['Knitting'], ['Drawing'], ['Music'], ['Language'], ['Cocktails']]), prompt: "Category")%>
 
   <%= submit_tag("Search", :class => "btn btn-primary")%>
 
   <% end %>
 
 </div>
+
 

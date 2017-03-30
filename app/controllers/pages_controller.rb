@@ -6,40 +6,19 @@ class PagesController < ApplicationController
 
   def dashboard_guest
     @current_user = current_user
-    @past_events = current_user.events.where("end_time <=  ?",  Time.now.to_date)
-    @future_events = current_user.events.where("start_time >  ?",  Time.now.to_date)
     @notifications = current_user.bookings.where(review: nil)
+
+    @bookings = @current_user.bookings
+    @future_bookings = @bookings.select { |booking| booking.event.start_time > Time.now }
+    @past_bookings = @bookings.select { |booking| booking.event.end_time < Time.now }
   end
 
   def dashboard_host
-    #    @current_choice = params[:bookings] || "all"
-    # if params[:bookings] == "confirmed"
-    #   @bookings = current_user.bookings.where(status: "confirmed")
 
-    # elsif params[:bookings] == "pending"
-    #   @bookings = current_user.bookings.where(status: "pending")
-
-    # elsif params[:bookings] == "rejected"
-    #   @bookings = current_user.bookings.where(status: "rejected")
-
-    # else
-    #   @bookings = current_user.bookings
-    # end
-
-    # @bookings = current_user.bookings
-    # @requests = current_user.requests
-    # @current_user = current_user
-    # @men = current_user.men
-
-
-    # authorize @event
-
-
-    # men_path(Man.all)
 
     @events = current_user.requests
     # raise
-    # @hobby = Hobby.find(params[:id])
+    @hobbies = current_user.hobbies
 
     # @hobby = request.find(params[:id])
 

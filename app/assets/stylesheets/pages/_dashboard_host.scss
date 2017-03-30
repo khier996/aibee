@@ -1,4 +1,4 @@
-// *, *:before, *:after
+// // *, *:before, *:after
 
 .host-dashboard {
 
@@ -10,6 +10,10 @@
       font: 14px/1 'Open Sans', sans-serif;
       color: #555;
       background: #eee;
+    }
+
+    .no-display {
+      display: none;
     }
 
     h1 {
@@ -35,10 +39,6 @@
       display: none;
       padding: 20px 0 0;
       border-top: 1px solid #ddd;
-    }
-
-    input {
-      display: none;
     }
 
     label {

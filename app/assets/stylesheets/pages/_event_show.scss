@@ -1,0 +1,19 @@
+
+.event-show {
+  color: white;
+  height: 100px;
+  background-color: red;
+  background-image:
+    linear-gradient(
+      to right,
+      red,
+      #f06d06,
+      rgb(255, 255, 0),
+      green
+    );
+  h1 {
+    font-size: 100px;
+    text-align: center;
+  }
+
+}

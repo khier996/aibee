@@ -29,12 +29,40 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+
+    if @booking.update(params.require(:booking).permit(:status, :review, :comment))
+      update_hobby_score(@booking)
+      respond_to do |format|
+        format.html { redirect_to dashboard_guest_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to dashboard_guest_path }
+        format.js
+      end
+    end
   end
 
   def destroy
   end
 
+  private
   def booking_params
     params.require(:booking).permit(:pax, :comment, :review, :status)
+  end
+
+  def update_hobby_score(booking)
+    if params[:booking][:review]
+      review = params[:booking][:review].to_f
+      hobby = booking.event.hobby
+      average_score = hobby.average_score ? hobby.average_score : 0
+      review_count = hobby.review_count ? hobby.review_count : 0
+      hobby.average_score = (average_score * review_count + review) / (review_count + 1)
+      hobby.review_count = hobby.review_count + 1
+      hobby.save
+    end
   end
 end
