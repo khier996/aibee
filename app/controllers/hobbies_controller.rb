@@ -3,12 +3,29 @@ class HobbiesController < ApplicationController
 
   def index
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
+
+    @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@hobbies) do |hobby, marker|
+      marker.lat hobby.latitude
+      marker.lng hobby.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
+
   end
 
   def show
     authorize @hobby
     @events = @hobby.events
+
+    @hobby = Hobby.find(params[:id])
+
+    @hash = Gmaps4rails.build_markers(@hobby) do |hobby, marker|
+      marker.lat hobby.latitude
+      marker.lng hobby.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
   end
+end
 
   def new
     @hobby = Hobby.new
