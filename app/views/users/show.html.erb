@@ -1,0 +1,17 @@
+<div class="container text-center">
+  <h1>Profile</h1>
+  <p><%= @current.first_name %> <%= @current.last_name %></p>
+
+  <p>Gender: <%= @current.gender %></p>
+  <p>Email: <%= @current.email %></p>
+<!--   <div class="container">
+      <#%= cl_image_tag @current.profile_photo.path, height: 300, width: 300, crop: :fill, radius: 5, angle:45, effect: "sepia" %>
+  </div> -->
+  <p></p>
+</div>
+
+<p class="text-center padded">
+<%= link_to('Edit profile', edit_user_registration_path, { class: "btn btn-primary" })%>
+<%= link_to('Home', root_path, { class: "btn btn-primary" })%>
+
+</p>
