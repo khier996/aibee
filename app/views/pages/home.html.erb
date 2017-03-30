@@ -17,8 +17,13 @@
 </div>
 
 
+
 <div>
   <%= link_to "Sign_out", destroy_user_session_path, method: "delete" %>
+</div>
+
+</div>
+  <%= link_to("Profile", users_show_path, class: "btn btn-primary card-link") %>
 </div>
 
 
@@ -30,3 +35,5 @@
     <p><%= hobby.title %>  </p>
   <% end %>
 </div>
+
+

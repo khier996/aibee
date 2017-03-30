@@ -9,7 +9,7 @@ class BookingPolicy < ApplicationPolicy
     return record.user = user
   end
 
-  def index
+  def index?
     return true
   end
 
