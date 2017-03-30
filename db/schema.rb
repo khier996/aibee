@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329095034) do
+ActiveRecord::Schema.define(version: 20170330063403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170329095034) do
     t.integer  "pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "status"
+    t.string   "status",     null: false
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 20170329095034) do
   create_table "events", force: :cascade do |t|
     t.integer  "hobby_id"
     t.integer  "price"
-    t.date     "start_time"
-    t.date     "end_time"
     t.integer  "min_pax"
     t.integer  "max_pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["hobby_id"], name: "index_events_on_hobby_id", using: :btree
   end
 
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20170329095034) do
     t.integer  "likes"
     t.text     "description"
     t.string   "summary"
-    t.integer  "average_score"
     t.string   "address"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -76,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170329095034) do
     t.boolean  "hidden"
     t.float    "latitude"
     t.float    "longitude"
+    t.float    "average_score"
     t.index ["user_id"], name: "index_hobbies_on_user_id", using: :btree
   end
 
