@@ -1,10 +1,9 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
-    @events = policy_scope(Event).order(created_at: :desc)
+    @booking = Booking.new
     @hobby = Hobby.find(params[:hobby_id])
-    authorize @events
+    @events = policy_scope(@hobby.events).order(created_at: :desc)
   end
 
   def new

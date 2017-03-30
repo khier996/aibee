@@ -2,32 +2,37 @@
   <div class="row ">
     <h3 class="text-center padded" >Join <%= @hobby.user.first_name%> when she shares her passion for <%= @hobby.title%>: </h3>
     <% if @events.present? %>
-    <div class="text-center padded">
-      <ul class="list">
-        <li class="events">
-          <% @events.each do |event| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-            <div class="card-description">
-              <h3>
-                Date and Time: <%= event.start_time %> <%= event.end_time %>
-              </h3>
-              <h3> Event Price: <%= event.price %> RMB </h3>
-              <p>Minimum number of participants: <%= event.min_pax %></p>
-              <p>Maximum number of participants: <%= event.max_pax %></p>
+      <div class="text-center padded">
+        <% @events.each do |event| %>
+          <%= form_for(@booking, url: hobby_event_bookings_path(@hobby, event)) do |f| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+                <div class="card-description">
+                  <input id="<%=event.id %>" type="radio" name="event_id" value="<%=event.id%>" >
+                  <label for="<%=event.id%>" >
+                    <h3> Date and Time: <%= event.start_time %> <%= event.end_time %></h3>
+                    <h3> Event Price: <%= event.price %> RMB </h3>
+                    <p>Minimum number of participants: <%= event.min_pax %></p>
+                    <p>Maximum number of participants: <%= event.max_pax %></p>
+                    <div class="booking">
+                      <%= f.text_field :pax %> PAX
+                      <%= f.submit "Join" %>
+                    </div>
+                  </label>
+                  <%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
+                </div>
+              </div>
             </div>
-            <%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
-          </div>
-          </div>
           <% end %>
-        </li>
-      </ul>
-    </div>
+        <% end %>
+      </div>
     <% else %>
       <!-- remark that no events are created -->
       <div class="container text-center" style="margin-top: 100px">
-       <h3 id="empty">No events scheduled yet</h3>
+        <h3 id="empty">No events scheduled yet</h3>
       </div>
     <% end %>
   </div>
 </div>
+
+

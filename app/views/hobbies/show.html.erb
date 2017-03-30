@@ -19,7 +19,6 @@
       These are the next events for <%= @hobby.title %>
       <ul>
         <li>
-
           <% @events.each do |event| %>
               <%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %>
           <% end %>
