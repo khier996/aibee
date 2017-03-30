@@ -6,7 +6,6 @@ class HobbiesController < ApplicationController
 
 
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
-    @allhobbies = Hobby.all
     @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
 
     if params[:title]
