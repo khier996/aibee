@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329065954) do
+ActiveRecord::Schema.define(version: 20170330061155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20170329065954) do
     t.integer  "likes"
     t.text     "description"
     t.string   "summary"
-    t.integer  "average_score"
     t.string   "address"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "review_count"
     t.boolean  "deleted"
     t.boolean  "hidden"
+    t.float    "average_score"
     t.index ["user_id"], name: "index_hobbies_on_user_id", using: :btree
   end
 

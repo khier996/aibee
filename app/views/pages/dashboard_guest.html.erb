@@ -3,25 +3,26 @@
 <div class="container">
   <main class="host-dashboard padded">
 
-    <input id="tab1" type="radio" name="tabs" checked>
+    <input class="no-display" id="tab1" type="radio" name="tabs" checked>
     <label for="tab1">Reviews pending</label>
 
-    <input id="tab2" type="radio" name="tabs">
+    <input class="no-display" id="tab2" type="radio" name="tabs">
     <label for="tab2">Future events</label>
 
-    <input id="tab3" type="radio" name="tabs">
+    <input class="no-display" id="tab3" type="radio" name="tabs">
     <label for="tab3">Past events</label>
 
 
 
     <section id="content1">
       <div class="notifications">
+        <!-- notification is actually a booking  -->
         <% @notifications.each do |notification| %>
-          <div>
+          <div id="booking-<%= notification.id %>">
             Title: <%= notification.event.hobby.title %>
             Start time: <%= notification.event.start_time %>
             <%= simple_form_for([notification.event.hobby, notification.event, notification]) do |f| %>
-              <%= f.input :review, collection: (1..5) %>
+              <%= f.input :review, collection: (1..5), default: 1 %>
               <%= f.input :comment %>
               <%= f.submit "Review" %>
             <% end %>
@@ -32,32 +33,44 @@
     </section>
 
     <section id="content2">
-      <div class="future-events">
-        <h1>Future events:</h1>
-          <% @future_events.each do |event| %>
-            <p> Hobby: <%= event.hobby.title %> </p>
-            <p> Price: <%= event.price %> </p>
-            <p> Start time: <%= event.start_time %> </p>
-            <p> End time: <%= event.end_time %> </p>
-            <%#= booking = event.bookings.where(user_id: @current_user.id).first %>
-            <%#= link_to "Cancel", hobby_event_booking_path([event.hobby, event, booking]) %>
+      <div class="future-bookings">
+        <h1>Future bookings:</h1>
+        <% @future_bookings.each do |booking| %>
+          <p> Hobby: <%= booking.event.hobby.title %> </p>
+          <p> Price: <%= booking.event.price %> </p>
+          <p> Start time: <%= booking.event.start_time %> </p>
+          <p> End time: <%= booking.event.end_time %> </p>
+          <p> Status: <span id="status"> <%= booking.status %> </span> </p>
+
+          <%= simple_form_for([booking.event.hobby, booking.event, booking], remote: true) do |f|%>
+            <%= f.hidden_field :status, value: "cancelled" %>
+            <%= f.submit "cancel", class: "btn" %>
           <% end %>
+        <% end %>
       </div>
     </section>
 
-
     <section id="content3">
-      <div class="past-events">
-        <% @past_events.each do |event| %>
-          <p> Hobby: <%= event.hobby.title %> </p>
-          <p> Price: <%= event.price %> </p>
-          <p> Start time: <%= event.start_time %> </p>
-          <p> End time: <%= event.end_time %> </p>
+      <div class="past-bookings">
+        <h1>Past bookings:</h1>
+        <% @past_bookings.each do |booking| %>
+          <p> Hobby: <%= booking.event.hobby.title %> </p>
+          <p> Price: <%= booking.event.price %> </p>
+          <p> Start time: <%= booking.event.start_time %> </p>
+          <p> End time: <%= booking.event.end_time %> </p>
         <% end %>
       </div>
     </section>
   </main>
 </div>
+
+
+
+
+
+
+
+
 
 
 
