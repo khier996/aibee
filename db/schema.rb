@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170330063403) do
     t.integer  "pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "status",     null: false
+    t.string   "status"
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end

@@ -2,14 +2,33 @@ class HobbiesController < ApplicationController
   before_action :set_hobby, only: [:show, :edit, :destroy]
 
   def index
+
+
+
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
     @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
+
+    if params[:title]
+      @hobbies = @hobbies.where("title ILIKE ?", "%#{params[:title]}%").order("created_at DESC")
+    end
+
+    if params[:city]
+      @hobbies = @hobbies.where("address ILIKE ?", "%#{params[:city]}%")
+    end
+
+    if params[:category]
+      # @categories = @categories.where("name ILIKE ?", "%#{params[:category]}%")
+      @hobbies = @hobbies.joins(hobby_categories: [:category]).where('categories.name ILIKE ?', "%#{params[:category]}%")
+    end
+
 
     @hash = Gmaps4rails.build_markers(@hobbies) do |hobby, marker|
       marker.lat hobby.latitude
       marker.lng hobby.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
+
+
 
   end
 
