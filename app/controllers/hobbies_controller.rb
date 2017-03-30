@@ -11,6 +11,19 @@ class HobbiesController < ApplicationController
       marker.lng hobby.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
+    if params[:title]
+      @hobbies = @hobbies.where("title ILIKE ?", "%#{params[:title]}%").order("created_at DESC")
+    end
+
+    if params[:city]
+      @hobbies = @hobbies.where("address ILIKE ?", "%#{params[:city]}%")
+    end
+
+    if params[:category]
+      # @categories = @categories.where("name ILIKE ?", "%#{params[:category]}%")
+      @hobbies = @hobbies.joins(hobby_categories: [:category]).where('categories.name ILIKE ?', "%#{params[:category]}%")
+    end
+
 
   end
 
