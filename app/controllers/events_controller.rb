@@ -9,6 +9,15 @@ class EventsController < ApplicationController
 
   end
 
+  def show
+    @event = Event.find(params[:id])
+    @hobby = Hobby.find(params[:hobby_id])
+
+
+    authorize @event
+
+  end
+
   def new
     @hobby = Hobby.find(params[:hobby_id])
     @event = Event.new

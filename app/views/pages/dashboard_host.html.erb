@@ -3,31 +3,71 @@
 <div class="container">
   <main class="host-dashboard padded">
 
-    <input id="tab1" type="radio" name="tabs" checked>
+    <input class="no-display" id="tab1" type="radio" name="tabs" checked>
     <label for="tab1">Hobbies</label>
 
-    <input id="tab2" type="radio" name="tabs">
+    <input class="no-display" id="tab2" type="radio" name="tabs">
     <label for="tab2">Events</label>
 
-    <input id="tab3" type="radio" name="tabs">
+    <input class="no-display" id="tab3" type="radio" name="tabs">
     <label for="tab3">Pending</label>
 
-    <input id="tab4" type="radio" name="tabs">
+    <input class="no-display" id="tab4" type="radio" name="tabs">
     <label for="tab4">Frank lives here</label>
 
     <section id="content1">
-      <p>
-        Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
-      </p>
+
+
+      <div class="container">
+      <% if @events.present? %>
+        <div >
+        <div class="container">
+          <div class="row">
+            <% @hobbies.each do |hobby| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="card__image border-tlr-radius">
+                <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="border-tlr-radius">
+              </div>
+
+              <div >
+                <div class="card__meta">
+                  <a href="#"><%= hobby.title %></a>
+                  <p><%= hobby.average_score %></p>
+                </div>
+
+                <article class="card__article">
+                  <h2><a href="#"><%= hobby.summary %></a></h2>
+                  <p><%= hobby.description %></p>
+                </article>
+              </div>
+
+              <div class="card__action">
+                <div class="card__author">
+                  <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                  <div class="card__author-content">
+                    Hosted by <a href="#">Max</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          </div>
+
+          <% else %>
+            <div class="container text-center" style="margin-top: 100px">
+             <h3 id="empty">No hobbies created yet</h3>
+            </div>
+          <% end %>
+        </div>
+
     </section>
 
     <section id="content2">
 
       <div class="container">
       <% if @events.present? %>
-        <div class="container text-center padded">
-          <h2>Your new event!</h2>
-        </div>
+
 
         <div class="container">
           <div class="row">
@@ -45,6 +85,7 @@
 
               <%= link_to("Update event", edit_hobby_event_path(event.hobby, event), class: "btn btn-primary card-link") %>
               <%= link_to "Delete event", hobby_event_path(event.hobby, event), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning card-link" %>
+              <%= link_to("Event details", hobby_event_path(event.hobby, event), class: "btn btn-info card-link") %>
             </div>
             </div>
             <% end %>
@@ -70,9 +111,38 @@
     </section>
 
     <section id="content4">
-      <p>
-        Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
-      </p>
+      <div class="container">
+
+        <!-- Normal Demo-->
+        <% if @events.present? %>
+
+          <div class="column">
+            <div class="row">
+                <% @events.each do |event| %>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="post-module">
+                  <!-- Thumbnail-->
+                    <div class="thumbnail">
+                      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+                      </div>
+                    </div>
+                    <!-- Post Content-->
+                    <div class="post-content">
+                      <div class="category">Category</div>
+                      <h1 class="title">Learn to plane like a shamen</h1>
+                      <h2 class="sub_title">The city that never sleeps.</h2>
+                      <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                      <div class="post-meta"><span class="timestamp"><i class="fa fa-starts-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> <%= event.price %></a></span></div>
+                      <%= link_to("Update event", edit_hobby_event_path(event.hobby, event), class: "btn btn-primary card-link") %>
+                      <%= link_to "Delete event", hobby_event_path(event.hobby, event), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning card-link" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+      </div>
     </section>
 
   </main>
