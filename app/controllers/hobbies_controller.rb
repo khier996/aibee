@@ -3,7 +3,6 @@ class HobbiesController < ApplicationController
 
   def index
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
-    @allhobbies = Hobby.all
     @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@hobbies) do |hobby, marker|
