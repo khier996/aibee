@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 20170330061155) do
 
 
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170330061155) do
     t.integer  "pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "status"
+    t.string   "status",     null: false
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -54,12 +55,12 @@ ActiveRecord::Schema.define(version: 20170330061155) do
   create_table "events", force: :cascade do |t|
     t.integer  "hobby_id"
     t.integer  "price"
-    t.date     "start_time"
-    t.date     "end_time"
     t.integer  "min_pax"
     t.integer  "max_pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["hobby_id"], name: "index_events_on_hobby_id", using: :btree
   end
 
