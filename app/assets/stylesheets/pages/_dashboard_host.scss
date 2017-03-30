@@ -12,6 +12,10 @@
       background: #eee;
     }
 
+    .no-display {
+      display: none;
+    }
+
     h1 {
       padding: 50px 0;
       font-weight: 400;
@@ -35,10 +39,6 @@
       display: none;
       padding: 20px 0 0;
       border-top: 1px solid #ddd;
-    }
-
-    input {
-      display: none;
     }
 
     label {
