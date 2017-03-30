@@ -5,39 +5,34 @@
 <!-- hobby description -->
 <div class="container">
   <h2><%= @hobby.description %></h2>
-</div>
-<!-- event -->
-<div class="container">
-  <!-- <#%= render 'pages/search_form'%> -->
-  <% if @events.present? %>
-    <div class="container text-center padded">
-      <h2>Your new event!</h2>
-    </div>
-    <div class="container">
-      <div class="row">
-        <% @events.each do |event| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-          <div class="card-description">
-            <h2><%= event.price %></h2>
-            <h3><%= event.start_time %></h3>
-            <p><%= event.end_time %></p>
-            <p><%= event.min_pax %></p>
-            <p><%= event.max_pax %></p>
-          </div>
-          <%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
-        </div>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  <% else %>
-    <div class="container text-center" style="margin-top: 100px">
-     <h3 id="empty">No events scheduled yet</h3>
-    </div>
-  <% end %>
+  <h2><%= @hobby.address %></h2>
 </div>
 <!-- leads to event booking compare events index-->
 <div class="wrapper_form container">
-  <%= link_to("Join #{@hobby.user.first_name}'s event", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
+  <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
 </div>
+<!-- list of events -->
+<div class="container">
+  <div class="row">
+    <% if @events.present? %>
+    <div class="container text-center padded">
+      These are the next events for <%= @hobby.title %>
+      <ul>
+        <li>
+
+          <% @events.each do |event| %>
+              <%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <% else %>
+      <!-- remark that no events are created -->
+      <div class="container text-center" style="margin-top: 100px">
+       <h3 id="empty">No events scheduled yet</h3>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
