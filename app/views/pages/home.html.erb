@@ -15,3 +15,18 @@
 </div>
   <%= link_to("Hobbies index", hobbies_path, class: "btn btn-primary card-link") %>
 </div>
+
+
+<div>
+  <%= link_to "Sign_out", destroy_user_session_path, method: "delete" %>
+</div>
+
+
+
+<!-- Recommended hobbies according to the user's favourite categories -->
+<div>
+  <h1>Recommended Hobbies:</h1>
+  <% @selected_hobbies.each do |hobby| %>
+    <p><%= hobby.title %>  </p>
+  <% end %>
+</div>

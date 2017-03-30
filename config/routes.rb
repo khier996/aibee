@@ -4,8 +4,11 @@ Rails.application.routes.draw do
 
   # libraries
   mount Attachinary::Engine => "/attachinary"
+
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+    controllers: { registrations: "registrations",
+      omniauth_callbacks: 'users/omniauth_callbacks'
+    }
 
   # routes with resources
   resources :hobbies do
