@@ -1,10 +1,7 @@
 class HobbiesController < ApplicationController
-  before_action :set_hobby, only: [:show, :edit, :destroy]
+  before_action :set_hobby, only: [:show, :edit, :destroy, :update]
 
   def index
-
-
-
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
     @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
 
@@ -27,9 +24,6 @@ class HobbiesController < ApplicationController
       marker.lng hobby.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
-
-
-
   end
 
   def show
@@ -41,8 +35,8 @@ class HobbiesController < ApplicationController
       marker.lat hobby.latitude
       marker.lng hobby.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
-end
 
   def new
     @hobby = Hobby.new
@@ -70,12 +64,22 @@ end
     authorize @hobby
   end
 
+  def update
+    authorize @hobby
+
+    if @hobby.update(hobby_params)
+      redirect_to hobby_path(@hobby)
+    else
+      render :new
+    end
+  end
+
   def destroy
     authorize @hobby
     @hobby.deleted = @hobby.hidden = true
     @hobby.save
 
-    redirect_to '/'
+    redirect_to root_path
   end
 
 
