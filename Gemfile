@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
 
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
