@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :bookings, only: [:create, :update, :destroy]
     end
   end
-  resources :users, only:[:show]
+  resources :users, only:[:show, :edit]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get('/dashboard_host', {to: 'pages#dashboard_host'})
 
