@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     @event.hobby_id = @hobby[:id]
     authorize @event
     if @event.save
-      redirect_to hobby_path(@hobby)
+      redirect_to hobby_event_path(@hobby, @event)
     else
       render :new
     end

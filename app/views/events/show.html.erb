@@ -2,6 +2,13 @@
 <body class="event-show">
 
 
+<%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
+
+<%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
+
+
+<%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-primary card-link") %>
+
 <h1><%= @hobby.title %></h1>
 
 
