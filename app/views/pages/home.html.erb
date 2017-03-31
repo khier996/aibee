@@ -29,11 +29,12 @@
 
 
 <!-- Recommended hobbies according to the user's favourite categories -->
-<div>
-  <h1>Recommended Hobbies:</h1>
-  <% @selected_hobbies.each do |hobby| %>
-    <p><%= hobby.title %>  </p>
-  <% end %>
-</div>
-
+<% if current_user %>
+  <div>
+    <h1>Recommended Hobbies:</h1>
+    <% @selected_hobbies.each do |hobby| %>
+      <p><%= hobby.title %>  </p>
+    <% end %>
+  </div
+<% end %>
 

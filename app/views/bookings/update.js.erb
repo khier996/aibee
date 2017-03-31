@@ -3,3 +3,5 @@ $('#status').html("<%= @booking.status %>");
 <% if @booking.review != nil %>
   $("#booking-<%= booking.id %>").slideUp();
 <% end %>
+
+$(".pax").html("<%= @booking.pax %>")

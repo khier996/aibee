@@ -5,10 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    @categories = params[:user][:categories]
-    @categories.shift
-    @categories.each do |category_id|
-      UserCategory.create(category_id: category_id, user_id: current_user.id)
+    if current_user
+      @categories = params[:user][:categories]
+      @categories.shift
+      @categories.each do |category_id|
+        UserCategory.create(category_id: category_id, user_id: current_user.id)
+      end
     end
   end
 

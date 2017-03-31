@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # routes with resources
   resources :hobbies do
-    resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :events do
       resources :bookings, only: [:create, :update, :destroy]
     end
   end
@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get '/dashboard_guest', to: 'pages#dashboard_guest'
 
 end
+
+
+
 
 
 

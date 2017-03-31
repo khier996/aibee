@@ -1,3 +1,5 @@
+<%= render 'dashboard_guest_profile' %>
+
 <h1 class="text-center">Guest Dashboard</h1>
 
 <div class="container">
@@ -41,6 +43,13 @@
           <p> Start time: <%= booking.event.start_time %> </p>
           <p> End time: <%= booking.event.end_time %> </p>
           <p> Status: <span id="status"> <%= booking.status %> </span> </p>
+          <p> <%= link_to "Event details", hobby_event_path(booking.event.hobby, booking.event) %> </p>
+          <%= simple_form_for([booking.event.hobby, booking.event, booking]) do |f| %>
+              <%= f.input :pax, class: "pax" %>
+              <%= f.submit "Change" %>
+            <% end %>
+          <p></p>
+
 
           <%= simple_form_for([booking.event.hobby, booking.event, booking], remote: true) do |f|%>
             <%= f.hidden_field :status, value: "cancelled" %>
@@ -58,6 +67,7 @@
           <p> Price: <%= booking.event.price %> </p>
           <p> Start time: <%= booking.event.start_time %> </p>
           <p> End time: <%= booking.event.end_time %> </p>
+          <p> <%= link_to "Event details", hobby_event_path(booking.event.hobby, booking.event) %> </p>
         <% end %>
       </div>
     </section>
