@@ -1,20 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
-<%= render 'pages/search_form' %>
-
+<div class="banner padded text-center" >
+  <h1>aibee</h1>
+  <br>
+  <h3>Share your passion</h3>
+  <%= render 'pages/search_form' %>
 </div>
+
+
+
+<div class="container padded">
+
+
+<div>
   <%= link_to("Host Dashboard", dashboard_host_path, class: "btn btn-primary card-link") %>
-</div>
 
-</div>
   <%= link_to("Guest Dashboard", dashboard_guest_path, class: "btn btn-primary card-link") %>
-</div>
 
-
-</div>
   <%= link_to("Hobbies index", hobbies_path, class: "btn btn-primary card-link") %>
 </div>
+
 
 
 
@@ -22,7 +26,7 @@
   <%= link_to "Sign_out", destroy_user_session_path, method: "delete" %>
 </div>
 
-</div>
+<div>
   <%= link_to("Profile", users_show_path, class: "btn btn-primary card-link") %>
 </div>
 
@@ -66,6 +70,8 @@
       </div>
     </div>
     <% end %>
-  </div
+  </div>
 <% end %>
+
+</div>
 
