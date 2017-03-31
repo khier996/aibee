@@ -6,7 +6,6 @@ class HobbiesController < ApplicationController
 
 
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
-    @allhobbies = Hobby.all
     @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
 
     if params[:title]
@@ -36,7 +35,6 @@ class HobbiesController < ApplicationController
   def show
     authorize @hobby
     @events = @hobby.events
-
     @hobby = Hobby.find(params[:id])
 
     @hash = Gmaps4rails.build_markers(@hobby) do |hobby, marker|

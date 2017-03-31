@@ -1,29 +1,47 @@
 <!-- action links -->
-<a href="<%= edit_hobby_path  %>">Update</a>
-<a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
-<%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="container">
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default"><a href="<%= edit_hobby_path  %>">Update</a></button>
+    <button type="button" class="btn btn-default"><a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a></button>
+    <button type="button" class="btn btn-default"><%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %></button>
+  </div>
+</div>
 <!-- hobby description -->
 <div class="container">
   <h2><%= @hobby.description %></h2>
   <h2><%= @hobby.address %></h2>
 </div>
 <!-- leads to event booking compare events index-->
-<div class="wrapper_form container">
+<div class="wrapper_form container padded">
   <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
 </div>
 <!-- list of events -->
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
+    <h3>These are the next events for <%= @hobby.title %></h2>
     <% if @events.present? %>
     <div class="container text-center padded">
-      These are the next events for <%= @hobby.title %>
-      <ul>
-        <li>
+
+
           <% @events.each do |event| %>
-              <%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+              <div class="card-description">
+                <h2><%= event.price %></h2>
+                <h3><%= event.start_time %></h3>
+                <p><%= event.end_time %></p>
+                <p><%= event.min_pax %></p>
+                <p><%= event.max_pax %></p>
+
+                <!--   <#%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %> -->
+                <%= link_to("Event details",hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
+
+                <%= link_to("Edit events",hobby_events_path(@hobby, @events), class: "btn btn-primary card-link") %>
+              </div>
+            </div>
+          </div>
           <% end %>
-        </li>
-      </ul>
+
     </div>
     <% else %>
       <!-- remark that no events are created -->
@@ -33,6 +51,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 <!-- event map -->
