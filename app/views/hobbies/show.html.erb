@@ -1,18 +1,18 @@
 <!-- action links -->
 <div class="container">
   <div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-default"><a href="<%= edit_hobby_path  %>">Update</a></button>
-    <button type="button" class="btn btn-default"><a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a></button>
-    <button type="button" class="btn btn-default"><%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %></button>
+    <a type="button" class="btn btn-default" href="<%= edit_hobby_path %>">Update</a>
+    <a type="button" class="btn btn-default" href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
+    <%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" }, type: "button", class: "btn btn-default" %>
   </div>
 </div>
 <!-- hobby description -->
-<div class="container">
+<div class="container padded">
   <h2><%= @hobby.description %></h2>
   <h2><%= @hobby.address %></h2>
 </div>
 <!-- leads to event booking compare events index-->
-<div class="wrapper_form container padded">
+<div class="wrapper_form container">
   <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
 </div>
 <!-- list of events -->
