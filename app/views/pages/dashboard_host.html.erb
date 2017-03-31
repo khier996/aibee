@@ -1,6 +1,10 @@
 <h1 class="text-center">Dashboard host</h1>
 
 <div class="container">
+ <%= link_to("New hobby", new_hobby_path, class: "btn btn-primary card-link") %>
+</div>
+
+<div class="container">
   <main class="host-dashboard padded">
 
     <input class="no-display" id="tab1" type="radio" name="tabs" checked>
@@ -24,6 +28,7 @@
         <div class="container">
           <div class="row">
             <% @hobbies.each do |hobby| %>
+            <a href="<%= hobby_path(hobby) %>">
             <div class="card col-xs-12 col-sm-6 col-md-4">
               <div class="card__image border-tlr-radius">
                 <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="border-tlr-radius">
@@ -32,7 +37,7 @@
               <div class="card__content card__padding">
                 <div >
                   <div class="card__meta">
-                    <a href="#"><%= hobby.title %></a>
+                    <a href="<%= hobby_path(hobby) %>"><%= hobby.title %></a>
                     <% if hobby.average_score != 0.0 %>
                       <p>
                         <%= hobby.average_score %>
@@ -42,14 +47,17 @@
                     <% end %>
                   </div>
 
+
                   <article class="card__article">
                     <h2><a href="#"><%= hobby.summary %></a></h2>
                     <p><%= hobby.description %></p>
                   </article>
+                   <%= link_to("Hobby details", hobby_path(hobby), class: "btn btn-primary card-link") %>
+                   <%= link_to("Add an event", new_hobby_event_path(hobby), class: "btn btn-primary card-link") %>
+                   <%= link_to("Delete", hobby_path(hobby), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary card-link") %>
                 </div>
               </div>
-
-
+              </a>
        <!--        <div class="card__action">
                 <div class="card__author">
                   <img src="http://lorempixel.com/40/40/sports/" alt="user">
@@ -166,15 +174,6 @@
     </section>
 
     <section id="content4">
-
-        <div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
 
 
     </section>

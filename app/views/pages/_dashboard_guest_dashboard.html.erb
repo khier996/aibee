@@ -1,0 +1,74 @@
+<h1 class="text-center">Guest Dashboard</h1>
+
+<div class="padded">
+  <main class="host-dashboard">
+
+    <input class="no-display" id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Reviews pending</label>
+
+    <input class="no-display" id="tab2" type="radio" name="tabs">
+    <label for="tab2">Future events</label>
+
+    <input class="no-display" id="tab3" type="radio" name="tabs">
+    <label for="tab3">Past events</label>
+
+
+
+    <section id="content1">
+      <div class="dashbard-guest-notifications">
+        <!-- notification is actually a booking  -->
+        <% @notifications.each do |notification| %>
+          <div id="booking-<%= notification.id %>">
+            Title: <%= notification.event.hobby.title %>
+            Start time: <%= notification.event.start_time %>
+            <%= simple_form_for([notification.event.hobby, notification.event, notification]) do |f| %>
+              <%= f.input :review, collection: (1..5), default: 1 %>
+              <%= f.input :comment %>
+              <%= f.submit "Review" %>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+    </section>
+
+    <section id="content2">
+      <div class="future-bookings">
+        <h1>Future bookings:</h1>
+        <% @future_bookings.each do |booking| %>
+          <p> Hobby: <%= booking.event.hobby.title %> </p>
+          <p> Price: <%= booking.event.price %> </p>
+          <p> Start time: <%= booking.event.start_time %> </p>
+          <p> End time: <%= booking.event.end_time %> </p>
+          <p> Status: <span id="status"> <%= booking.status %> </span> </p>
+          <p> <%= link_to "Event details", hobby_event_path(booking.event.hobby, booking.event) %> </p>
+          <%= simple_form_for([booking.event.hobby, booking.event, booking]) do |f| %>
+              <%= f.input :pax, class: "pax" %>
+              <%= f.submit "Change" %>
+            <% end %>
+          <p></p>
+
+
+          <%= simple_form_for([booking.event.hobby, booking.event, booking], remote: true) do |f|%>
+            <%= f.hidden_field :status, value: "cancelled" %>
+            <%= f.submit "cancel", class: "btn" %>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+
+    <section id="content3">
+      <div class="past-bookings">
+        <h1>Past bookings:</h1>
+        <% @past_bookings.each do |booking| %>
+          <p> Hobby: <%= booking.event.hobby.title %> </p>
+          <p> Price: <%= booking.event.price %> </p>
+          <p> Start time: <%= booking.event.start_time %> </p>
+          <p> End time: <%= booking.event.end_time %> </p>
+          <p> <%= link_to "Event details", hobby_event_path(booking.event.hobby, booking.event) %> </p>
+        <% end %>
+      </div>
+    </section>
+  </main>
+</div>
+

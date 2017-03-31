@@ -1,0 +1,6 @@
+<% if current_user[:facebook_picture_url] %>
+  <h1>Profile</h1>
+  <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+<% end %>
+
+

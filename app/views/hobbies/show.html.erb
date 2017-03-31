@@ -1,3 +1,4 @@
+
 <div>
   <div>
     <!-- hobby description -->
@@ -28,14 +29,22 @@
     <div class="row">
       <% if @events.present? %>
       <div class="container text-center padded">
-        These are the next events for <%= @hobby.title %>
-        <ul>
-          <li>
-            <% @events.each do |event| %>
-                <%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %>
-            <% end %>
-          </li>
-        </ul>
+          <% @events.each do |event| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+              <div class="card-description">
+                <h2><%= event.price %></h2>
+                <h3><%= event.start_time %></h3>
+                <p><%= event.end_time %></p>
+                <p><%= event.min_pax %></p>
+                <p><%= event.max_pax %></p>
+                <!--   <#%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %> -->
+                <%= link_to("Event details",hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
+                <%= link_to("Edit events",hobby_events_path(@hobby, @events), class: "btn btn-primary card-link") %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
       <% else %>
         <!-- remark that no events are created -->
@@ -70,5 +79,3 @@
     </div>
   </div>
 </div>
-
-
