@@ -32,7 +32,8 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
 
-    if @booking.update(params.require(:booking).permit(:status, :review, :comment))
+    if @booking.update(params.require(:booking).permit(:status, :review, :comment, :pax))
+      flash[:notice] = "Your booking pax has been udpated" if params[:booking][:pax]
       update_hobby_score(@booking)
       respond_to do |format|
         format.html { redirect_to dashboard_guest_path }

@@ -2,15 +2,19 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    user_categories = current_user.categories
-    all_hobbies = Hobby.all
-    @selected_hobbies = all_hobbies.each { |hobby| hobby.categories & user_categories != [] ? true : false }
-    @selected_hobbies = @selected_hobbies.sort { |a,b| b.average_score <=> a.average_score }
+    @selected_hobbies = Hobby.all
+    if current_user
+      user_categories = current_user.categories
+      @selected_hobbies = @selected_hobbies.each { |hobby| hobby.categories & user_categories != [] ? true : false }
+      @selected_hobbies = @selected_hobbies.sort { |a,b| b.average_score <=> a.average_score }
+    end
   end
+
 
   def dashboard_guest
     @current_user = current_user
     @notifications = current_user.bookings.where(review: nil)
+    @notifications = @notifications.select { |booking| booking.event.start_time < Time.now }
 
     @bookings = @current_user.bookings
     @future_bookings = @bookings.select { |booking| booking.event.start_time > Time.now }
