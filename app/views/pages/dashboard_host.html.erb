@@ -1,5 +1,7 @@
 <h1 class="text-center">Dashboard host</h1>
 
+ <%= link_to("New hobby", new_hobby_path, class: "btn btn-primary card-link") %>
+
 <div class="container">
   <main class="host-dashboard padded">
 
@@ -41,6 +43,9 @@
                       <p>No reviews yet</p>
                     <% end %>
                   </div>
+
+                   <%= link_to("Hobby details", hobby_path(hobby), class: "btn btn-primary card-link") %>
+                   <%= link_to("Add an event", new_hobby_event_path(hobby), class: "btn btn-primary card-link") %>
 
                   <article class="card__article">
                     <h2><a href="#"><%= hobby.summary %></a></h2>

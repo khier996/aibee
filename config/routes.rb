@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # routes with resources
   resources :hobbies do
-    resources :events, only: [:index, :new, :create, :edit, :update, :destroy] do
+    resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :bookings, only: [:create, :update, :destroy]
     end
   end
