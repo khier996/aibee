@@ -1,57 +1,74 @@
-<!-- action links -->
-<a href="<%= edit_hobby_path  %>">Update</a>
-<a href="<%= new_hobby_event_path(@hobby)  %>">Add an event</a>
-<%= link_to "Delete Hobby", hobby_path(@hobby), method: :delete, data: { confirm: "Are you sure?" } %>
-<!-- hobby description -->
-<div class="container">
-  <h2><%= @hobby.description %></h2>
-  <h2><%= @hobby.address %></h2>
-</div>
-<!-- leads to event booking compare events index-->
-<div class="wrapper_form container">
-  <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
-</div>
-<!-- list of events -->
-<div class="container">
-  <div class="row">
-    <% if @events.present? %>
-    <div class="container text-center padded">
-      These are the next events for <%= @hobby.title %>
-      <ul>
-        <li>
-          <% @events.each do |event| %>
-              <%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %>
-          <% end %>
-        </li>
-      </ul>
+<div>
+  <div>
+    <!-- hobby description -->
+    <div class="container text-center">
+      <h1><%= @hobby.title%></h1>
     </div>
-    <% else %>
-      <!-- remark that no events are created -->
-      <div class="container text-center" style="margin-top: 100px">
-       <h3 id="empty">No events scheduled yet</h3>
+    <div class="container text-center">
+      <h2><%= @hobby.summary %></h2>
+      <h2><%= @hobby.description %></h2>
+    </div class="container text-center">
+    <% if @hobby.user_id == current_user.id %>
+      <!-- action links if host-->
+      <div class="container">
+        <a class="btn btn-primary" href="<%= edit_hobby_path%>">Update this hobby</a>
+        <br>
+        <br>
+        <a class="btn btn-primary" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
+      </div>
+    <% elsif @events.present? %>
+      <!-- leads to event booking compare events index only visible as guest-->
+      <div class="wrapper_form text-center">
+        <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
       </div>
     <% end %>
   </div>
+  <!-- list of events -->
+  <div class="container">
+    <div class="row">
+      <% if @events.present? %>
+      <div class="container text-center padded">
+        These are the next events for <%= @hobby.title %>
+        <ul>
+          <li>
+            <% @events.each do |event| %>
+                <%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <% else %>
+        <!-- remark that no events are created -->
+        <div class="container text-center" style="margin-top: 100px">
+         <h3 id="empty">No events scheduled yet</h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <!-- event map -->
+  <div>
+    <div class="text-center" id="map" style=" width: 400px; height: 400px;"></div>
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        });
+      <% end %>
+    <% end %>
+    <div>
+      <h3><%= @hobby.address %></h3>
+    </div>
+  </div>
 </div>
 
-
-<!-- event map -->
-<div id="map" style="width: 100%; height: 600px;"></div>
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>
 
