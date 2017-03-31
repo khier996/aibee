@@ -22,18 +22,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard_host
-
-
     @events = current_user.requests
-    # raise
     @hobbies = current_user.hobbies
-
     # @hobby = request.find(params[:id])
-
-
   end
-
-
 end
 
 

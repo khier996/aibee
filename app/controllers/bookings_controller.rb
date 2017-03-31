@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
         @booking.event_id = @event.id
         if @booking.save
           flash[:notice] = "Congrats! You booked this event"
-          redirect_to hobbies_path
+          redirect_to hobbies_path(@event.hobby)
         else
           flash[:notice] = "Sorry, there is an internal error. We are working on it!"
           redirect_to hobby_path(@event.hobby)
