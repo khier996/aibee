@@ -227,7 +227,7 @@ GEM
     tilt (2.0.7)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uglifier (3.1.10)
+    uglifier (3.1.11)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -273,8 +273,5 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   uglifier
 
-RUBY VERSION
-   ruby 2.3.3p222
-
 BUNDLED WITH
-   1.14.3
+   1.14.6
