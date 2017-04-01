@@ -14,6 +14,17 @@
   margin: -70px;
 }
 
+.new-search-form {
+  background-color: transparent;
+  // background: rgba(0,0,0,0.7);
+  border-color: transparent;
+  color: black;
+  margin-top: 150px;
+  font-size: 20px;
+
+}
+
+
 .fa {
   font-size: 100px;
 }
@@ -35,28 +46,121 @@
 }
 
 
-.features__content-wrapper {
-  min-width: 1200px;
-}
-// @media (min-width: 1200px)
 
-.easyship__how-it-works .features__content .features__content-wrapper {
-    -ms-flex-flow: row nowrap;
-    flex-flow: row nowrap;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    -ms-flex-align: start;
-    align-items: flex-start;
+
+// *******************
+
+
+/* line 21, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container * {
+  box-sizing: border-box;
 }
 
-.easyship__how-it-works .features__content .features__content-wrapper {
-    width: 100%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: column nowrap;
-    flex-flow: column nowrap;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
+/* line 25, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container {
+  height: 42px;
+}
+/* line 27, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container .tab-content {
+  clear: left;
+}
+
+/* line 32, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-fixed-container {
+  float: left;
+  height: 42px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* line 39, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-movable-container {
+  position: relative;
+}
+/* line 41, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-movable-container .tab-content {
+  display: none;
+}
+
+/* line 46, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow {
+  border: 1px solid #dddddd;
+  border-top: none;
+  color: #428bca;
+  cursor: pointer;
+  display: none;
+  float: left;
+  font-size: 12px;
+  height: 42px;
+  margin-bottom: -1px;
+  padding-left: 2px;
+  padding-top: 13px;
+  width: 20px;
+}
+/* line 59, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow:hover {
+  background-color: #eeeeee;
+}
+
+/* line 64, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow.scrtabs-disable {
+  color: #ddd;
+  cursor: default;
+}
+
+/* line 69, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-fixed-container ul.nav-tabs > li {
+  white-space: nowrap;
+}
+
+
+
+
+
+// ***************
+
+.wrapper-scroll {
+    position:relative;
+    margin:0 auto;
+    overflow:hidden;
+  padding:5px;
+    height:50px;
+}
+
+.list {
+    position:absolute;
+    left:0px;
+    top:0px;
+    min-width:3000px;
+    margin-left:12px;
+    margin-top:0px;
+}
+
+.list li{
+  display:table-cell;
+    position:relative;
+    text-align:center;
+    cursor:grab;
+    cursor:-webkit-grab;
+    color:#efefef;
+    vertical-align:middle;
+}
+
+.scroller {
+  text-align:center;
+  cursor:pointer;
+  display:none;
+  padding:7px;
+  padding-top:11px;
+  white-space:no-wrap;
+  vertical-align:middle;
+  background-color:#fff;
+}
+
+.scroller-right{
+  float:right;
+}
+
+.scroller-left {
+  float:left;
 }
