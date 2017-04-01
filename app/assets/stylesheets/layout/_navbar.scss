@@ -4,7 +4,7 @@
 
 .navbar-wagon {
   // background-color: transparent;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.7);
   // border-color: transparent;
   // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   // background: #BD1550;
@@ -23,6 +23,14 @@
   padding: 20px;
 
 }
+
+.navbar-about:hover {
+  color: #F8CA00;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+}
+
 
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {

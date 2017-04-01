@@ -5,10 +5,58 @@
 
 .banner {
   height: 450px;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("http://www.carto.net/neumann/panoramas/sandnes_flakstadoya_lofoten_2008_06/pano1/sandnes_flakstadoya_lofoten_panorama_medium_res.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+    url("https://s-media-cache-ak0.pinimg.com/originals/a8/a5/b0/a8a5b0a428127cec23c1d4ffd8092d36.jpg");
   background-size: cover;
   background-position: center;
   color: white;
   text-align: center;
   margin: -70px;
+}
+
+.fa {
+  font-size: 100px;
+}
+
+
+.home-flexbox {
+  margin-top: -20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .h-icon {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  p{
+    margin-top: 20px;
+    font-size: 20px;
+  }
+}
+
+
+.features__content-wrapper {
+  min-width: 1200px;
+}
+// @media (min-width: 1200px)
+
+.easyship__how-it-works .features__content .features__content-wrapper {
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.easyship__how-it-works .features__content .features__content-wrapper {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
