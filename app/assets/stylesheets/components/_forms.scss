@@ -7,6 +7,8 @@
     border-radius: 50%;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Sign up form styling:
 .sign-up-form-wrapper {
   width: 80%;
@@ -42,8 +44,8 @@
   color: #afacac;
 }
 
-
-// Sign-in form
+// /////////////////////////////////////////////////////////////////////
+// Sign-in form:
 .sign-in-form-wrapper {
   width: 60%;
   position: absolute;
@@ -61,6 +63,17 @@
   justify-content: space-around;
 }
 
+///////////////////////////////////////////////////////////////////////
+// Create-event form:
+.new-event-form {
+  width: 60%;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translateX(-50%);
+}
 
-
+.new-event-form-title {
+  color: white;
+}
 
