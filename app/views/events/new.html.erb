@@ -1,18 +1,19 @@
-<div class="container">
-  <div class="new-event-form form-group">
-   <div class="well form-horizontal" style="max-width: 800px">
 
-
-<%= simple_form_for([@hobby, @event]) do |f| %>
-            <%= f.input :price, placeholder: "Price", class: "form-control", label: false %>
-            <%= f.input :start_time, as: :datetime, placeholder: 'Start time', class: "form-control"%>
-            <%= f.input :end_time, as: :datetime, placeholder: 'End time', class: "form-control"%>
-            <%= f.input :min_pax, placeholder: 'Min pax', class: "form-control" %>
-            <%= f.input :max_pax, placeholder: 'Max pax', class: "form-control" %>
-
-          <%= f.submit class: "btn btn-primary" %>
-        <% end %>
-   </div>
-  </div>
+<%= image_tag "new-event-form-img" %>
+<div class="new-event-form text-center">
+  <%= simple_form_for([@hobby, @event]) do |f| %>
+    <%= f.input :price, placeholder: "Price", class: "form-control", label: false %>
+    <%= f.input :min_pax, placeholder: 'Min pax', class: "form-control", label: false %>
+    <%= f.input :max_pax, placeholder: 'Max pax', class: "form-control", label: false %>
+    <%= f.input :start_time, as: :datetime, placeholder: "Start Time", label_html: { class: "new-event-form-title" } %>
+    <%= f.input :end_time, as: :datetime, placeholder: 'End Time', label_html: { class: "new-event-form-title" } %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 </div>
+
+
+
+
+
+
 
