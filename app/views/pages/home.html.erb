@@ -6,31 +6,39 @@
   <%= render 'pages/search_form' %>
 </div>
 
+<div class="text-center" style="margin-top: 120px;">
+  <h2>Maybe meet the mother of your children!</h1>
+</div>
+
+<div class="container padded text-center home-flexbox">
+  <div class="row">
+
+
+    <div class="h-icon col-xs-12 col-md-4">
+      <%= image_tag "brush128" %>
+      <p>Share you passion with others</p>
+    </div>
+
+    <div class="h-icon col-xs-12 col-md-4">
+      <%= image_tag "comrades128" %>
+      <p>Meet fellow comrades</p>
+    </div>
+
+    <div class="h-icon col-xs-12 col-md-4">
+     <%= image_tag "wind128" %>
+     <p>Go to the Netherlands</p>
+    </div>
+    </div>
+</div>
+
+
 
 
 <div class="container padded">
 
-
-<div>
-  <%= link_to("Host Dashboard", dashboard_host_path, class: "btn btn-primary card-link") %>
-
-  <%= link_to("Guest Dashboard", dashboard_guest_path, class: "btn btn-primary card-link") %>
-
-  <%= link_to("Hobbies index", hobbies_path, class: "btn btn-primary card-link") %>
-</div>
-
-
-
-
-<div>
-  <%= link_to "Sign_out", destroy_user_session_path, method: "delete" %>
-</div>
-
 <div>
   <%= link_to("Profile", users_show_path, class: "btn btn-primary card-link") %>
 </div>
-
-
 
 <!-- Recommended hobbies according to the user's favourite categories -->
 <% if current_user %>
