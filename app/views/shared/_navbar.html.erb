@@ -10,7 +10,7 @@
     <div>
       <%= link_to dashboard_host_path do %>
         <div class="navbar-about">
-          <span class="navbar-about">Host</span>
+          <span>Host</span>
         </div>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
     <div>
       <%= link_to dashboard_guest_path do %>
         <div class="navbar-about">
-          <span class="navbar-about">Guest</span>
+          <span>Guest</span>
         </div>
       <% end %>
     </div>
@@ -34,7 +34,7 @@
     <div>
       <%= link_to destroy_user_session_path, method: "delete" do %>
         <div class="navbar-about">
-          <span class="navbar-about">Sign out</span>
+          <span>Sign out</span>
         </div>
       <% end %>
     </div>
@@ -45,13 +45,19 @@
 
     <% else %>
 
-      <!-- Login text link -->
-      <%= link_to "Login", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <div>
+      <%= link_to new_user_session_path do %>
+      <div class="navbar-about">
+        <span>Login</span>
+      </div>
+      <% end %>
+    </div>
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to "A BUTTON", "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to "Profile", users_show_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

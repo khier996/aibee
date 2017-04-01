@@ -5,10 +5,162 @@
 
 .banner {
   height: 450px;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("http://www.carto.net/neumann/panoramas/sandnes_flakstadoya_lofoten_2008_06/pano1/sandnes_flakstadoya_lofoten_panorama_medium_res.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+    url("https://s-media-cache-ak0.pinimg.com/originals/a8/a5/b0/a8a5b0a428127cec23c1d4ffd8092d36.jpg");
   background-size: cover;
   background-position: center;
   color: white;
   text-align: center;
   margin: -70px;
+}
+
+.new-search-form {
+  background-color: transparent;
+  // background: rgba(0,0,0,0.7);
+  border-color: transparent;
+  color: black;
+  margin-top: 150px;
+  font-size: 20px;
+
+}
+
+
+.fa {
+  font-size: 100px;
+}
+
+
+.home-flexbox {
+  margin-top: -20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .h-icon {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  p{
+    margin-top: 20px;
+    font-size: 20px;
+  }
+}
+
+
+
+
+// *******************
+
+
+/* line 21, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container * {
+  box-sizing: border-box;
+}
+
+/* line 25, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container {
+  height: 42px;
+}
+/* line 27, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container .tab-content {
+  clear: left;
+}
+
+/* line 32, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-fixed-container {
+  float: left;
+  height: 42px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* line 39, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-movable-container {
+  position: relative;
+}
+/* line 41, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-movable-container .tab-content {
+  display: none;
+}
+
+/* line 46, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow {
+  border: 1px solid #dddddd;
+  border-top: none;
+  color: #428bca;
+  cursor: pointer;
+  display: none;
+  float: left;
+  font-size: 12px;
+  height: 42px;
+  margin-bottom: -1px;
+  padding-left: 2px;
+  padding-top: 13px;
+  width: 20px;
+}
+/* line 59, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow:hover {
+  background-color: #eeeeee;
+}
+
+/* line 64, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow.scrtabs-disable {
+  color: #ddd;
+  cursor: default;
+}
+
+/* line 69, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-fixed-container ul.nav-tabs > li {
+  white-space: nowrap;
+}
+
+
+
+
+
+// ***************
+
+.wrapper-scroll {
+    position:relative;
+    margin:0 auto;
+    overflow:hidden;
+  padding:5px;
+    height:50px;
+}
+
+.list {
+    position:absolute;
+    left:0px;
+    top:0px;
+    min-width:3000px;
+    margin-left:12px;
+    margin-top:0px;
+}
+
+.list li{
+  display:table-cell;
+    position:relative;
+    text-align:center;
+    cursor:grab;
+    cursor:-webkit-grab;
+    color:#efefef;
+    vertical-align:middle;
+}
+
+.scroller {
+  text-align:center;
+  cursor:pointer;
+  display:none;
+  padding:7px;
+  padding-top:11px;
+  white-space:no-wrap;
+  vertical-align:middle;
+  background-color:#fff;
+}
+
+.scroller-right{
+  float:right;
+}
+
+.scroller-left {
+  float:left;
 }

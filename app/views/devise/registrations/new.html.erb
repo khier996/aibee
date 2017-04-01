@@ -1,6 +1,7 @@
+
 <div class="row text-center">
   <div class="col-xs-12 col-md-6">
-    <img src="https://s-media-cache-ak0.pinimg.com/originals/0d/a2/85/0da285d6430e196a058340415a13998f.jpg" class="sign-up-form-img">
+    <%= image_tag "sign-up-form-img", class: "sign-up-form-img" %>
   </div>
 
   <div class="col-xs-12 col-md-6">
@@ -16,11 +17,14 @@
         <%= f.input :categories, label:false, item_wrapper_tag: :div, item_wrapper_class: "checkbox-inlin", :collection => Category.all, class: "input-field col s12", input_html: {multiple: true} %>
         <p class="sign-up-form-label">Profile picture:</p>
         <%= f.input :photo, as: :attachinary, label:false %>
-        <%= f.button :submit, "Sign up", class: "btn waves-effect waves-light" %>
+        <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
 
 
 

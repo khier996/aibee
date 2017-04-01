@@ -1,0 +1,19 @@
+<div class="container text-center">
+  <div class="card">
+    <h1>Profile</h1>
+
+    <%= cl_image_tag @user.photo.path, width: 100, height: 100, crop: :fill, class: "img-circle profile_picture"%>
+
+
+    test
+
+    <p><%= @user.first_name %> <%= @user.last_name %></p>
+
+    <p>Gender: <%= @user.gender %></p>
+    <p>Gender: <%= @user.birthdate %></p>
+
+    <p>Email: <%= @user.email %></p>
+
+  </div>
+</div>
+

@@ -3,12 +3,14 @@
   text-align: center;
 }
 
-
+.img-circle {
+    border-radius: 50%;
+}
 
 // Sign up form styling:
 .sign-up-form-wrapper {
   width: 80%;
-  margin-top: 50px;
+  margin-top: 100px;
   margin-left: 30px;
 }
 
@@ -25,7 +27,6 @@
 }
 
 .no-border:focus {
-  border: none;
   border-bottom: 1px solid #d6cdcd;
   box-shadow: none;
   border-color: transparent;
@@ -40,6 +41,18 @@
 .sign-up-form-label {
   color: #afacac;
 }
+
+
+// Sign-in form
+.sign-in-form-wrapper {
+  width: 60%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
 
 
 
