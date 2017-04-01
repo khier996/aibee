@@ -1,12 +1,19 @@
-<%= image_tag "sign-in-form-img", class: "sign-up-form-img" %>
+<%= image_tag "sign-in-form-img" %>
 <div class="sign-in-form-wrapper">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.error_notification %>
     <%= f.input :email, required: false, autofocus: true, label:false, placeholder: "Email" %>
     <%= f.input :password, required: false, label:false, placeholder: "Password" %>
     <%= f.input :remember_me, label_html: { class: 'sign-in-form-remember' }, as: :boolean if devise_mapping.rememberable?  %>
+    <br>
+    <div class="flex">
+      <%= render "devise/shared/links" %>
+    </div>
+
   <% end %>
 </div>
+
+
 
 
 
