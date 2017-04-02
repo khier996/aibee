@@ -8,6 +8,7 @@ class PagesController < ApplicationController
       @selected_hobbies = @selected_hobbies.each { |hobby| hobby.categories & user_categories != [] ? true : false }
       @selected_hobbies = @selected_hobbies.sort { |a,b| b.average_score <=> a.average_score }
     end
+    @categories = Category.all
   end
 
 

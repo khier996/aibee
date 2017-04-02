@@ -11,18 +11,12 @@
 
 <div class="container text-center" style="margin-top: 150px;">
   <div class="owl-carousel owl-theme">
+    <% @categories.each do |category| %>
+      <h3> <%= category.name %> </h3>
+    <% end %>
 
     <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-      <div class="item"><h4>3</h4></div>
-      <div class="item"><h4>4</h4></div>
+    <div class="item"><h4>4</h4></div>
 
   </div>
 </div>
