@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Likes:
+gem 'acts_as_votable', '~> 0.10.0'
+
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
@@ -14,7 +17,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 
-gem "coffee-rails"
+
 gem "gmaps4rails"
 
 source 'https://rails-assets.org' do

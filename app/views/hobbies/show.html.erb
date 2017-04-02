@@ -1,4 +1,22 @@
 
+<% if policy(@hobby).like? %>
+  <% if @current_user && @current_user.voted_for?(@hobby) %>
+    <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby) %> <span> <%= @hobby.get_likes.size %> </span>
+  <% else %>
+    <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby) %> <span> <%= @hobby.get_likes.size %> </span>
+  <% end %>
+
+
+  <!-- test: -->
+  <% if @current_user && @current_user.voted_for?(@hobby) %>
+    <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), remote: true %> <span> <%= @hobby.get_likes.size %> </span>
+  <% else %>
+    <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), remote: true %> <span> <%= @hobby.get_likes.size %> </span>
+  <% end %>
+  <!-- end of test -->
+<% end %>
+
+
 <div>
   <div>
     <!-- hobby description -->
