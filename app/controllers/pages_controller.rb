@@ -15,11 +15,11 @@ class PagesController < ApplicationController
   def dashboard_guest
     @current_user = current_user
     @notifications = current_user.bookings.where(review: nil)
-    @notifications = @notifications.select { |booking| booking.event.start_time < Time.now }
+    @notifications = @notifications.select { |booking| booking.event.end_time < Time.now }
 
     @bookings = @current_user.bookings
-    @future_bookings = @bookings.select { |booking| booking.event.start_time > Time.now }
-    @past_bookings = @bookings.select { |booking| booking.event.end_time < Time.now }
+    @future_bookings = @bookings.select { |booking| booking.event.end_time >= Time.now }
+    @past_bookings = @bookings.select { |booking| booking.event.end_time <= Time.now }
   end
 
   def dashboard_host
