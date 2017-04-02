@@ -1,4 +1,6 @@
 class Hobby < ApplicationRecord
+  acts_as_votable
+
   has_attachments :photos, maximum: 5
 
   belongs_to :user

@@ -47,6 +47,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts_as_votable (0.10.0)
     arel (7.1.4)
     autoprefixer-rails (6.7.7.1)
       execjs
@@ -242,6 +243,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable (~> 0.10.0)
   attachinary!
   autoprefixer-rails
   better_errors

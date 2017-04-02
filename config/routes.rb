@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   # routes with resources
   resources :hobbies do
+    get '/like', to: 'hobbies#like'
     resources :events do
       resources :bookings, only: [:create, :update, :destroy]
     end
