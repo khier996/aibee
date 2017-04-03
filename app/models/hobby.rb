@@ -7,6 +7,7 @@ class Hobby < ApplicationRecord
   has_many :events
   has_many :hobby_categories
   has_many :categories, through: :hobby_categories
+  has_many :bookings, through: :events
 
   validates :title, presence: true
   validates :description, presence: true
