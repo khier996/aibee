@@ -5,7 +5,7 @@ class HobbyPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
     return true
   end
 
@@ -19,5 +19,9 @@ class HobbyPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  def like?
+    record.user != user
   end
 end

@@ -1,4 +1,40 @@
 
+
+<!-- Like functionality with heart icon -->
+<% if policy(@hobby).like? %>
+  <% if @current_user && @current_user.voted_for?(@hobby) %>
+    <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span> <%= @hobby.get_likes.size %> </span>
+  <% else %>
+    <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span> <%= @hobby.get_likes.size %> </span>
+  <% end %>
+<% end %>
+<!-- End of like functionality  -->
+
+<br>
+
+<!-- star calculation -->
+<!-- .star is in _hobby_show.scss -->
+<div>
+  <% count = @hobby.average_score %>
+  <span>Rating:</span>
+  <% 5.times do %>
+    <% if count < 1 && count > 0 %>
+      <span> <%= image_tag('star-half', { class: "star" }) %> </span>
+    <% elsif count >= 1 %>
+      <span> <%= image_tag('star-full', { class: "star" }) %> </span>
+    <% elsif count <= 0 %>
+      <span> <%= image_tag('star-empty', { class: "star" }) %> </span>
+    <% end %>
+    <% count = count - 1 %>
+  <% end %>
+  <span>(<%= @hobby.review_count %> reviews)</span>
+</div>
+
+
+
+
+
+
 <div>
   <div>
     <!-- hobby description -->

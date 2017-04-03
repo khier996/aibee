@@ -28,6 +28,7 @@ class HobbiesController < ApplicationController
 
   def show
     authorize @hobby
+    @current_user = current_user
     @events = @hobby.events
     @hobby = Hobby.find(params[:id])
 
@@ -80,6 +81,17 @@ class HobbiesController < ApplicationController
     @hobby.save
 
     redirect_to root_path
+  end
+
+  def like
+    hobby = Hobby.find(params[:hobby_id])
+    authorize hobby
+    if current_user.voted_for? hobby
+      current_user.unlike hobby
+    else
+      hobby.liked_by current_user
+    end
+    redirect_to hobby_path(hobby)
   end
 
 

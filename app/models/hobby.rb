@@ -1,4 +1,6 @@
 class Hobby < ApplicationRecord
+  acts_as_votable
+
   has_attachments :photos, maximum: 5
 
   belongs_to :user
@@ -10,6 +12,7 @@ class Hobby < ApplicationRecord
   validates :description, presence: true
   validates :summary, presence: true
   validates :address, presence: true
+  validates :photos, presence: true
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
