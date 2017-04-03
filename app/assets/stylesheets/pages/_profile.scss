@@ -31,6 +31,28 @@ a {
   transition: color 0.5s ease;
 }
 
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  border-bottom: 1px solid #E0E0E0;
+  height: 17px;
+  justify-content: center;
+  position: relative;
+  margin: 2em 40px 1em 40px;
+  z-index: 1;
+  position: relative;
+}
+
+.section-title-content {
+  padding-right: 30px;
+  padding-left: 30px;
+  background-color: #fff;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .bio{
 background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
 height: 200px;
