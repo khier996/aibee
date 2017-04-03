@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks'
     }
 
+  resources :categories, only: [:show] do
+    resources :hobbies, only: [:index]
+  end
+
   # routes with resources
   resources :hobbies do
     patch '/like', to: 'hobbies#like'
@@ -29,6 +33,8 @@ Rails.application.routes.draw do
   get('/dashboard_host', {to: 'pages#dashboard_host'})
 
   get '/dashboard_guest', to: 'pages#dashboard_guest'
+
+
 
 end
 
