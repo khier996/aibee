@@ -63,9 +63,38 @@
         </div>
       <% end %>
     </div>
+</div>
 
+<!-- test -->
+
+<% hobby =  Hobby.find(6) %>
+<div class="hobby-card col-xs-12 col-sm-6 col-md-4">
+  <% if hobby.photos.first %>
+    <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill%>", class='hobby-card-img' >
+  <% else %>
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
+  <% end %>
+
+  <% if hobby.user.photo %>
+    <%= cl_image_tag(hobby.user.photo.path, height: 100, width: 100, class: "hobby-card-avatar") %>
+  <% elsif hobby.user.facebook_picture_url %>
+    <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
+  <% end %>
+
+  <div class="hobby-card-description">
+    <p class="hobby-card-description-title"> <strong><%= hobby.user.first_name %> </strong>
+    invites you to</p>
+    <p class="hobby-card-description-hobby-name"><%= hobby.title %></p>
+  </div>
+
+  <div class="hobby-card-summary">
+    <%= hobby.summary %>
+  </div>
 
 </div>
+
+<!-- end of test -->
+
 
 
 <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
