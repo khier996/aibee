@@ -9,6 +9,10 @@ class PagesController < ApplicationController
       @selected_hobbies = @selected_hobbies.sort { |a,b| b.average_score <=> a.average_score }
     end
     @categories = Category.all
+    # @hobby = HobbyCategory.all
+    # @cat = @hobby.find(params[:hobby_id])
+    # raise
+
   end
 
 
