@@ -1,3 +1,73 @@
 .profile_picture {
     border-radius: 50%;
 }
+
+h1,h2,h3 { font-family: "Raleway", "Helvetica", "sans-serif";}
+
+.title {font-family: 'Khand', sans-serif;
+font-size: 50px;
+
+}
+
+h3 {
+font-size: 20px;
+
+}
+
+.specififications {
+background-color: white;
+padding-bottom: 30px;
+padding-top: 50px;
+font-family: "Raleway", "Helvetica", "sans-serif";
+
+}
+
+a {
+  color: #469AE1;
+  font-size: 25px;
+  letter-spacing: 10px;
+  transition: color 0.5s ease;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+}
+
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  border-bottom: 1px solid #E0E0E0;
+  height: 17px;
+  justify-content: center;
+  position: relative;
+  margin: 2em 40px 1em 40px;
+  z-index: 1;
+  position: relative;
+}
+
+.section-title-content {
+  padding-right: 30px;
+  padding-left: 30px;
+  background-color: HSLA(0, 0%, 96%, 1);
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper-bio{
+  background-color: HSLA(0, 0%, 96%, 1);
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  .bio-frame {
+    background-color: white;
+    padding: 50px;
+  }
+}
+
+.inner_container {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+}
+
+.wrapper-icones{
+  padding-bottom: 50px;
+}

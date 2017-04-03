@@ -11,7 +11,10 @@ class PagesController < ApplicationController
     end
     @categories = Category.all
     # @hobby = HobbyCategory.all
-    # @cat = @hobby.find(params[:hobby_id])
+    # @hobby = Hobby.find(params[:hobby_id])
+
+    # @hobby = Category.joins(hobby_categories: [:category]).where('category_id LIKE ?', "1")
+
     # raise
 
   end

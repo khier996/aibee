@@ -1,0 +1,50 @@
+<%= render 'pages/search_form'%>
+<div class="container">
+  <% @hobbies.each do |hobby| %>
+    <div class="card col-xs-12 col-sm-6 col-md-4">
+      <div class="card__image border-tlr-radius">
+        <% if hobby.photos.first %>
+          <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill, class: 'border-tlr-radius' %>">
+        <% else %>
+          <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="border-tlr-radius">
+        <% end %>
+      </div>
+      <div class="card__content card__padding">
+        <div >
+          <div class="card__meta">
+            <a href="#"><%= hobby.title %></a>
+            <% if hobby.average_score != 0.0 %>
+              <p> <%= hobby.average_score %> </p>
+            <% else %>
+              <p> No reviews yet </p>
+            <% end %>
+          </div>
+          <article class="card__article">
+            <h2><a href="#"><%= hobby.summary %></a></h2>
+            <p> <%= hobby.description %> </p>
+          </article>
+           <%= link_to("Hobby details", hobby_path(hobby), class: "btn btn-primary card-link") %>
+           <%= link_to("Add an event", new_hobby_event_path(hobby), class: "btn btn-primary card-link") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="map" style="width: 100%; height: 600px;"></div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
