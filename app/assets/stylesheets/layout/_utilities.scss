@@ -3,7 +3,6 @@
  * These are examples of utilities classes
  * Feel free to change them and create your own
  * ------------------------------------- */
-
 // Paddings
 .padded {
   padding-top: 5em;
@@ -11,15 +10,17 @@
 }
 
 // Backgrounds
-.bg-black {
-  background: #4a4a4a;
+.bg-light-blue {
+  background: #FAFBFD;
 }
-.bg-grey {
-  background: #aeaeae;
-}
-.bg-blue {
-  background: #00a3e1;
-}
+
+// Background for call to action
 .bg-dark-blue {
-  background: #3b5998;
+  background: #2e496e;
 }
+
+// Background footer
+.bg-dark-grey {
+  background: #454545;
+}
+

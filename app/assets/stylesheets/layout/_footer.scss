@@ -1,1 +1,100 @@
 // Your footer style
+.footer {
+  width: 1440px;
+  height: 400px;
+  background-color: #454545;
+  text-decoration: none;
+  font-family: $base-font;
+}
+
+// About and Call to action
+.navigation a {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 20px;
+  &:hover {
+    color: #f9b932;
+  }
+}
+
+.call_to_action {
+  h4 {
+    font-size: 20px;
+    color: #ffffff;
+    font-family: $base-font;
+  }
+}
+
+// Icons
+
+#footer_icons {
+  .icons img {
+    width: 34px;
+    height: 36px;
+    &:hover {
+      color: #2e496e;
+    }
+  }
+}
+
+// Subscribe
+#mc_embed_signup {
+  font-family: $base-font;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  width: 500px;
+  font-size: 16px;
+  height: 150px;
+  width: 334px;
+  h2 {
+    font-family: $base-font;
+  }
+}
+
+#mc-embedded-subscribe {
+  border-radius: 10px;
+  background-color: #00895f;
+  border: solid 0.5px #2e496e;
+}
+
+#asterisk {
+  color: #C70008;
+  font-size: 25px;
+}
+
+
+// buttons
+.btn-grey {
+  width: 132.7px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: solid 0.5px #2e496e;
+  text-decoration: none;
+  color: #23385b;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+  &:hover {
+    color: #f9b932;
+  }
+}
+
+.btn-green {
+  width: 132.7px;
+  border-radius: 10px;
+  background-color: #00895f;
+  border: solid 0.5px #2e496e;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  &:hover {
+    color: #f9b932;
+  }
+}
