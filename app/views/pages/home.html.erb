@@ -13,6 +13,7 @@
   <div class="owl-carousel owl-theme">
     <% @categories.each do |category| %>
       <h3> <%= category.name %> </h3>
+        <%= link_to("More like this", category_path(category), class: "btn btn-primary card-link") %>
     <% end %>
 
     <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
@@ -26,7 +27,7 @@
   <div class="row">
       <% if current_user %>
         <div>
-          <h1 style="margin-bottom: 50px;">Recommended Hobbies:</h1>
+          <h1 class="text-center" style="margin-bottom: 50px;">Recommended Hobbies:</h1>
           <% @selected_hobbies.each do |hobby| %>
             <div class="card col-xs-12 col-sm-6 col-md-4">
             <div class="card__image border-tlr-radius">
@@ -68,15 +69,49 @@
 </div>
 
 
-<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
-  <h2>Top ranked hobbies</h2>
-  <ul>
-    <li><h2>1st</h2></li>
-    <li><h2>2nd</h2></li>
-    <li><h2>3rd</h2></li>
-    <li><h2>4th</h2></li>
-    <li><h2>5th</h2></li>
-  </ul>
+<div class="container" style="margin-top: -30px; margin-bottom: 100px;">
+  <h2 class="text-center">Top Hosts</h2>
+  <div class="text-center" style="float: left">
+    <div class="row">
+
+      <div class="h-icon col-xs-12 col-md-4">
+        <div class="home-wrapper">
+          <div class="home-icon">
+            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          </div>
+          <div class="home-content">
+            <h4>Bob</h4>
+            <p>This is an example application's description text.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-icon col-xs-12 col-md-4">
+        <div class="home-wrapper">
+          <div class="home-icon">
+            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          </div>
+          <div class="home-content">
+            <h4>Frank</h4>
+            <p>This is an example application's description text.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-icon col-xs-12 col-md-4">
+        <div class="home-wrapper">
+          <div class="home-icon">
+            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          </div>
+          <div class="home-content">
+            <h4>Jenny</h4>
+            <p>This is an example application's description text.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 
