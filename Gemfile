@@ -6,7 +6,6 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
-gem 'coffee-rails'
 gem "pundit"
 gem 'omniauth-facebook'
 gem 'rails', '5.0.2'
