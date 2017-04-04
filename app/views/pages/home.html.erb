@@ -12,21 +12,17 @@
 
   <div class="owl-carousel owl-theme">
       <% @categories.each do |category| %>
-        <div class="item">
+
           <%= link_to category_path(category) do %>
 
-            <div class="image-carousel owl-lazy-iamge">
-      <img class="owl-lazy" data-src="<%= image_path(category.photo_url) %>">
-      <p class="p-owl"><%= category.name %></p>
-        </div>
-        </div>
+          <div class="image-carousel owl-lazy-iamge">
+            <img class="owl-lazy owl-image-c" data-src="<%= image_path(category.photo_url) %>">
+            <!-- <div class="overlay"></div> -->
+            <p class="p-owl"><%= category.name %></p>
+          </div>
 
           <% end %>
       <% end %>
-
-
-      <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-      <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
 
   </div>
 </div>
@@ -167,6 +163,7 @@
 <script>
   $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
+        lazyLoad: true
         loop:true,
         margin:10,
         nav:true,
