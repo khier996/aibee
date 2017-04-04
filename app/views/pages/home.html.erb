@@ -8,7 +8,7 @@
 
 
 
-<div class="container text-center" style="margin-top: 150px;">
+<div class="container text-center" style="margin-top: 180px; margin-bottom: 30px">
 
   <div class="owl-carousel owl-theme">
       <% @categories.each do |category| %>
@@ -29,7 +29,7 @@
 
 
 
-<div class="row text-center hobby-cards-container">
+<div class="row text-center hobby-cards-container" style="margin-bottom: 50px">
   <h1 style="margin-bottom: 50px;">Recommended Hobbies:</h1>
   <% @selected_hobbies.each do |hobby| %>
     <div class="hobby-card col-xs-12 col-sm-6 col-md-6">
@@ -94,9 +94,9 @@
 
 
 <div class="container" style="margin-top: -30px; margin-bottom: 100px;">
-  <h2 class="text-center">Top Hosts</h2>
+  <h2 class="text-center" style= "margin-bottom: 20px">Top Hobbies</h2>
   <div class="text-center" style="float: left">
-    <div class="row">
+    <div class="row top-hobby-row">
 
       <div class="h-icon col-xs-12 col-md-4">
         <div class="home-wrapper">
@@ -160,27 +160,7 @@
 </div>
 
 
-<script>
-  $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-        lazyLoad: true
-        loop:true,
-        margin:10,
-        nav:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            }
-        }
-    })
-  });
-</script>
+
 
 
 
