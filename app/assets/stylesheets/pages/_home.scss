@@ -19,7 +19,7 @@
   // background: rgba(0,0,0,0.7);
   border-color: transparent;
   color: black;
-  margin-top: 150px;
+  margin-top: 132px;
   font-size: 20px;
 
 }
@@ -29,8 +29,11 @@
   font-size: 50px;
 }
 
+.top-hobby-row {
+  background-color: #fbfcfe;
+}
+
 .home-wrapper {
-  background-color: white;
   color: white;
   display: flex;
   flex-flow: row nowrap;
@@ -40,7 +43,7 @@
 
 .home-icon {
   align-self: center;
-  background-color: white;
+  background-color: #fbfcfe;
   // color: black;
   flex: 1 1 auto;
   font-size: 50px;
@@ -48,7 +51,7 @@
 }
 
 .home-content {
-  background-color: white;
+  background-color: #fbfcfe;
   color: black;
   // flex: 12 1 auto;
   // padding: 20px;

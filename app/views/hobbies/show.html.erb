@@ -45,9 +45,6 @@
 
 
 
-
-
-
 <div class="container" style="color: #2F4A71">
   <!-- hobby description -->
   <h2><span class="orange-underline">Summary:</span></h2>
@@ -68,6 +65,11 @@
 
   <% if @hobby.user_id == current_user.id %>
     <!-- action links if host-->
+
+<div>
+  <div>
+    <!-- hobby description -->
+
     <div class="container text-center">
       <a class="btn btn-primary" href="<%= edit_hobby_path%>">Update</a>
       <a class="btn btn-primary" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>

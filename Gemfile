@@ -3,8 +3,11 @@ source 'https://rubygems.org'
 # Likes:
 gem 'acts_as_votable', '~> 0.10.0'
 
-gem 'cloudinary', '1.1.7'
+gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
+# Need this until https://github.com/assembler/attachinary/pull/146 merged
+gem 'coffee-rails'
+
 gem 'jquery-fileupload-rails'
 gem "pundit"
 gem 'omniauth-facebook'
@@ -15,7 +18,6 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
-gem 'coffee-rails'
 
 gem "gmaps4rails"
 
