@@ -39,8 +39,16 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
-  width: 50px;
+.navbar-wagon-brand {
+  padding-top: 10px;
+  margin-left: 30px;
+  color: white;
+  // width: 150px;
+  // height: 78px;
+  opacity: 0.98;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 50px;
+  text-decoration: none;
 }
 
 /* Navbar right section (with form, links, button) */

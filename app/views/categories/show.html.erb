@@ -1,4 +1,13 @@
-<%= render 'pages/search_form'%>
+
+<div class="container text-center" style="margin-top: 30px">
+  <h2>All hobbies in the <%= @category.name %> category</h2>
+</div>
+
+<div style="margin-bottom: 20px">
+  <%= render 'pages/search_form'%>
+</div>
+
+
 <div class="container">
   <% @hobbies.each do |hobby| %>
     <div class="card col-xs-12 col-sm-6 col-md-4">
@@ -30,21 +39,24 @@
     </div>
   <% end %>
 </div>
-<div id="map" style="width: 100%; height: 600px;"></div>
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
+
+<div class="container padded">
+  <div id="map" style="width: 100%; height: 600px;"></div>
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);
+          }
+        });
       });
-    });
+    <% end %>
   <% end %>
-<% end %>
+</div>
