@@ -1,7 +1,10 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "https://s-media-cache-ak0.pinimg.com/564x/d3/c8/99/d3c8998e91b3db07199727e8df024ce4.jpg" %>
+  <%= link_to root_path do %>
+  <div>
+      <span class="navbar-wagon-brand">Aibee</span>
+  </div>
+
   <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -40,7 +43,13 @@
     </div>
     <% end %>
     <!-- Button (call-to-action) -->
-    <%= link_to "Profile", users_show_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <div>
+      <%= link_to users_show_path do %>
+      <div class="navbar-about">
+        <span>Profile</span>
+      </div>
+      <% end %>
+    </div>
   </div>
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
