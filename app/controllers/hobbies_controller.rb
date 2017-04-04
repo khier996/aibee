@@ -31,6 +31,9 @@ class HobbiesController < ApplicationController
     @current_user = current_user
     @events = @hobby.events
     @hobby = Hobby.find(params[:id])
+    @categories = ''
+    @hobby.categories.each { |category| @categories += "#{category.name}, " }
+    @bookings = @hobby.bookings.where.not(comment: nil)
 
     @hash = Gmaps4rails.build_markers(@hobby) do |hobby, marker|
       marker.lat hobby.latitude
