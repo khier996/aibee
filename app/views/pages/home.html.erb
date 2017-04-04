@@ -164,7 +164,9 @@
       <div class="h-icon col-xs-12 col-md-4">
         <div class="home-wrapper">
           <div class="home-icon">
-            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+            <% if current_user && current_user[:facebook_picture_url] %>
+              <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+            <% end %>
           </div>
           <div class="home-content">
             <p><span style="font-weight: bold;">Bob</span><br> This is an example application's description text.</p>
@@ -175,7 +177,9 @@
       <div class="h-icon col-xs-12 col-md-4">
         <div class="home-wrapper">
           <div class="home-icon">
+          <% if current_user && current_user[:facebook_picture_url] %>
             <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+            <% end %>
           </div>
           <div class="home-content">
             <p><span style="font-weight: bold;">Frank</span><br> This is an example application's description text.</p>
@@ -186,7 +190,9 @@
       <div class="h-icon col-xs-12 col-md-4">
         <div class="home-wrapper">
           <div class="home-icon">
+          <% if current_user && current_user[:facebook_picture_url] %>
             <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          <% end %>
           </div>
           <div class="home-content">
             <p><span style="font-weight: bold;">Jenny</span><br> This is an example application's description text.</p>
