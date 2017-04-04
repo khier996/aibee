@@ -17,6 +17,7 @@
  */
 
 $(document).ready(function(){
+
   $('.owl-carousel').owlCarousel({
       stagePadding: 50,
       lazyLoad: true,
@@ -36,8 +37,10 @@ $(document).ready(function(){
               items:4
           }
       }
-  })
+  });
 });
+
+
 
 
 

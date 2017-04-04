@@ -1,22 +1,34 @@
+<div style="color: #2F4A71">
+  <h1 class="text-center hobby-show-margin-bottom-40"><span class="hobby-show-title"><%= @hobby.title%></span>
+
+    <!-- Like functionality with heart icon -->
+    <% if @current_user && @current_user.voted_for?(@hobby) %>
+      <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;">(<%= @hobby.get_likes.size %>)</span>
+    <% else %>
+      <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;">(<%= @hobby.get_likes.size %>)</span>
+    <% end %>
+    <!-- End of like functionality  -->
+  </h1>
+</div>
 
 
-<!-- Like functionality with heart icon -->
-<% if policy(@hobby).like? %>
-  <% if @current_user && @current_user.voted_for?(@hobby) %>
-    <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span> <%= @hobby.get_likes.size %> </span>
-  <% else %>
-    <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span> <%= @hobby.get_likes.size %> </span>
+
+<!-- carousel -->
+<div class="owl-carousel owl-theme">
+  <% @hobby.photos.each do |photo| %>
+    <img class="owl-lazy owl-lazy-img" data-src="<%= cl_image_path(photo.path) %>" style="height: 260px;">
   <% end %>
-<% end %>
-<!-- End of like functionality  -->
+</div>
+<!-- end of carousel -->
 
-<br>
+
+
+
 
 <!-- star calculation -->
 <!-- .star is in _hobby_show.scss -->
-<div>
+<div class="text-center" style="color: #2F4A71">
   <% count = @hobby.average_score %>
-  <span>Rating:</span>
   <% 5.times do %>
     <% if count < 1 && count > 0 %>
       <span> <%= image_tag('star-half', { class: "star" }) %> </span>
@@ -27,34 +39,60 @@
     <% end %>
     <% count = count - 1 %>
   <% end %>
-  <span>(<%= @hobby.review_count %> reviews)</span>
+  <span style="font-size: 30px; position: relative; top: 7px;">(<%= @hobby.average_score %>)</span>
+  <p style="font-size: 20px; position: relative; right: 15px;">(<%= @hobby.review_count %> reviews)</p>
 </div>
+
+
+
+<div class="container" style="color: #2F4A71">
+  <!-- hobby description -->
+  <h2><span class="orange-underline">Summary:</span></h2>
+  <p><%= @hobby.summary %></p>
+  <br><br>
+
+  <h2><span class="orange-underline">Description:</h2>
+  <p><%= @hobby.description %></p>
+  <br><br>
+
+  <h2><span class="orange-underline">Categories:</h2>
+
+  <p><%= @categories[0..-3] %></p>
+  <br><br>
+
+  <h2><span class="orange-underline">Address:</h2>
+  <p><%= @hobby.address %></p>
+
+  <% if @hobby.user_id == current_user.id %>
+    <!-- action links if host-->
 
 <div>
   <div>
     <!-- hobby description -->
+
     <div class="container text-center">
-      <h1><%= @hobby.title%></h1>
+      <a class="btn btn-primary" href="<%= edit_hobby_path%>">Update</a>
+      <a class="btn btn-primary" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
     </div>
-    <div class="container text-center">
-      <h2><%= @hobby.summary %></h2>
-      <h2><%= @hobby.description %></h2>
-    </div class="container text-center">
-    <% if @hobby.user_id == current_user.id %>
-      <!-- action links if host-->
-      <div class="container">
-        <a class="btn btn-primary" href="<%= edit_hobby_path%>">Update this hobby</a>
-        <br>
-        <br>
-        <a class="btn btn-primary" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
-      </div>
-    <% elsif @events.present? %>
-      <!-- leads to event booking compare events index only visible as guest-->
-      <div class="wrapper_form text-center">
-        <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
-      </div>
-    <% end %>
-  </div>
+  <% elsif @events.present? %>
+    <!-- leads to event booking compare events index only visible as guest-->
+    <div class="wrapper_form text-center">
+      <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
+    </div>
+  <% end %>
+
+<h2><span class="orange-underline">Comments:</h2>
+<br>
+<div class="hobby-show-comments">
+  <% @bookings.each do |booking| %>
+    <p>--<%= booking.comment %></p>
+  <% end %>
+</div>
+
+
+
+
+
   <!-- list of events -->
   <div class="container">
     <div class="row">
@@ -86,27 +124,46 @@
     </div>
   </div>
   <!-- event map -->
-  <div>
-    <div class="text-center" id="map" style=" width: 400px; height: 400px;"></div>
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        $(document).ready(function() {
-          var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function() {
-            markers = handler.addMarkers(<%= raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            if (markers.length == 0) {
-              handler.getMap().setZoom(2);
-            } else if (markers.length == 1) {
-              handler.getMap().setZoom(14);
-            }
-          });
-        });
-      <% end %>
-    <% end %>
-    <div>
-      <h3><%= @hobby.address %></h3>
-    </div>
-  </div>
 </div>
+
+
+<div class="text-center" id="map" style="width: 80%; height: 400px; margin: 0 auto;"></div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
