@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    @current_user = current_user
     @selected_hobbies = Hobby.all
     if current_user
       user_categories = current_user.categories
@@ -13,6 +14,13 @@ class PagesController < ApplicationController
       @selected_hobbies = @selected_hobbies.sort { |a,b| b.average_score <=> a.average_score }
     end
     @categories = Category.all
+    # @hobby = HobbyCategory.all
+    # @hobby = Hobby.find(params[:hobby_id])
+
+    # @hobby = Category.joins(hobby_categories: [:category]).where('category_id LIKE ?', "1")
+
+    # raise
+
   end
 
 

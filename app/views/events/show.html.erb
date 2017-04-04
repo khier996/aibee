@@ -1,34 +1,49 @@
-
 <div class="event-show">
   <div class="container padded">
-
-
   <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
-
-  <%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
-
-
-  <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-primary card-link") %>
-
-  <h1><%= @hobby.title %></h1>
-
-
-  <h2><%= @event.price %></h2>
-  <h3><%= @event.start_time %></h3>
-  <p><%= @event.end_time %></p>
-  <p><%= @event.min_pax %></p>
-  <p><%= @event.max_pax %></p>
-
-  <% @bookings.each do |booking| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-        <div class="card-description">
-          <p>How many people will be attending <%= @hobby.title %>:</p>
-          <p><%= booking.pax %></p>
-        </div>
-          <!-- link -->
-      </div>
+  <div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="container padded">
+      <p>This event is for: <strong><%= @hobby.title %></strong></p>
+      <p>Price: <%= @event.price %> RMB</p>
+      <p>Start Time: <%= @event.start_time %></p>
+      <p>End Time: <%= @event.end_time %></p>
+      <p>Minimum number of participants: <%= @event.min_pax %></p>
+      <p>Maximum number of participants: <%= @event.max_pax %></p>
+      <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
+      <% if policy(@hobby).edit? %>
+        <%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
+        <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-primary card-link") %>
+      <% end %>
     </div>
-  <% end %>
   </div>
-</dic>
+  <div class="col-xs-12 col-md-6">
+    <div class="event-show-attendees text-center">
+      <h2>Attendees:</h2>
+      <% @bookings.each do |booking| %>
+        <div class="event-show-profile-card">
+          <%= link_to "", user_path(booking.user), class: "event-show-profile-card-link" %>
+          <% if booking.user.photo %>
+            <%= cl_image_tag(booking.user.photo.path, height: 100, width: 100, class: "event-show-profile-card-avatar") %>
+          <% elsif booking.user.facebook_picture_url %>
+            <img src="<%= booking.user.facebook_picture_url %>", class="event-show-profile-card-avatar">
+          <% end %>
+          <span class="event-show-profile-card-name"><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+          <span>(<%= booking.pax %>)</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

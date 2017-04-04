@@ -213,5 +213,136 @@
 
 
 
-// other card
+// hobby-card
+.hobby-cards-container {
+  margin-left: 5%;
+}
 
+.hobby-cards {
+  margin: 0 auto;
+}
+
+.hobby-card {
+  width: 580px;
+  height: 500px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  margin: 30px 30px;
+}
+
+.hobby-card-link {
+  width: 580px;
+  height: 500px;
+  cursor: pointer;
+  z-index: 5;
+  position: absolute;
+}
+
+.hobby-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 4px solid #FFBA00;
+}
+
+.hobby-card-avatar {
+  border-radius: 50%;
+  width: 80px;
+  border: solid 3px #ffffff;
+  position: absolute;
+  bottom: 180px;
+  left: 20px;
+}
+
+.hobby-card-avatar-link {
+  z-index: 10;
+}
+
+.hobby-card-description {
+  width: 460px;
+  height: 100px;
+  position: absolute;
+  bottom: 110px;
+  right: 0px;
+  border-bottom: 3px solid #00895f;
+}
+
+.hobby-card-description-title {
+  font-size: 30px;
+  color: #2e496e;
+}
+
+.hobby-card-description-hobby-name {
+  font-size: 30px;
+  color: #2e496e;
+  margin-top: -10px;
+}
+
+.hobby-card-summary {
+  width: 310px;
+  height: 75px;
+  position: absolute;
+  bottom: 20px;
+  left: 120px;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.hobby-card-icons {
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  bottom: 40px;
+  left: 415px;
+  z-index: 2;
+}
+
+.hobby-card-icon {
+  width: 30px;
+  margin-left: 15px;
+}
+
+.hobby-card-rating {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(249, 184, 49, 0.8);
+  position: absolute;
+  left: 465px;
+  bottom: 401px;
+  z-index: 3;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.hobby-card-rating-score {
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 13%;
+  transform: translateX(-50%);
+  font-size: 24px;
+}
+
+.hobby-card-star {
+  width: 12px;
+  margin-left: -3px;
+}
+
+.hobby-card-stars {
+  position: absolute;
+  left: 9px;
+  top: 37px;
+}
+
+.hobby-card-stars-count {
+  position: absolute;
+  left: 4px;
+  top: 18px;
+  font-size: 10px;
+}

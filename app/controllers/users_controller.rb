@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  def show
-    @current = current_user
-    authorize @current
+ def show
+    @user = current_user
+    authorize @user
   end
 
   def edit

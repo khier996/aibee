@@ -8,77 +8,193 @@
 
 
 <div class="container text-center" style="margin-top: 150px;">
+
   <div class="owl-carousel owl-theme">
-    <% @categories.each do |category| %>
-      <h3> <%= category.name %> </h3>
-    <% end %>
+      <% @categories.each do |category| %>
 
-    <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
-    <div class="item"><h4>4</h4></div>
-
-  </div>
-</div>
-
-
-<div class="container padded">
-  <div class="row">
-    <div class="container col-md-8">
-      <% if current_user %>
-        <div>
-          <h1 style="margin-bottom: 50px;">Recommended Hobbies:</h1>
-          <% @selected_hobbies.each do |hobby| %>
-            <div class="card col-xs-12 col-sm-6 col-md-4">
-            <div class="card__image border-tlr-radius">
-              <% if hobby.photos.first %>
-                <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill, class: 'border-tlr-radius' %>">
-              <% else %>
-                <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="border-tlr-radius">
-              <% end %>
-
-
-            </div>
-
-            <div class="card__content card__padding">
-              <div >
-                <div class="card__meta">
-                  <a href="#"><%= hobby.title %></a>
-                  <% if hobby.average_score != 0.0 %>
-                    <p> <%= hobby.average_score %> </p>
-                  <% else %>
-                    <p> No reviews yet </p>
-                  <% end %>
-                </div>
-
-                <article class="card__article">
-                  <h2><a href="#"><%= hobby.summary %></a></h2>
-                  <p> <%= hobby.description %> </p>
-                </article>
-                 <%= link_to("Hobby details", hobby_path(hobby), class: "btn btn-primary card-link") %>
-                 <%= link_to("Add an event", new_hobby_event_path(hobby), class: "btn btn-primary card-link") %>
+        <div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= category.photo_url %>')">
+              <div>
+                <p><%= category.name %></p>
               </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+          <%= link_to("More like this", category_path(category), class: "btn btn-primary card-link") %>
 
-    <div class="container col-md-3">
-      <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
-        <h2>Top ranked hobbies</h2>
-        <ul>
-          <li><h2>1st</h2></li>
-          <li><h2>2nd</h2></li>
-          <li><h2>3rd</h2></li>
-          <li><h2>4th</h2></li>
-          <li><h2>5th</h2></li>
-        </ul>
-      </div>
-    </div>
+        </div>
+
+      <% end %>
+
+      <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
+      <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
+      <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
 
   </div>
 </div>
 
+
+
+<div class="row text-center hobby-cards-container">
+  <h1 style="margin-bottom: 50px;">Recommended Hobbies:</h1>
+  <% @selected_hobbies.each do |hobby| %>
+    <div class="hobby-card col-xs-12 col-sm-6 col-md-6">
+      <div class="hobby-card-rating">
+        <span class="hobby-card-rating-score"><%= hobby.average_score %></span>
+        <div class="hobby-card-stars">
+          <% count = hobby.average_score %>
+          <% 5.times do %>
+            <% if count < 1 && count > 0 %>
+              <span> <%= image_tag('star-half', { class: "hobby-card-star" }) %> </span>
+            <% elsif count >= 1 %>
+              <span> <%= image_tag('star-full', { class: "hobby-card-star" }) %> </span>
+            <% elsif count <= 0 %>
+              <span> <%= image_tag('star-empty', { class: "hobby-card-star" }) %> </span>
+            <% end %>
+          <% count = count - 1 %>
+        <% end %>
+        <span class="hobby-card-stars-count">(<%= hobby.review_count %> reviews)</span>
+      </div>
+      </div>
+
+      <% if hobby.photos.first %>
+        <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill%>", class='hobby-card-img' >
+      <% else %>
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
+      <% end %>
+
+      <% if hobby.user.photo %>
+        <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
+          <%= cl_image_tag(hobby.user.photo.path, height: 100, width: 100, class: "hobby-card-avatar") %>
+        </a>
+      <% elsif hobby.user.facebook_picture_url %>
+        <a href="<%= user_path(hobby.user) %>", class="hobby-card-avatar-link">
+          <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
+        </a>
+      <% end %>
+
+      <div class="hobby-card-description">
+        <p class="hobby-card-description-title"> <strong><%= hobby.user.first_name %> </strong>
+        invites you to</p>
+        <p class="hobby-card-description-hobby-name"><%= hobby.title %></p>
+      </div>
+
+      <div class="hobby-card-summary">
+        <%= hobby.summary %>
+      </div>
+
+      <div class="hobby-card-icons">
+        <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
+        <%= hobby.get_likes.size %>
+        <%= image_tag('man', {class: "hobby-card-icon"}) %>
+        <%= hobby.bookings.size %>
+      </div>
+      <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
+    </div>
+  <% end %>
+</div>
+
+
+
+<!-- test -->
+
+<% hobby =  Hobby.find(6) %>
+<div class="hobby-card col-xs-12 col-sm-6 col-md-6">
+
+  <div class="hobby-card-rating">
+    <span class="hobby-card-rating-score"><%= hobby.average_score %></span>
+    <div class="hobby-card-stars">
+      <% count = hobby.average_score %>
+      <% 5.times do %>
+        <% if count < 1 && count > 0 %>
+          <span> <%= image_tag('star-half', { class: "hobby-card-star" }) %> </span>
+        <% elsif count >= 1 %>
+          <span> <%= image_tag('star-full', { class: "hobby-card-star" }) %> </span>
+        <% elsif count <= 0 %>
+          <span> <%= image_tag('star-empty', { class: "hobby-card-star" }) %> </span>
+      <% end %>
+      <% count = count - 1 %>
+    <% end %>
+    <span class="hobby-card-stars-count">(<%= hobby.review_count %> reviews)</span>
+  </div>
+  </div>
+
+  <% if hobby.photos.first %>
+    <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill%>", class='hobby-card-img' >
+  <% else %>
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
+  <% end %>
+
+  <% if hobby.user.photo %>
+    <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
+      <%= cl_image_tag(hobby.user.photo.path, height: 100, width: 100, class: "hobby-card-avatar") %>
+    </a>
+  <% elsif hobby.user.facebook_picture_url %>
+    <a href="<%= user_path(hobby.user) %>", class="hobby-card-avatar-link">
+      <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
+    </a>
+  <% end %>
+
+  <div class="hobby-card-description">
+    <p class="hobby-card-description-title"> <strong><%= hobby.user.first_name %> </strong>
+    invites you to</p>
+    <p class="hobby-card-description-hobby-name"><%= hobby.title %></p>
+  </div>
+
+  <div class="hobby-card-summary">
+    <%= hobby.summary %>
+  </div>
+
+  <div class="hobby-card-icons">
+    <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
+    <%= hobby.get_likes.size %>
+    <%= image_tag('man', {class: "hobby-card-icon"}) %>
+    <%= hobby.bookings.size %>
+  </div>
+  <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
+</div>
+
+<!-- end of test -->
+
+
+
+<div class="container" style="margin-top: -30px; margin-bottom: 100px;">
+  <h2 class="text-center">Top Hosts</h2>
+  <div class="text-center" style="float: left">
+    <div class="row">
+
+      <div class="h-icon col-xs-12 col-md-4">
+        <div class="home-wrapper">
+          <div class="home-icon">
+            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          </div>
+          <div class="home-content">
+            <p><span style="font-weight: bold;">Bob</span><br> This is an example application's description text.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-icon col-xs-12 col-md-4">
+        <div class="home-wrapper">
+          <div class="home-icon">
+            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          </div>
+          <div class="home-content">
+            <p><span style="font-weight: bold;">Frank</span><br> This is an example application's description text.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-icon col-xs-12 col-md-4">
+        <div class="home-wrapper">
+          <div class="home-icon">
+            <img class="guest-dashboard-profile-img" src="<%= current_user[:facebook_picture_url] %>">
+          </div>
+          <div class="home-content">
+            <p><span style="font-weight: bold;">Jenny</span><br> This is an example application's description text.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
 <div class="text-center" style="margin-top: 40px;">
@@ -104,8 +220,31 @@
     </div>
 </div>
 
-<script src="jquery.min.js"></script>
-<script src="owlcarousel/owl.carousel.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+        stagePadding: 50,
+        lazyLoad: true,
+        center: true,
+        items:2,
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
+  });
+</script>
 
 
 
