@@ -8,5 +8,4 @@ class UsersController < ApplicationController
     @current = current_user
     authorize @current
   end
-
 end

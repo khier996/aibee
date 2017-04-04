@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
+  def about
+
+  end
+
   def home
+    @current_user = current_user
     @selected_hobbies = Hobby.all
     if current_user
       user_categories = current_user.categories

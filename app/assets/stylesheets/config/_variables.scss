@@ -2,22 +2,23 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Reenie+Beanie');
+// $base-font: "Quicksand", "sans-serif";
+// $header-font: "Raleway", "Helvetica", "sans-serif";
+$base-font: "Quicksand", "sans-serif";
 
 // Local fonts (uncomment following lines)
-// @font-face {
-//   font-family: "Font Name";
+@font-face {
+  font-family: "Interstate";
 //   src: font-url('FontFile.eot');
 //   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
 //        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+  src: font-url('interstate.ttf') format('truetype')
+  }
+  $header-font: "Interstate";
 
 // Font-size and line-height
-$base-size: 16px;
+$base-size: 18px;
 $base-height: 1.4;
 
 /* -------------------------------------
