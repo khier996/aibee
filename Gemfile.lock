@@ -62,6 +62,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-table-rails (1.11.1.1)
     builder (3.2.3)
     byebug (9.0.6)
     cloudinary (1.1.7)
@@ -228,7 +229,7 @@ GEM
     tilt (2.0.7)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uglifier (3.1.12)
+    uglifier (3.1.13)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -249,6 +250,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap-table-rails
   cloudinary
   coffee-rails
   devise
@@ -276,4 +278,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   1.14.6
+   1.14.3
