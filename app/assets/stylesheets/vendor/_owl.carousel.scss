@@ -7,7 +7,26 @@
  */
 /*
  *  Owl Carousel - Core
+
  */
+.p-owl {
+  color: black;
+}
+
+ .image-carousel {
+   position: relative;
+   width: 100%; /* for IE 6 */
+
+  p {
+     // color: black;
+     position: absolute;
+     bottom: 50px;
+     // text-align: center;
+     left: 0;
+     width: 100%;
+  }
+}
+
 .owl-carousel {
   display: none;
   width: 100%;
