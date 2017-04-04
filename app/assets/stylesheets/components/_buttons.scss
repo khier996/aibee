@@ -2,7 +2,6 @@
 .btn-grey {
   width: 134px;
   background-color: #f8f1e4;
-  border: solid 0.5px $blue;
   color: #454545;
   font-size: 16px;
   font-weight: 900;
@@ -18,7 +17,6 @@
 .btn-green {
   width: 134px;
   background-color: $green;
-  border: solid 0.5px $blue;
   color: $white;
   font-size: 16px;
   font-weight: 900;
@@ -43,7 +41,6 @@
   color: $yellow;
   transition: color 0.5s ease;
 }
-
 
 // blue
 .btn-blue-lg {

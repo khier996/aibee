@@ -1,3 +1,4 @@
+<!-- banner home -->
 <div class="banner padded text-center" >
   <h1>aibee</h1>
   <br>
@@ -9,7 +10,6 @@
 
 
 <!-- carousel -->
-
 <div class="container text-center" style="margin-top: 180px; margin-bottom: 30px">
   <div class="owl-carousel owl-theme">
       <% @categories.each do |category| %>
@@ -26,7 +26,6 @@
 </div>
 
 <!-- hobby reccomendations -->
-
 <div class="row text-center hobby-cards-container" style="margin-bottom: 50px">
   <h1 style="margin-bottom: 50px;">Recommended Hobbies:</h1>
   <% @selected_hobbies.each do |hobby| %>
@@ -49,14 +48,14 @@
       </div>
     </div>
     <% if hobby.photos.first %>
-      <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill%>", class='hobby-card-img' >
+      <img src="<%= cl_image_path hobby.photos.first.path, height: 180, width: 350, crop: :fill%>", class='hobby-card-img' >
     <% else %>
       <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
     <% end %>
 
     <% if hobby.user.photo %>
       <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
-        <%= cl_image_tag(hobby.user.photo.path, height: 100, width: 100, class: "hobby-card-avatar") %>
+        <%= cl_image_tag(hobby.user.photo.path, height: 60, width: 60, class: "hobby-card-avatar") %>
       </a>
     <% elsif hobby.user.facebook_picture_url %>
       <a href="<%= user_path(hobby.user) %>", class="hobby-card-avatar-link">
@@ -73,9 +72,9 @@
     </div>
     <div class="hobby-card-icons">
       <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-      <%= hobby.get_likes.size %>
+      <span class="hobby-card-icon-text"><%= hobby.get_likes.size %></span>
       <%= image_tag('man', {class: "hobby-card-icon"}) %>
-      <%= hobby.bookings.size %>
+      <span class="hobby-card-icon-text"><%= hobby.bookings.size %></span>
     </div>
     <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
   </div>
@@ -83,9 +82,7 @@
   <% end %>
 </div>
 
-
 <!-- top hobbies  -->
-
 <div class="container" style="margin-top: 0px; margin-bottom: 100px;">
   <h2 class="text-center" style= "margin-bottom: 50px">Top Hobbies</h2>
   <div class="text-center" style="float: left">
@@ -133,7 +130,6 @@
 </div>
 
 <!-- about icons -->
-
   <div class="text-center" style="margin-bottom: 0px;">
     <h2>Maybe meet the mother of your children!</h2>
   </div>
@@ -153,10 +149,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
 <script>
   $(document).ready(function(){
