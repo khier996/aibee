@@ -9,22 +9,24 @@
 
 
 
+
 <div class="container text-center" style="margin-top: 150px;">
 
   <div class="owl-carousel owl-theme">
       <% @categories.each do |category| %>
+        <div class="item">
+          <%= link_to category_path(category) do %>
 
-        <div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= category.photo_url %>')">
-              <div>
-                <p><%= category.name %></p>
-              </div>
-          <%= link_to("More like this", category_path(category), class: "btn btn-primary card-link") %>
-
+            <div class="image-carousel owl-lazy-iamge">
+      <img class="owl-lazy" data-src="<%= image_path(category.photo_url) %>">
+      <p class="p-owl"><%= category.name %></p>
+        </div>
         </div>
 
+          <% end %>
       <% end %>
 
-      <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
+
       <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
       <img class="owl-lazy" data-src="https://unsplash.it/300" alt="">
 
@@ -94,65 +96,6 @@
 
 
 
-<!-- test -->
-
-<% hobby =  Hobby.find(6) %>
-<div class="hobby-card col-xs-12 col-sm-6 col-md-6">
-
-  <div class="hobby-card-rating">
-    <span class="hobby-card-rating-score"><%= hobby.average_score %></span>
-    <div class="hobby-card-stars">
-      <% count = hobby.average_score %>
-      <% 5.times do %>
-        <% if count < 1 && count > 0 %>
-          <span> <%= image_tag('star-half', { class: "hobby-card-star" }) %> </span>
-        <% elsif count >= 1 %>
-          <span> <%= image_tag('star-full', { class: "hobby-card-star" }) %> </span>
-        <% elsif count <= 0 %>
-          <span> <%= image_tag('star-empty', { class: "hobby-card-star" }) %> </span>
-      <% end %>
-      <% count = count - 1 %>
-    <% end %>
-    <span class="hobby-card-stars-count">(<%= hobby.review_count %> reviews)</span>
-  </div>
-  </div>
-
-  <% if hobby.photos.first %>
-    <img src="<%= cl_image_path hobby.photos.first.path, height: 300, width: 400, crop: :fill%>", class='hobby-card-img' >
-  <% else %>
-    <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
-  <% end %>
-
-  <% if hobby.user.photo %>
-    <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
-      <%= cl_image_tag(hobby.user.photo.path, height: 100, width: 100, class: "hobby-card-avatar") %>
-    </a>
-  <% elsif hobby.user.facebook_picture_url %>
-    <a href="<%= user_path(hobby.user) %>", class="hobby-card-avatar-link">
-      <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
-    </a>
-  <% end %>
-
-  <div class="hobby-card-description">
-    <p class="hobby-card-description-title"> <strong><%= hobby.user.first_name %> </strong>
-    invites you to</p>
-    <p class="hobby-card-description-hobby-name"><%= hobby.title %></p>
-  </div>
-
-  <div class="hobby-card-summary">
-    <%= hobby.summary %>
-  </div>
-
-  <div class="hobby-card-icons">
-    <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-    <%= hobby.get_likes.size %>
-    <%= image_tag('man', {class: "hobby-card-icon"}) %>
-    <%= hobby.bookings.size %>
-  </div>
-  <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
-</div>
-
-<!-- end of test -->
 
 
 
@@ -226,10 +169,6 @@
 <script>
   $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
-        stagePadding: 50,
-        lazyLoad: true,
-        center: true,
-        items:2,
         loop:true,
         margin:10,
         nav:true,
