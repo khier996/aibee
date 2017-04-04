@@ -8,19 +8,26 @@
 }
 
 // About and Call to action
-.navigation a {
+.navigation  {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  a {
+  font-family: $base-font;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   color: #ffffff;
   text-decoration: none;
   margin: 20px;
-  &:hover {
-    color: #f9b932;
+    &:hover {
+      color: $yellow;
+    }
   }
 }
 
 .call_to_action {
+  margin-top: 30px;
+  margin-bottom: 80px;
   h4 {
     font-size: 20px;
     color: #ffffff;
@@ -30,6 +37,8 @@
 
 // Icons
 #footer_icons {
+  margin-bottom: 80px;
+  margin-top: 53px;
   .icons img {
     width: 34px;
     height: 36px;
@@ -61,42 +70,10 @@
 
 .input-field {
   color: black;
+  height: 35px;
 }
-
 
 // buttons
-.btn-grey {
-  width: 132.7px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  border: solid 0.5px #2e496e;
-  text-decoration: none;
-  color: #23385b;
-  font-size: 16px;
-  font-weight: 900;
-  text-align: center;
-  &:hover {
-    color: #f9b932;
-  }
-}
-
-.btn-green {
-  width: 132.7px;
-  border-radius: 10px;
-  background-color: #00895f;
-  border: solid 0.5px #2e496e;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  &:hover {
-    color: #f9b932;
-  }
-}
-
 #mc-embedded-subscribe {
   border-radius: 10px;
-  background-color: #00895f;
-  border: solid 0.5px #2e496e;
 }
