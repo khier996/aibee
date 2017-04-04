@@ -1,19 +1,21 @@
-<table data-toggle="table">
+<table class="table table-bordered table-striped" id="inventation_event" >
+
     <thead>
     <tr>
+
         <th>Picture</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Gender</th>
-        <th>Birtdate</th>
-        <th>Status</th>
+        <th data-sortable="true" data-width="20%" > First name</th>
+        <th data-sortable="true" data-width="20%"> Last name</th>
+        <th data-width="20%" > Gender</th>
+        <th data-width="20%" > Birtdate</th>
+        <th data-sortable="true" data-width="20%"> Status</th>
     </tr>
     </thead>
     <tbody>
 
       <% @bookings.each do |booking| %>
 
-    <tr id="tr-id-1" class="tr-class-1">
+    <tr id="tr-id-1" class="tr-class-1" >
         <td>
          <%= link_to "", user_path(booking.user), class: "event-show-profile-card-link" %>
         <% if booking.user.photo %>
@@ -36,3 +38,4 @@
 
     </tbody>
 </table>
+

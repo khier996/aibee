@@ -13,30 +13,18 @@
       <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
       <% if policy(@hobby).edit? %>
         <%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
-        <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-primary card-link") %>
+        <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-green card-link") %>
       <% end %>
     </div>
   </div>
-
+ <div class="col-xs-9 col-md-9">
+<!--   <div class="event-show-attendees text-center"> -->
+  <h2>Attendees:</h2>
   <%= render 'table_event' %> 
-
-  <div class="col-xs-12 col-md-6">
-    <div class="event-show-attendees text-center">
-      <h2>Attendees:</h2>
-      <% @bookings.each do |booking| %>
-        <div class="event-show-profile-card">
-          <%= link_to "", user_path(booking.user), class: "event-show-profile-card-link" %>
-          <% if booking.user.photo %>
-            <%= cl_image_tag(booking.user.photo.path, height: 100, width: 100, class: "event-show-profile-card-avatar") %>
-          <% elsif booking.user.facebook_picture_url %>
-            <img src="<%= booking.user.facebook_picture_url %>", class="event-show-profile-card-avatar">
-          <% end %>
-          <span class="event-show-profile-card-name"><%= booking.user.first_name %> <%= booking.user.last_name %></span>
-          <span>(<%= booking.pax %>)</span>
-        </div>
-      <% end %>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 

@@ -10,3 +10,5 @@
 
 //= require underscore
 //= require gmaps/google
+
+$('#inventation_event').bootstrapTable();
