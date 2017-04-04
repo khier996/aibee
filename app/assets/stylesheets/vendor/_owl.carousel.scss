@@ -9,13 +9,35 @@
  *  Owl Carousel - Core
 
  */
-.p-owl {
-  color: black;
+// .overlay {
+//     // background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+//     background-color: rgba(0, 0, 0, 0.5);
+//     bottom: 0;
+//     left: 0;
+//     // opacity: 0.5;
+//     position: absolute;
+//     right:0;
+//     top:0;
+//     z-index: 1;
+
+// }
+
+.owl-image-c{
+  // position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 3px;
+
 }
 
- .image-carousel {
-   position: relative;
-   width: 100%; /* for IE 6 */
+
+.p-owl {
+  color: white;
+}
+
+.image-carousel {
+ position: relative;
+ width: 100%; /* for IE 6 */
 
   p {
      // color: black;
