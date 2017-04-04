@@ -1,7 +1,7 @@
 // Your footer style
 .footer {
   width: 1440px;
-  height: 400px;
+  height: 300px;
   background-color: #454545;
   text-decoration: none;
   font-family: $base-font;
@@ -9,8 +9,7 @@
 
 // About and Call to action
 .navigation  {
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-top: 20px;
   a {
   font-family: $base-font;
   font-size: 20px;
@@ -26,8 +25,8 @@
 }
 
 .call_to_action {
-  margin-top: 30px;
-  margin-bottom: 80px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   h4 {
     font-size: 20px;
     color: #ffffff;
@@ -54,10 +53,9 @@
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  width: 500px;
   font-size: 16px;
-  height: 150px;
-  width: 334px;
+  height: 100px;
+  width: 300px;
   color: #ffffff;
   h2 {
     font-family: $base-font;
@@ -70,7 +68,7 @@
 
 .input-field {
   color: black;
-  height: 35px;
+  height: 30px;
 }
 
 // buttons
