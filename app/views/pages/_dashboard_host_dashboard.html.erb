@@ -19,6 +19,7 @@
 
     <section id="content1">
       <!-- notification is actually a booking  -->
+      <p class="text-center"> <%= link_to "New Hobby", new_hobby_path, class: "btn btn-primary" %> </p>
       <% @hobbies.each do |hobby| %>
         <div class="hobby-card col-xs-12 col-sm-6 col-md-6">
           <div class="hobby-card-rating">
@@ -43,7 +44,6 @@
         <% else %>
           <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
         <% end %>
-
         <% if hobby.user.photo %>
           <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
             <%= cl_image_tag(hobby.user.photo.path, height: 60, width: 60, class: "hobby-card-avatar") %>
@@ -53,13 +53,19 @@
             <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
           </a>
         <% end %>
-        <div class="hobby-card-description">
-          <p class="hobby-card-description-title"> <strong><%= hobby.user.first_name %> </strong>
-          invites you to</p>
-          <p class="hobby-card-description-hobby-name"><%= hobby.title %></p>
-        </div>
-        <div class="hobby-card-summary">
-          <%= hobby.summary %>
+        <div class="hobby-card-description text-left">
+          <p id="hobby-card-description-hobby-name"><%= hobby.title %></p>
+          <p id="hobby-card-summary">
+            <%= hobby.summary[0..30] %>
+            <% if hobby.summary.length > 30 %>
+              ...
+            <% end %>
+          </p>
+          <p id="hobby-card-category">
+            <% string = "" %>
+            <% hobby.categories.each { |category| string += "#{category.name} "}%>
+            belongs to: <%= string%>
+          </p>
         </div>
         <div class="hobby-card-icons">
           <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
@@ -148,6 +154,23 @@
 
           <div class="dashboard-host-future-booking-card-icons">
             <p style="margin-top: 30px;"><a href="<%= hobby_event_path(event.hobby, event) %>" ><%= image_tag("more-details", class: "dashboard-host-future-booking-card-icon") %></a></p>
+          </div>
+        </div>
+      <% end %>
+    </section>
+
+    <section id="content4">
+      <% @requests.each do |request| %>
+        <div id="booking-card-<%= request.id %>" class="dashboard-host-request-card">
+          <p>Name: <span style="position: relative; left: 23%"><%= request.user.first_name %> <%= request.user.last_name %> </span>
+          </p>
+
+          <p>Event: <span style="position: relative; left: 23.4%"><%= request.event.hobby.title %> (<%= request.event.start_time.strftime("%b %d - %H:%M") %>) </span>
+          </p>
+          <p> Status: <span id="booking-<%= request.id %>" style="position: relative; left: 23%"> <%= request.status %> </span> </p>
+          <div class="dashboard-host-card-buttons">
+            <p><%= link_to "Accept", hobby_event_booking_accept_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-primary" %></p>
+            <p><%= link_to "Reject", hobby_event_booking_reject_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-primary" %></p>
           </div>
         </div>
       <% end %>

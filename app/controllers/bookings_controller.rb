@@ -1,4 +1,29 @@
 class BookingsController < ApplicationController
+
+  def accept
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+    @booking.status = "accepted"
+    if @booking.save
+      respond_to do |format|
+          format.html { redirect_to dashboard_host_path }
+          format.js
+      end
+    end
+  end
+
+  def reject
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+    @booking.status = "rejected"
+    if @booking.save
+      respond_to do |format|
+        format.html { redirect_to dashboard_host_path }
+        format.js
+      end
+    end
+  end
+
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
@@ -14,7 +39,7 @@ class BookingsController < ApplicationController
         flash[:notice] = "You already made a booking for this event"
         redirect_to hobby_path(@event.hobby)
       else
-        @booking.status = "accepted"
+        @booking.status = "pending"
         @booking.user_id = current_user.id
         @booking.event_id = @event.id
         if @booking.save
