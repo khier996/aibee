@@ -1,28 +1,28 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-xs-12 col-md-6">
+      <%= image_tag "sign-up-form-img", class: "sign-up-form-img" %>
+    </div>
 
-<div class="row text-center">
-  <div class="col-xs-12 col-md-6">
-    <%= image_tag "sign-up-form-img", class: "sign-up-form-img" %>
-  </div>
-
-  <div class="col-xs-12 col-md-6">
-    <div class="sign-up-form-wrapper">
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :first_name, label:false, placeholder: "First name", input_html: { class: 'no-border validate' } %>
-        <%= f.input :last_name, label:false, placeholder: "Last name", input_html: { class: 'no-border' } %>
-        <%= f.input :email, required: true, autofocus: true, label:false, placeholder: "e-mail", input_html: { class: 'no-border' } %>
-        <%= f.input :password, required: true, label:false, placeholder: "Password", input_html: { class: 'no-border' } %>
-        <%= f.input :password_confirmation, required: true, label:false, placeholder: "Password confirmation", input_html: { class: 'no-border' } %>
-        <p class="sign-up-form-label">Favourite categories:</p>
-        <%= f.input :categories, label:false, item_wrapper_tag: :div, item_wrapper_class: "checkbox-inlin", :collection => Category.all, class: "input-field col s12", input_html: {multiple: true} %>
-        <p class="sign-up-form-label">Profile picture:</p>
-        <%= f.input :photo, as: :attachinary, label:false %>
-        <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
-      <% end %>
+    <div class="col-xs-12 col-md-6">
+      <div class="sign-up-form-wrapper">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :first_name, label:false, placeholder: "First name", input_html: { class: 'no-border validate' } %>
+          <%= f.input :last_name, label:false, placeholder: "Last name", input_html: { class: 'no-border' } %>
+          <%= f.input :email, required: true, autofocus: true, label:false, placeholder: "e-mail", input_html: { class: 'no-border' } %>
+          <%= f.input :password, required: true, label:false, placeholder: "Password", input_html: { class: 'no-border' } %>
+          <%= f.input :password_confirmation, required: true, label:false, placeholder: "Password confirmation", input_html: { class: 'no-border' } %>
+          <p class="sign-up-form-label">Favourite categories:</p>
+          <%= f.input :categories, label:false, item_wrapper_tag: :div, item_wrapper_class: "checkbox-inlin", :collection => Category.all, class: "input-field col s12", input_html: {multiple: true} %>
+          <p class="sign-up-form-label">Profile picture:</p>
+          <%= f.input :photo, as: :attachinary, label:false %>
+          <%= f.button :submit, "Sign up", class: "btn btn-blue" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 
 
 

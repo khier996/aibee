@@ -5,7 +5,7 @@
     <%= f.input :email, required: false, autofocus: true, label:false, placeholder: "Email" %>
     <%= f.input :password, required: false, label:false, placeholder: "Password" %>
     <%= f.input :remember_me, label_html: { class: 'sign-in-form-remember' }, as: :boolean if devise_mapping.rememberable?  %>
-    <%= f.submit "Sign in", class: "btn btn-primary sign-in-form-btn" %>
+    <%= f.submit "Sign in", class: "btn btn-blue sign-in-form-btn" %>
     <br><br><br><br>
     <div class="flex">
       <%= render "devise/shared/links" %>
