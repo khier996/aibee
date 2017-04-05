@@ -5,3 +5,7 @@ $('#status').html("<%= @booking.status %>");
 <% end %>
 
 $(".pax").html("<%= @booking.pax %>")
+
+<% if @booking.status == "cancelled" %>
+  $("#future-booking-card-<%= @booking.id %>").slideUp();
+<% end %>
