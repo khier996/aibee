@@ -70,8 +70,8 @@
   <!-- hobby description -->
   <div>
     <div class="container text-center">
-      <a class="btn btn-primary" href="<%= edit_hobby_path%>">Update</a>
-      <a class="btn btn-primary" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
+      <a class="btn btn-blue" href="<%= edit_hobby_path%>">Update</a>
+      <a class="btn btn-blue" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
     </div>
     <% elsif @events.present? %>
     <!-- leads to event booking compare events index only visible as guest-->
@@ -125,6 +125,10 @@
     <% end %>
   </div>
 </div>
+
+
+
+
 <!-- event map -->
 
 <div class="padded text-center">
