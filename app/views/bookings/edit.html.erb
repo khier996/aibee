@@ -1,0 +1,10 @@
+<%= image_tag("edit-booking") %>
+<div class="text-center" style="width: 80%; position: absolute; top: 380px; left: 50%; transform: translateX(-50%);">
+  <%= simple_form_for([@booking.event.hobby, @booking.event, @booking]) do |f| %>
+    <%= f.input :pax, label: "Change the number of people for your booking:", label_html: {style: "color: white; font-size: 30px; text-shadow: 1px 1px lightgrey"} %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+
