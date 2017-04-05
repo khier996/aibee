@@ -22,10 +22,10 @@
       text-align: center;
     }
 
-    p {
-      margin: 0 0 20px;
-      line-height: 1.5;
-    }
+    // p {
+    //   margin: 0 0 20px;
+    //   line-height: 1.5;
+    // }
 
     main {
       min-width: 320px;
@@ -57,10 +57,10 @@
       margin-right: 10px;
     }
 
-    label[for*='1']:before { content: '\f1cb'; }
-    label[for*='2']:before { content: '\f17d'; }
-    label[for*='3']:before { content: '\f16b'; }
-    label[for*='4']:before { content: '\f1a9'; }
+    // label[for*='1']:before { content: '\f1cb'; }
+    // label[for*='2']:before { content: '\f17d'; }
+    // label[for*='3']:before { content: '\f16b'; }
+    // label[for*='4']:before { content: '\f1a9'; }
 
     label:hover {
       color: #888;
@@ -96,6 +96,126 @@
         padding: 15px;
       }
     }
+}
+
+
+
+// ////////////////////////////////////////////////////////////////
+.dashboard-host-container {
+  margin: 0px 60px;
+  margin-bottom: 100px;
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-host-container {
+    margin: 0px 10px;
+    margin-bottom: 50px;
+  }
+}
+
+
+.host-dashboard-profile-img {
+  border-radius: 50%;
+  width: 100px;
+  margin-top: 10px;
+  border: 1px solid #c4b8b8;
+}
+
+.dashboard-host-profile {
+  height: 600px;
+  margin-top: 50px;
+  margin-right: 50px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 1px #c4b8b8;
+}
+
+.dashboard-host-dashboard {
+  box-shadow: 1px 1px 2px 1px #c4b8b8;
+  border-radius: 3px;
+  border: 1px solid #fcfcfc;
+  margin-top: -50px;
+}
+
+
+.dashboard-host-notification-card {
+  width: 80%;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: white;
+  margin: 15px auto;
+}
+
+.dashboard-host-future-booking-card {
+  width: 90%;
+  height: 170px;
+  border-radius: 3px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  background-color: white;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-host-future-booking-card {
+    width: 95%;
+  }
+}
+
+.dashboard-host-future-booking-card-title-div {
+  width: 80%;
+  height: 50px;
+  margin-left: 5%;
+  border-bottom: 3px solid #00895f;
+}
+
+.dashboard-host-future-booking-card-title {
+  font-size: 35px;
+  color: #23385b;
+  font-family: $header-font;
+}
+
+.event-card-icons {
+  position: absolute;
+  left: 530px;
+  top: 10px;
+}
+
+.dashboard-host-future-booking-card-date {
+  display: flex;
+  width: 78%;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-top: 0px;
+  color: black;
+  font-size: 20px;
+}
+
+.dashboard-host-future-booking-card-icons {
+    position: relative;
+    left: 700px;
+    bottom: 90px;
+}
+
+.dashboard-host-future-booking-card-icon {
+  width: 25px;
+}
+
+.dashboard-host-request-card {
+  width: 90%;
+  height: 128px;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+
+.dashboard-host-card-buttons {
+  position: relative;
+  left: 87%;
+  top: -95%;
 }
 
 

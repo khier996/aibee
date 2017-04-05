@@ -22,7 +22,10 @@ Rails.application.routes.draw do
   resources :hobbies do
     patch '/like', to: 'hobbies#like'
     resources :events do
-      resources :bookings, only: [:create, :update, :destroy]
+      resources :bookings, only: [:create, :update, :destroy, :edit] do
+        patch '/accept', to: 'bookings#accept'
+        patch '/reject', to: 'bookings#reject'
+      end
     end
   end
 

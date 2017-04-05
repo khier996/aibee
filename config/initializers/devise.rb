@@ -2,6 +2,8 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
+  config.omniauth :wechat, ENV["WECHAT_ID"], ENV["WECHAT_SECRET"]
+
   config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
     scope: 'email',
     info_fields: 'email, first_name, last_name',

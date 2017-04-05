@@ -3,11 +3,10 @@
 <div class="event-show">
 <div class="container">
   <div class="row">
- 
     <div class="col-xs-3 col-md-3">
      <div class="card section-photo"
     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= cl_image_path @hobby.photos.first.path, height: 300, width: 400, crop: :fill %>')"> 
+           url('<%= cl_image_path @hobby.photos.first.path, height: 300, width: 400, crop: :fill %>')">
      <%= @hobby.title %>
     </div>
 
@@ -21,18 +20,18 @@
         <li>Minimum number of participants: <%= @event.min_pax %></li>
         <li>Maximum number of participants: <%= @event.max_pax %></li>
         </ul>
-        
+
       </div>
     </div>
 
     <div class="col-xs-9 col-md-9 section-attendees">
 <!--   <div class="event-show-attendees text-center"> -->
     <h3>Attendees:</h3>
-     <%= render 'table_event' %> 
+     <%= render 'table_event' %>
     </div>
   </div>
-  <div class="row">    
-    
+  <div class="row">
+
       <div class="col-xs-12 col-md-12 section-button ">
           <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
           <% if policy(@hobby).edit? %>
@@ -43,18 +42,3 @@
   </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
