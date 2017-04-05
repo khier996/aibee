@@ -29,7 +29,7 @@ class HobbiesController < ApplicationController
   def show
     authorize @hobby
     @current_user = current_user
-    @events = @hobby.events
+    @events = @hobby.events.where('start_time > ?', Time.now)
     @hobby = Hobby.find(params[:id])
     @categories = ''
     @hobby.categories.each { |category| @categories += "#{category.name}, " }
