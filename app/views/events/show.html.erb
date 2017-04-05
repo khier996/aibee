@@ -1,5 +1,3 @@
-
-
 <div class="event-show">
 <div class="container">
   <div class="row">
@@ -25,8 +23,8 @@
     </div>
 
     <div class="col-xs-9 col-md-9 section-attendees">
-<!--   <div class="event-show-attendees text-center"> -->
-    <h3>Attendees:</h3>
+     <h3>Attendees:</h3>
+     <br />
      <%= render 'table_event' %>
     </div>
   </div>
@@ -36,7 +34,7 @@
           <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
           <% if policy(@hobby).edit? %>
             <%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
-            <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-green card-link") %>
+            <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-success card-link") %>
           <% end %>
       </div>
   </div>
