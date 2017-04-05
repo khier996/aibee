@@ -22,6 +22,6 @@ class HobbyPolicy < ApplicationPolicy
   end
 
   def like?
-    record.user != user
+    true
   end
 end
