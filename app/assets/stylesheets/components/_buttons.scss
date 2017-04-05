@@ -1,1 +1,63 @@
+// grey
+.btn-grey {
+  width: 134px;
+  background-color: #f8f1e4;
+  color: #454545;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 10px;
+}
 
+.btn-grey:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
+}
+
+// green
+.btn-green {
+  width: 134px;
+  background-color: $green;
+  color: $white;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+
+.btn-green:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
+  }
+
+.btn-green-lg {
+  width: 349px;
+  height: 75px;
+  border-radius: 40px;
+  background-color: $green;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.btn-green-lg:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
+}
+
+// blue
+.btn-blue-lg {
+  width: 349px;
+  height: 75px;
+  border-radius: 40px;
+  background-color: $blue;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+// yellow
+.btn-yellow-lg {
+  width: 349px;
+  height: 75px;
+  border-radius: 40px;
+  background-color: $yellow;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  color: white;
+}
