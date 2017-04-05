@@ -52,6 +52,25 @@
   color: white;
 }
 
+.btn-blue-lg:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
+}
+
+.btn-blue {
+  width: 134px;
+  background-color: $blue;
+  color: $white;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+
+.btn-blue:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
+}
+
 // yellow
 .btn-yellow-lg {
   width: 349px;

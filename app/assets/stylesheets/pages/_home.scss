@@ -21,7 +21,6 @@
   color: black;
   // margin-top: 132px;
   font-size: 20px;
-
 }
 
 
@@ -194,4 +193,15 @@
 
 .scroller-left {
   float:left;
+}
+
+.share-hobby-call-to-action {
+  height: 300px;
+  width: 100%;
+  background-color: $blue;
+  color: white;
+}
+
+.owl-dots {
+  display: none;
 }
