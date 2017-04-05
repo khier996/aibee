@@ -1,6 +1,4 @@
-<h1 class="text-center" style="margin-top: 70px">Dashboard host</h1>
-
-
+<h1 class="text-center" style="margin-top: 70px"></h1>
 
 <div class="container">
   <main class="host-dashboard padded">
@@ -83,51 +81,41 @@
        <h3 id="empty">No hobbies created yet</h3>
       </div>
     <% end %>
-
     </section>
 
 
-
-
     <section id="content2">
-
       <div class="container">
       <% if @events.present? %>
-
 
         <div class="container">
           <div class="row">
             <% @events.each do |event| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-              <div class="card-description">
-                <h2><%= event.price %></h2>
-                <h3><%= event.start_time %></h3>
-                <p><%= event.end_time %></p>
-                <p><%= event.min_pax %></p>
-                <p><%= event.max_pax %></p>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+                <div class="card-description">
+                  <h2><%= event.price %></h2>
+                  <h3><%= event.start_time %></h3>
+                  <p><%= event.end_time %></p>
+                  <p><%= event.min_pax %></p>
+                  <p><%= event.max_pax %></p>
+                </div>
 
+                <%= link_to("Update event", edit_hobby_event_path(event.hobby, event), class: "btn btn-primary card-link") %>
+                <%= link_to "Delete event", hobby_event_path(event.hobby, event), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning card-link" %>
+                <%= link_to("Event details", hobby_event_path(event.hobby, event), class: "btn btn-info card-link") %>
               </div>
-
-              <%= link_to("Update event", edit_hobby_event_path(event.hobby, event), class: "btn btn-primary card-link") %>
-              <%= link_to "Delete event", hobby_event_path(event.hobby, event), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning card-link" %>
-              <%= link_to("Event details", hobby_event_path(event.hobby, event), class: "btn btn-info card-link") %>
-            </div>
             </div>
             <% end %>
           </div>
         </div>
-
-          <% else %>
-            <div class="container text-center" style="margin-top: 100px">
-             <h3 id="empty">No events scheduled yet</h3>
-            </div>
-          <% end %>
+      <% else %>
+      <div class="container text-center" style="margin-top: 100px">
+       <h3 id="empty">No events scheduled yet</h3>
       </div>
-
-    </section>
-
-
+    <% end %>
+    </div>
+  </section>
 
 
     <section id="content3">
@@ -136,10 +124,7 @@
     </section>
 
 
-
-
     <section id="content4">
-
 
     </section>
 

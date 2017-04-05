@@ -1,24 +1,23 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path do %>
-  <div>
-      <span class="navbar-wagon-brand">Aibee</span>
-  </div>
-
+    <div>
+        <span class="navbar-wagon-brand text-center">aibee</span>
+    </div>
   <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <div>
       <%= link_to dashboard_host_path do %>
         <div class="navbar-about">
-          <span>Host</span>
+          <span class="text-center">HOST</span>
         </div>
       <% end %>
     </div>
     <div>
       <%= link_to dashboard_guest_path do %>
         <div class="navbar-about">
-          <span>Guest</span>
+          <span class="text-center">GUEST</span>
         </div>
       <% end %>
     </div>
@@ -29,7 +28,7 @@
     <div>
       <%= link_to destroy_user_session_path, method: "delete" do %>
         <div class="navbar-about">
-          <span>Sign out</span>
+          <span class="text-center">SIGN OUT</span>
         </div>
       <% end %>
     </div>
@@ -37,7 +36,7 @@
     <div>
       <%= link_to new_user_session_path do %>
       <div class="navbar-about">
-        <span>Login</span>
+        <span class="text-center">LOGIN</span>
       </div>
       <% end %>
     </div>
@@ -46,7 +45,7 @@
     <div>
       <%= link_to users_show_path do %>
       <div class="navbar-about">
-        <span>Profile</span>
+        <span class="text-center">PROFILE</span>
       </div>
       <% end %>
     </div>

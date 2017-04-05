@@ -2,14 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_voter
-
   has_attachment :photo
+  validates :photo, presence: true
 
   has_many :requests, through: :hobbies, source: :events
   has_many :user_categories
   has_many :categories, through: :user_categories
-
-
   has_many :hobbies
   has_many :bookings
   has_many :events, through: :bookings
