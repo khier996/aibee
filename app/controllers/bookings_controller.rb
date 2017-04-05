@@ -47,7 +47,9 @@ class BookingsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   private

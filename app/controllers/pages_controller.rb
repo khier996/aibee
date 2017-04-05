@@ -32,6 +32,7 @@ class PagesController < ApplicationController
     @bookings = @current_user.bookings
     @future_bookings = @bookings.select { |booking| booking.event.end_time >= Time.now }
     @past_bookings = @bookings.select { |booking| booking.event.end_time <= Time.now }
+
   end
 
   def dashboard_host
