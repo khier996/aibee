@@ -12,6 +12,9 @@
     <input class="no-display" id="tab3" type="radio" name="tabs">
     <label for="tab3">Past events</label>
 
+    <input class="no-display" id="tab4" type="radio" name="tabs">
+    <label for="tab4">Requests</label>
+
 
 
     <section id="content1">
@@ -112,7 +115,42 @@
     </section>
 
     <section id="content3">
+      <% @past_events.each do |event| %>
+        <div class="dashboard-host-future-booking-card">
+          <div class="dashboard-host-future-booking-card-title-div">
+            <span class="dashboard-host-future-booking-card-title"><%= event.hobby.title %></span>
+          </div>
 
+          <div class="dashboard-host-future-booking-card-date">
+            <div>Date:</div>
+            <div><%= event.start_time.strftime("%b %d - %H:%M") %></div>
+            <div><%= event.end_time.strftime("%b %d - %H:%M")  %></div>
+          </div>
+
+          <div class="dashboard-host-future-booking-card-date">
+            <div>Price:</div>
+            <div><%= event.price %>RMB</div>
+            <div style="width:172px;"></div>
+          </div>
+
+          <div class="dashboard-host-future-booking-card-date">
+            <div>Attendees:</div>
+            <div><%= event.bookings.size %></div>
+            <div style="width:282px;"></div>
+          </div>
+
+          <div class="event-card-icons">
+            <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
+            <%= event.hobby.get_likes.size %>
+            <%= image_tag('man', {class: "hobby-card-icon"}) %>
+            <%= event.hobby.bookings.size %>
+          </div>
+
+          <div class="dashboard-host-future-booking-card-icons">
+            <p style="margin-top: 30px;"><a href="<%= hobby_event_path(event.hobby, event) %>" ><%= image_tag("more-details", class: "dashboard-host-future-booking-card-icon") %></a></p>
+          </div>
+        </div>
+      <% end %>
     </section>
   </main>
 </div>

@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     @future_events = @events.select { |event| event.end_time >= Time.now }
     @past_events = @events.select { |event| event.end_time <= Time.now }
     @hobbies = current_user.hobbies
-    # @hobby = request.find(params[:id])
+    @requests = current_user.requests.reject { |request| request.status == "rejected" }
   end
 end
 
