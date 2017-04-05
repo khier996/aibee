@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_attachment :photo
   validates :photo, presence: true
 
-  has_many :requests, through: :hobbies, source: :events
+  has_many :host_events, through: :hobbies, source: :events
   has_many :user_categories
   has_many :categories, through: :user_categories
   has_many :hobbies

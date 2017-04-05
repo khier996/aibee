@@ -36,7 +36,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard_host
-    @events = current_user.requests
+    @events = current_user.host_events
+    @future_events = @events.select { |event| event.end_time >= Time.now }
+    @past_events = @events.select { |event| event.end_time <= Time.now }
     @hobbies = current_user.hobbies
     # @hobby = request.find(params[:id])
   end
