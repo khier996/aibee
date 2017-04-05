@@ -64,6 +64,12 @@
       <div class="hobby-card-description text-left">
         <p id="hobby-card-description-hobby-name"><%= hobby.title %></p>
         <p id="hobby-card-summary"><%= hobby.summary %></p>
+        <p id="hobby-card-summary">
+        <%= hobby.summary[0..30] %>
+        <% if hobby.summary.length > 30 %>
+          ...
+        <% end %>
+        </p>
         <p id="hobby-card-category">
           <% string = "" %>
           <% hobby.categories.each { |category| string += "#{category.name} "}%>

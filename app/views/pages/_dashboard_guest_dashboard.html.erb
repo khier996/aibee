@@ -33,7 +33,7 @@
 
     <section id="content2">
       <% @future_bookings.each do |booking| %>
-        <div class="dashboard-guest-future-booking-card">
+        <div class="dashboard-guest-future-booking-card" id="future-booking-card-<%= booking.id %>">
           <div class="dashboard-guest-future-booking-card-title-div">
             <span class="dashboard-guest-future-booking-card-title"><%= booking.event.hobby.title %></span>
           </div>
@@ -75,7 +75,9 @@
                 <%= f.hidden_field :status, value: "cancelled" %>
                 <%= f.submit "Submit", :type => :image, :src => image_path("trash.svg"),class: "dashboard-guest-future-booking-card-icon" %>
             <% end %>
-            <%= link_to image_tag("eraser", class: "dashboard-guest-future-booking-card-icon", style: "margin-top: 15px;"), edit_hobby_event_booking_path(booking.event.hobby, booking.event, booking) %>
+            <% if booking.status != "cancelled" %>
+              <%= link_to image_tag("eraser", class: "dashboard-guest-future-booking-card-icon", style: "margin-top: 15px;"), edit_hobby_event_booking_path(booking.event.hobby, booking.event, booking) %>
+            <% end %>
           </div>
         </div>
       <% end %>

@@ -5,6 +5,14 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  def accept?
+    true
+  end
+
+  def reject?
+    true
+  end
+
   def cancel?
     return record.user = user
   end
