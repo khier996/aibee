@@ -1,0 +1,55 @@
+<table class="table table-bordered table-striped" id="inventation_event" >
+
+    <thead>
+    <tr>
+
+        <th>Picture</th>
+        <th data-sortable="true" data-width="30%" > First name</th>
+        <th data-sortable="true" data-width="30%"> Last name</th>
+        <th data-width="10%" > Gender</th>
+        <th data-width="10%" > Birthdate</th>
+        <th data-sortable="true" data-width="20%"> Status</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      <% @bookings.each do |booking| %>
+
+    <tr id="tr-id-1" class="tr-class-1" >
+        <td>
+         <%= link_to user_path(booking.user), class: "event-show-profile-card-link" do %>
+          <% if booking.user.photo %>
+              <%= cl_image_tag(booking.user.photo.path, height: 100, width: 100, class: "event-show-profile-card-avatar") %>
+            <% elsif booking.user.facebook_picture_url %>
+            <img src="<%= booking.user.facebook_picture_url %>", class="event-show-profile-card-avatar">
+            <% end %>
+        <% end %>
+        </td>
+        <td>
+         <%= link_to booking.user.first_name, user_path(booking.user), class: "event-show-profile-card-link" %> 
+        </td>
+
+        <td>
+        <%= link_to booking.user.last_name, user_path(booking.user), class: "event-show-profile-card-link" %> 
+        </td>
+        <td><%= booking.user.gender %></td>
+        <td><%= booking.user.birthdate %></td>
+        <td><%
+          if booking.status == "accepted" %>
+            <i class="fa fa-check-circle"></i> <%= booking.status %>
+        <% elsif booking.status == "pending" %>
+            <i class="fa fa-question-circle"></i> <%= booking.status %>
+        <% elsif booking.status == "cancelled" %>
+            <i class="fa fa-times-circle"></i> <%= booking.status %>
+        <% elsif booking.status == "rejected" %>
+            <i class="fa fa-minus-circle"></i> <%= booking.status %>
+        <% else %>
+        <% end %>
+        </td>
+
+    </tr>
+      <% end %>
+
+    </tbody>
+</table>
+
