@@ -1,31 +1,51 @@
+
+
 <div class="event-show">
-  <div class="container padded">
-  <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
+<div class="container">
   <div class="row">
-  <div class="col-xs-12 col-md-6">
-    <div class="container padded">
-      <p>This event is for: <strong><%= @hobby.title %></strong></p>
-      <p>Price: <%= @event.price %> RMB</p>
-      <p>Start Time: <%= @event.start_time %></p>
-      <p>End Time: <%= @event.end_time %></p>
-      <p>Minimum number of participants: <%= @event.min_pax %></p>
-      <p>Maximum number of participants: <%= @event.max_pax %></p>
-      <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
-      <% if policy(@hobby).edit? %>
-        <%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
-        <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-green card-link") %>
-      <% end %>
+ 
+    <div class="col-xs-3 col-md-3">
+     <div class="card section-photo"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path @hobby.photos.first.path, height: 300, width: 400, crop: :fill %>')"> 
+     <%= @hobby.title %>
+    </div>
+
+      <div class="section-details">
+        <h3> Main info</h3>
+        <h3> </h3>
+        <ul class="b">
+        <li>Price: <%= @event.price %> RMB</li>
+        <li>Start Time: <%= @event.start_time.strftime("%d/%m/%Y at %I:%M%p") %></li>
+        <li>End Time: <%= @event.end_time.strftime("%d/%m/%Y at %I:%M%p") %></li>
+        <li>Minimum number of participants: <%= @event.min_pax %></li>
+        <li>Maximum number of participants: <%= @event.max_pax %></li>
+        </ul>
+        
+      </div>
+    </div>
+
+    <div class="col-xs-9 col-md-9 section-attendees">
+<!--   <div class="event-show-attendees text-center"> -->
+    <h3>Attendees:</h3>
+     <%= render 'table_event' %> 
     </div>
   </div>
- <div class="col-xs-9 col-md-9">
-<!--   <div class="event-show-attendees text-center"> -->
-  <h2>Attendees:</h2>
-  <%= render 'table_event' %> 
+  <div class="row">    
+    
+      <div class="col-xs-12 col-md-12 section-button ">
+          <%= link_to("Hobby main",hobby_path(@hobby), class: "btn btn-primary card-link") %>
+          <% if policy(@hobby).edit? %>
+            <%= link_to("Edit event",edit_hobby_event_path(@hobby, @event), class: "btn btn-primary card-link") %>
+            <%= link_to("Create another event",new_hobby_event_path(@hobby), class: "btn btn-green card-link") %>
+          <% end %>
+      </div>
+  </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+
+
+
 
 
 

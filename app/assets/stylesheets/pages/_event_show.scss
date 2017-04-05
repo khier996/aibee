@@ -14,12 +14,10 @@
   width: 65px;
   height: 65px;
   border-radius: 50%;
+
 }
 
 .event-show-profile-card-link {
-  position: absolute;
-  width: 300px;
-  height: 70px;
   cursor: pointer;
 }
 
@@ -33,3 +31,56 @@
   padding-bottom: 20px;
 }
 
+.fixed-table-container {
+  border: 0;
+}
+
+tbody, tbody a {
+  font-size: 16px;
+}
+
+.card{
+  color: white;
+  text-align: center;
+  height: 150px;
+  background-size: cover !important;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 139px;
+}
+
+
+.section-photo {
+padding-top: 31px;
+padding-bottom: 0px;
+
+
+}
+
+.section-details {
+  li { text-align: left;  }
+padding-top: 25px;
+padding-bottom:85px;
+border: 1px solid ;
+text-align: center;
+font-size: 16px;
+
+
+}
+
+
+
+.section-button {
+padding-top: 25px;
+padding-bottom:35px;
+text-align: center;
+}
+
+.section-attendees{
+padding-top: 125px;
+padding-bottom: 0px;
+padding-left: 103px;
+
+
+}
