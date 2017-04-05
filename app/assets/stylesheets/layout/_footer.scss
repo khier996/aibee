@@ -7,9 +7,13 @@
   font-family: $base-font;
 }
 
+.footer-left {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 // About and Call to action
 .navigation  {
-  margin-top: 20px;
   a {
   font-family: $base-font;
   font-size: 20px;
@@ -17,7 +21,6 @@
   text-align: center;
   color: #ffffff;
   text-decoration: none;
-  margin: 20px;
     &:hover {
       color: $yellow;
     }
@@ -25,8 +28,8 @@
 }
 
 .call_to_action {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-top: 20px;
   h4 {
     font-size: 20px;
     color: #ffffff;
@@ -36,9 +39,9 @@
 
 // Icons
 #footer_icons {
-  margin-bottom: 80px;
-  margin-top: 53px;
+
   .icons img {
+    margin-top: 30px;
     width: 34px;
     height: 36px;
     &:hover {
@@ -60,10 +63,11 @@
   h2 {
     font-family: $base-font;
   }
-  .asterisk {
+}
+
+.asterisk {
   color: #C70008;
   font-size: 25px;
-  }
 }
 
 .input-field {
@@ -74,4 +78,9 @@
 // buttons
 #mc-embedded-subscribe {
   border-radius: 10px;
+  width: 134px;
+  background-color: #00895F;
+  color: #f6eede;
+  font-size: 16px;
+  font-weight: 900;
 }
