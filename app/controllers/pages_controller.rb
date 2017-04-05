@@ -19,8 +19,6 @@ class PagesController < ApplicationController
 
     # @hobby = Category.joins(hobby_categories: [:category]).where('category_id LIKE ?', "1")
 
-    # raise
-
   end
 
 

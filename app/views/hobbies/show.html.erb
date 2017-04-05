@@ -94,12 +94,10 @@
 
 
 
-
-
 <!-- list of events -->
 <div class="container">
   <div class="row">
-    <% if @events.present? %>
+    <% if @events.present? && @current_user.id == Hobby.find(params[:id]).user_id %>
     <div class="container text-center padded">
       <% @events.each do |event| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -118,13 +116,14 @@
       </div>
       <% end %>
     </div>
-    <% else %>
+    <% elsif !@events.present? && @current_user.id == Hobby.find(params[:id]).user_id %>
     <!-- remark that no events are created -->
-    <div class="container text-center" style="margin-top: 100px">
-     <h3 id="empty">No events scheduled yet</h3>
-   </div>
-   <% end %>
- </div>
+      <div class="container text-center" style="margin-top: 100px">
+        <h3 id="empty">No events scheduled yet</h3>
+      </div>
+    <% elsif @current_user.id != Hobby.find(params[:id]).user_id%>
+    <% end %>
+  </div>
 </div>
 
 
