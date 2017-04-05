@@ -28,9 +28,9 @@
 
 .dashboard-guest-dashboard {
   box-shadow: 1px 1px 2px 1px #c4b8b8;
-  margin-top: 50px;
   border-radius: 3px;
   border: 1px solid #fcfcfc;
+  margin-top: -50px;
 }
 
 
@@ -70,7 +70,7 @@
 .dashboard-guest-future-booking-card-title {
   font-size: 35px;
   color: #23385b;
-  font-family: "Interstate";
+  font-family: $header-font;
 }
 
 .event-card-icons {

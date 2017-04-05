@@ -1,21 +1,23 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "https://s-media-cache-ak0.pinimg.com/564x/d3/c8/99/d3c8998e91b3db07199727e8df024ce4.jpg" %>
+  <%= link_to root_path do %>
+    <div>
+        <span class="navbar-wagon-brand text-center">aibee</span>
+    </div>
   <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <div>
       <%= link_to dashboard_host_path do %>
         <div class="navbar-about">
-          <span>Host</span>
+          <span class="text-center">HOST</span>
         </div>
       <% end %>
     </div>
     <div>
       <%= link_to dashboard_guest_path do %>
         <div class="navbar-about">
-          <span>Guest</span>
+          <span class="text-center">GUEST</span>
         </div>
       <% end %>
     </div>
@@ -26,7 +28,7 @@
     <div>
       <%= link_to destroy_user_session_path, method: "delete" do %>
         <div class="navbar-about">
-          <span>Sign out</span>
+          <span class="text-center">SIGN OUT</span>
         </div>
       <% end %>
     </div>
@@ -34,13 +36,19 @@
     <div>
       <%= link_to new_user_session_path do %>
       <div class="navbar-about">
-        <span>Login</span>
+        <span class="text-center">LOGIN</span>
       </div>
       <% end %>
     </div>
     <% end %>
     <!-- Button (call-to-action) -->
-    <%= link_to "Profile", users_show_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <div>
+      <%= link_to users_show_path do %>
+      <div class="navbar-about">
+        <span class="text-center">PROFILE</span>
+      </div>
+      <% end %>
+    </div>
   </div>
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
