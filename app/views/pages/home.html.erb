@@ -8,7 +8,6 @@
   </div>
 </div>
 
-
 <!-- carousel -->
 <div class="container text-center" style="margin-top: 180px; margin-bottom: 30px">
   <div class="owl-carousel owl-theme">
@@ -19,7 +18,6 @@
             <!-- <div class="overlay"></div> -->
             <p class="p-owl"><%= category.name %></p>
           </div>
-
           <% end %>
       <% end %>
   </div>
@@ -52,7 +50,6 @@
     <% else %>
       <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
     <% end %>
-
     <% if hobby.user.photo %>
       <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
         <%= cl_image_tag(hobby.user.photo.path, height: 60, width: 60, class: "hobby-card-avatar") %>
@@ -62,13 +59,14 @@
         <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
       </a>
     <% end %>
-    <div class="hobby-card-description">
-      <p class="hobby-card-description-title"> <strong><%= hobby.user.first_name %> </strong>
-      invites you to</p>
-      <p class="hobby-card-description-hobby-name"><%= hobby.title %></p>
-    </div>
-    <div class="hobby-card-summary">
-      <%= hobby.summary %>
+    <div class="hobby-card-description text-left">
+      <p id="hobby-card-description-hobby-name"><%= hobby.title %></p>
+      <p id="hobby-card-summary"><%= hobby.summary %></p>
+      <p id="hobby-card-category">
+        <% string = "" %>
+        <% hobby.categories.each { |category| string += "#{category.name} "}%>
+        belongs to: <%= string%>
+      </p>
     </div>
     <div class="hobby-card-icons">
       <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
@@ -78,7 +76,6 @@
     </div>
     <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
   </div>
-
   <% end %>
 </div>
 
