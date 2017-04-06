@@ -3,11 +3,10 @@ lock '~> 3.8.0'
 
 set :application, 'aibee'
 # replace your repo_url and do not forget add machine id_rsa.pub to Settings->Deploy keys
-set :repo_url, 'git@github.com:Eric-Guo/aibee.git'
+set :repo_url, 'git@github.com:khier996/aibee.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, 'capistrano_deploy'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
