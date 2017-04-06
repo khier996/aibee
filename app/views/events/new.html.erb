@@ -1,14 +1,23 @@
+<div class="wrapper go-top" style="height:100vh;color:white;background: linear-gradient(-225deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 36, 61, 0) 100%), url(<%= asset_path 'new-event-form-img.jpg' %>); background-size:cover; ">
 
-<%= image_tag "new-event-form-img" %>
-<div class="new-event-form text-center">
+<div class="container padded">
+    <h2 class="text-center">Start to share your passion</h2>
+    <p class="text-center">Plan a public event here</p>
+    <br>
   <%= simple_form_for([@hobby, @event]) do |f| %>
-    <%= f.input :price, placeholder: "Price", class: "form-control", label: false %>
+  	<%= f.label "Ticket price" %>
+    <%= f.input :price, placeholder: "0 RMB", class: "form-control", label: false %>
+    <%= f.label "Participants" %>
+	<div class="form-group form-inline participant_select">
     <%= f.input :min_pax, placeholder: 'Min pax', class: "form-control", label: false %>
     <%= f.input :max_pax, placeholder: 'Max pax', class: "form-control", label: false %>
+    </div>
     <%= f.input :start_time, as: :datetime, placeholder: "Start Time", label_html: { class: "new-event-form-title" } %>
     <%= f.input :end_time, as: :datetime, placeholder: 'End Time', label_html: { class: "new-event-form-title" } %>
-    <%= f.submit class: "btn btn-primary" %>
+      <%= f.button :submit, "Plan an event!", class: "btn btn-primary btn-block button_update" %>
   <% end %>
+</div>
+
 </div>
 
 
