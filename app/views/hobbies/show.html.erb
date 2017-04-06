@@ -1,12 +1,14 @@
-<div style="color: #2F4A71">
-  <!-- carousel -->
+<!-- carousel -->
   <div class="owl-carousel owl-theme">
     <% @hobby.photos.each do |photo| %>
-    <img class="owl-lazy owl-lazy-img" data-src="<%= cl_image_path(photo.path) %>" style="height: 260px;">
+      <div class="image-carousel owl-lazy-iamge">
+        <img class="owl-img-c" src="<%= cl_image_path(photo.path) %>" style="height: 260px;">
+      </div>
     <% end %>
   </div>
   <!-- end of carousel -->
 
+<div style="color: #2F4A71">
   <h1 class="text-center hobby-show-margin-bottom-40"><span class="hobby-show-title"><%= @hobby.title%></span>
     <!-- Like functionality with heart icon -->
     <% if @current_user && @current_user.voted_for?(@hobby) %>
@@ -141,6 +143,8 @@ handler.getMap().setZoom(14);
 <% end %>
 <% end %>
 </div>
+
+
 
 
 
