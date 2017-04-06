@@ -30,7 +30,6 @@
 
 .btn-green-lg {
   width: 349px;
-  height: 75px;
   border-radius: 40px;
   background-color: $green;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
@@ -42,6 +41,10 @@
   transition: color 0.5s ease;
 }
 
+.btn-green-lg-padded {
+  padding: 20px;
+}
+
 // blue
 .btn-blue-lg {
   width: 349px;
@@ -50,6 +53,25 @@
   background-color: $blue;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
   color: white;
+}
+
+.btn-blue-lg:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
+}
+
+.btn-blue {
+  width: 134px;
+  background-color: $blue;
+  color: $white;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+
+.btn-blue:hover {
+  color: $yellow;
+  transition: color 0.5s ease;
 }
 
 // yellow

@@ -1,10 +1,21 @@
 .new-search-form {
-  padding: 50px;
   text-align: center;
+  font-size: 20px;
+  background-color: $white;
+}
+
+.search-form-input-fields {
+  color: #787878;
+  background-color: $green;
+  padding: 10px;
 }
 
 .img-circle {
     border-radius: 50%;
+}
+
+.form-control {
+  height: 36px;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -77,4 +88,3 @@
 .new-event-form-title {
   color: white;
 }
-

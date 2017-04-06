@@ -5,6 +5,7 @@
   background-color: #454545;
   text-decoration: none;
   font-family: $base-font;
+  position: relative;
 }
 
 .footer-left {
@@ -21,39 +22,49 @@
   text-align: center;
   color: #ffffff;
   text-decoration: none;
+  margin: 15px;
     &:hover {
       color: $yellow;
     }
+  }
+  span {
+  font-size: 22px;
+  color: white;
   }
 }
 
 .call_to_action {
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 30px;
   h4 {
-    font-size: 20px;
+    font-size: 18px;
     color: #ffffff;
     font-family: $base-font;
   }
 }
 
 // Icons
-#footer_icons {
-
+.footer_icons {
   .icons img {
-    margin-top: 30px;
+    margin: 0px 10px;
     width: 34px;
     height: 36px;
-    &:hover {
-      color: #2e496e;
-    }
   }
 }
 
 // Subscribe
+
+.asterisk {
+  span {
+  color: #C70008;
+  font-size: 25px;
+  }
+}
+
 #mc_embed_signup {
   font-family: $base-font;
-  font-size: 24px;
+  border: 0px!important;
+  border-radius: 10px!important;
   font-weight: bold;
   text-align: center;
   font-size: 16px;
@@ -62,25 +73,35 @@
   color: #ffffff;
   h2 {
     font-family: $base-font;
+    font-size: 20px;
+  }
+  span {
+  color: #C70008;
+  font-size: 25px;
+  }
+  form {
+    padding: 0px;
+  }
+  input {
+  border: 0px!important;
+  border-radius: 10px!important;
+  width: 134px;
+  color: #f6eede;
+  font-size: 16px;
+  font-weight: 900;
+  width: 134px;
+  margin: 5px auto;
   }
 }
 
-.asterisk {
-  color: #C70008;
-  font-size: 25px;
-}
 
 .input-field {
-  color: black;
+  color: #787878;
   height: 30px;
 }
 
 // buttons
 #mc-embedded-subscribe {
-  border-radius: 10px;
-  width: 134px;
   background-color: #00895F;
-  color: #f6eede;
-  font-size: 16px;
-  font-weight: 900;
 }
+

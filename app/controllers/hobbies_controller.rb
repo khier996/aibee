@@ -5,15 +5,15 @@ class HobbiesController < ApplicationController
     @hobbies = policy_scope(Hobby).order(created_at: :desc)
     @hobbies = Hobby.where.not(latitude: nil, longitude: nil)
 
-    if params[:title]
+    if params[:title] != ""
       @hobbies = @hobbies.where("title ILIKE ?", "%#{params[:title]}%").order("created_at DESC")
     end
 
-    if params[:city]
+    if params[:city] != ""
       @hobbies = @hobbies.where("address ILIKE ?", "%#{params[:city]}%")
     end
 
-    if params[:category]
+    if params[:category] != ""
       # @categories = @categories.where("name ILIKE ?", "%#{params[:category]}%")
       @hobbies = @hobbies.joins(hobby_categories: [:category]).where('categories.name ILIKE ?', "%#{params[:category]}%")
     end
@@ -29,7 +29,7 @@ class HobbiesController < ApplicationController
   def show
     authorize @hobby
     @current_user = current_user
-    @events = @hobby.events
+    @events = @hobby.events.where('start_time > ?', Time.now)
     @hobby = Hobby.find(params[:id])
     @categories = ''
     @hobby.categories.each { |category| @categories += "#{category.name}, " }

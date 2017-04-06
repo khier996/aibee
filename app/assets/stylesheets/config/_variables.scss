@@ -10,12 +10,12 @@ $base-font: "Quicksand", "sans-serif";
 // Local fonts (uncomment following lines)
 @font-face {
   font-family: "Interstate";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
+  src: font-url('interstate.eot');
+  src: font-url('interstate.eot?#iefix') format('embedded-opentype');
+  src: font-url('interstate.woff') format('woff');
   src: font-url('interstate.ttf') format('truetype')
   }
-  $header-font: "Interstate";
+$header-font: "Interstate";
 
 // Font-size and line-height
 $base-size: 18px;

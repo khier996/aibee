@@ -1,3 +1,5 @@
+<!-- CSS for this file is in _events_index.css -->
+
 <h1 class="text-center" style="color: #2f4a71">Host Dashboard</h1>
 
 <div class="padded">
@@ -18,8 +20,10 @@
 
 
     <section id="content1">
+      <div>
+        <p class="text-center"> <%= link_to "New Hobby", new_hobby_path, class: "btn btn-blue" %> </p>
+      </div>
       <!-- notification is actually a booking  -->
-      <p class="text-center"> <%= link_to "New Hobby", new_hobby_path, class: "btn btn-primary" %> </p>
       <% @hobbies.each do |hobby| %>
         <div class="hobby-card col-xs-12 col-sm-6 col-md-6">
           <div class="hobby-card-rating">
@@ -77,7 +81,6 @@
       </div>
       <% end %>
     </section>
-
 
 
     <section id="content2">
@@ -169,8 +172,8 @@
           </p>
           <p> Status: <span id="booking-<%= request.id %>" style="position: relative; left: 23%"> <%= request.status %> </span> </p>
           <div class="dashboard-host-card-buttons">
-            <p><%= link_to "Accept", hobby_event_booking_accept_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-primary" %></p>
-            <p><%= link_to "Reject", hobby_event_booking_reject_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-primary" %></p>
+            <p><%= link_to "Accept", hobby_event_booking_accept_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-blue" %></p>
+            <p><%= link_to "Reject", hobby_event_booking_reject_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-blue" %></p>
           </div>
         </div>
       <% end %>

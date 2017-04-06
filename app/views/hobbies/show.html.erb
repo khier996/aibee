@@ -1,28 +1,24 @@
+<!-- carousel -->
+  <div class="owl-carousel owl-theme">
+    <% @hobby.photos.each do |photo| %>
+      <div class="image-carousel owl-lazy-iamge">
+        <img class="owl-img-c" src="<%= cl_image_path(photo.path) %>" style="height: 260px;">
+      </div>
+    <% end %>
+  </div>
+  <!-- end of carousel -->
+
 <div style="color: #2F4A71">
   <h1 class="text-center hobby-show-margin-bottom-40"><span class="hobby-show-title"><%= @hobby.title%></span>
-
     <!-- Like functionality with heart icon -->
     <% if @current_user && @current_user.voted_for?(@hobby) %>
-    <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;">(<%= @hobby.get_likes.size %>)</span>
+    <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
     <% else %>
-    <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;">(<%= @hobby.get_likes.size %>)</span>
+    <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
     <% end %>
     <!-- End of like functionality  -->
   </h1>
 </div>
-
-
-
-<!-- carousel -->
-<div class="owl-carousel owl-theme">
-  <% @hobby.photos.each do |photo| %>
-  <img class="owl-lazy owl-lazy-img" data-src="<%= cl_image_path(photo.path) %>" style="height: 260px;">
-  <% end %>
-</div>
-<!-- end of carousel -->
-
-
-
 
 
 <!-- star calculation -->
@@ -39,7 +35,7 @@
   <% end %>
   <% count = count - 1 %>
   <% end %>
-  <span style="font-size: 30px; position: relative; top: 7px;">(<%= @hobby.average_score %>)</span>
+  <span style="font-size: 30px; position: relative; top: 7px;"><%= @hobby.average_score %></span>
   <p style="font-size: 20px; position: relative; right: 15px;">(<%= @hobby.review_count %> reviews)</p>
 </div>
 
@@ -63,23 +59,20 @@
   <h2><span class="orange-underline">Address:</span></h2>
   <p><%= @hobby.address %></p>
 
-  <% if @hobby.user_id == current_user.id %>
+
   <!-- action links if host-->
-
-
-  <!-- hobby description -->
+  <% if @hobby.user_id == current_user.id %>
   <div>
     <div class="container text-center">
-      <a class="btn btn-primary" href="<%= edit_hobby_path%>">Update</a>
-      <a class="btn btn-primary" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
+      <a class="btn btn-blue" href="<%= edit_hobby_path%>">Update</a>
+      <a class="btn btn-blue" href="<%= new_hobby_event_path(@hobby)%>">Add an event</a>
     </div>
     <% elsif @events.present? %>
     <!-- leads to event booking compare events index only visible as guest-->
     <div class="wrapper_form text-center">
-      <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary card-link") %>
+      <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-primary") %>
     </div>
     <% end %>
-
     <h2><span class="orange-underline">Comments:</span></h2>
     <br>
     <div class="hobby-show-comments">
@@ -96,38 +89,10 @@
 
 
 
-<!-- list of events -->
-<div class="container">
-  <div class="row">
-    <% if @events.present? %>
-    <div class="container text-center padded">
-      <% @events.each do |event| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-          <div class="card-description">
-            <h2><%= event.price %></h2>
-            <h3><%= event.start_time %></h3>
-            <p><%= event.end_time %></p>
-            <p><%= event.min_pax %></p>
-            <p><%= event.max_pax %></p>
-            <!--   <#%= link_to("#{event.start_time}  - #{event.end_time}", hobby_events_path(@hobby), class: "card-link") %> -->
-            <%= link_to("Event details",hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
-            <%= link_to("Edit events",hobby_events_path(@hobby, @events), class: "btn btn-primary card-link") %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <% else %>
-    <!-- remark that no events are created -->
-    <div class="container text-center" style="margin-top: 100px">
-     <h3 id="empty">No events scheduled yet</h3>
-   </div>
-   <% end %>
- </div>
-</div>
-<!-- event map -->
 
+
+
+<!-- event map -->
 <div class="padded text-center">
   <div id="map" style="width: 80%; height: 400px; margin: 0 auto;"></div>
   <% content_for(:after_js) do %>
@@ -148,6 +113,8 @@ handler.getMap().setZoom(14);
 <% end %>
 <% end %>
 </div>
+
+
 
 
 

@@ -5,13 +5,17 @@
 
 .banner {
   height: 450px;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-    url("https://s-media-cache-ak0.pinimg.com/originals/a8/a5/b0/a8a5b0a428127cec23c1d4ffd8092d36.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url(background.jpg);
   background-size: cover;
   background-position: center;
+  background-position-y: 62%;
   color: white;
   text-align: center;
   margin: -70px;
+}
+
+#main-title {
+  margin-top: 55px;
 }
 
 .new-search-form {
@@ -21,7 +25,6 @@
   color: black;
   // margin-top: 132px;
   font-size: 20px;
-
 }
 
 
@@ -194,4 +197,69 @@
 
 .scroller-left {
   float:left;
+}
+
+.owl-dots {
+  display: none;
+}
+
+.image-carousel p {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  font-size: 25px;
+  color: white;
+  font-weight: 900;
+}
+
+// share hobby
+.share-hobby {
+  position: relative
+}
+.share-hobby-call-to-action {
+  height: 300px;
+  background-color: $blue;
+  color: white;
+  h3 {
+    margin-top: 45px;
+    margin-bottom: 35px;
+  }
+  h5 {
+    letter-spacing: 2px;
+    margin-top: 30px;
+  }
+  a {
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
+// create hobby
+.hobby-cards-container {
+  color: $blue;
+  font-size: 40px;
+}
+
+.top-hobbies {
+  color: $blue;
+  font-size: 40px;
+}
+
+.aibee-features {
+  color: $blue;
+  font-size: 40px;
+}
+
+
+h3 strong {
+  box-shadow: inset 0px -5px $yellow;
+}
+
+h1 strong {
+  box-shadow: inset 0px -8px $yellow;
+}
+
+h2 strong {
+  box-shadow: inset 0px -5px $yellow;
 }
