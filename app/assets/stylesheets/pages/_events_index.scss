@@ -30,8 +30,8 @@
     font-size: 18px;
   }
   position: absolute;
-  top: 10px;
-  left: 15px;
+  top: 45px;
+  left: 25px;
 }
 
 .events-show-future-booking-card-price {
@@ -42,8 +42,8 @@
     font-size: 18px;
   }
   position: absolute;
-  top: 40px;
-  left: 15px;
+  top: 80px;
+  left: 25px;
 }
 
 .events-show-future-booking-card-icons {
@@ -59,12 +59,15 @@
   left: 290px;
 }
 
-#booking_pax {
-  color: red;
-}
+
 
 .events-join-form {
-  //position: relative;
+  position: relative;
+  left: 25px;
+  top: 70px;
+  .booking_pax {
+    color: red;
+  }
 }
 
 .join-btn {

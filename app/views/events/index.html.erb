@@ -51,8 +51,8 @@
         </div>
         <div class="events-join-form">
           <%= simple_form_for([@hobby, event, @booking]) do |f| %>
-            <%= f.text_field :pax %> PAX
-            <%= f.submit "Join", class: "join-btn" %>
+            I would like to join with <%= f.text_field :pax, class: "booking_pax" %> persons.
+          <%= f.submit "Join", class: "join-btn" %>
           <% end %>
         </div>
       </div>
