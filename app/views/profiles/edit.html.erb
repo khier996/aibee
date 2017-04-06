@@ -1,7 +1,9 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :summary %>
-  <%= f.input :address %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :summary %>
+    <%= f.input :address %>
+    <%= f.submit %>
+  <% end %>
+</div>

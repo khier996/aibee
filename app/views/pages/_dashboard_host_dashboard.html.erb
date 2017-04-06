@@ -170,8 +170,8 @@
           </p>
           <p> Status: <span id="booking-<%= request.id %>" style="position: relative; left: 23%"> <%= request.status %> </span> </p>
           <div class="dashboard-host-card-buttons">
-            <p><%= link_to "Accept", hobby_event_booking_accept_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-primary" %></p>
-            <p><%= link_to "Reject", hobby_event_booking_reject_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-primary" %></p>
+            <p><%= link_to "Accept", hobby_event_booking_accept_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-blue" %></p>
+            <p><%= link_to "Reject", hobby_event_booking_reject_path(request.event.hobby, request.event, request), method: :patch, remote: true, class: "btn btn-blue" %></p>
           </div>
         </div>
       <% end %>
