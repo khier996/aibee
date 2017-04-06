@@ -1,6 +1,72 @@
+.likes {
+  h1 {
+    color: $blue;
+    font-size: 40px;
+  }
+}
+
 .events-show-container {
   margin: 0px 60px;
   margin-bottom: 100px;
+}
+
+// card
+.events-show-new-booking-card {
+  height: 170px;
+  border-radius: 3px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  background-color: white;
+  position: relative;
+  margin: 40px 0px 30px 0px;
+  position: relative;
+}
+
+.events-show-future-booking-card-date {
+  color: black;
+  font-size: 20px;
+}
+
+
+.events-show-future-booking-card-icons {
+  position: relative;
+}
+
+.events-show-future-booking-card-icon {
+  width: 25px;
+}
+
+.events-join-form {
+  position: relative;
+}
+
+.join-btn {
+  border: none;
+  background-color: white;
+  color: $blue;
+  font-weight: 900;
+  position: relative;
+}
+
+// bootstrap grid for responsiveness
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+//used??
+@media screen and (max-width: 480px) {
+  .events-show-future-booking-card {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -35,86 +101,7 @@
   margin: 15px auto;
 }
 
-.events-show-future-booking-card {
-  width: 90%;
-  height: 170px;
-  border-radius: 3px;
-  margin: 0 auto;
-  box-shadow: 1px 1px 1px 1px lightgrey;
-  background-color: white;
-  position: relative;
-  margin-bottom: 20px;
-}
 
-@media screen and (max-width: 480px) {
-  .events-show-future-booking-card {
-    width: 95%;
-  }
-}
 
-.events-show-future-booking-card-title-div {
-  width: 80%;
-  height: 50px;
-  margin-left: 5%;
-  border-bottom: 3px solid #00895f;
-}
 
-.events-show-future-booking-card-title {
-  font-size: 35px;
-  color: #23385b;
-  font-family: $header-font;
-}
 
-.event-card-icons {
-  position: absolute;
-  left: 62%;
-  top: 10px;
-}
-
-.events-show-future-booking-card-date {
-  display: flex;
-  width: 78%;
-  justify-content: space-between;
-  margin-left: 5%;
-  margin-top: 0px;
-  color: black;
-  font-size: 20px;
-}
-
-.events-show-future-booking-card-icons {
-    position: relative;
-    left: 88%;
-    bottom: 90px;
-}
-
-.events-show-future-booking-card-icon {
-  width: 25px;
-}
-
-.events-show-request-card {
-  width: 90%;
-  height: 128px;
-  box-shadow: 1px 1px 1px 1px lightgrey;
-  background-color: white;
-  border-radius: 4px;
-  padding: 10px 30px;
-  margin-bottom: 20px;
-}
-
-.events-show-card-buttons {
-  position: relative;
-  left: 87%;
-  top: -95%;
-}
-
-.events-show-form {
-  position: relative;
-  left: 21%;
-  top: -37%;
-}
-
-.join-btn {
-  border: none;
-  background-color: none;
-  color: $blue;
-}

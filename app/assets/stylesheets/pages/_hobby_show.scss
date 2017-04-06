@@ -1,25 +1,35 @@
+.likes {
+  h1 {
+    color: $blue;
+  }
+}
+
 .hobby-show-img-like {
-  width: 30px;
+  width: 23px;
 }
 
 .star {
-  width: 30px;
+  width: 23px;
 }
 
-.hobby-show-title {
-  margin-bottom: 40px;
-  //border-bottom: 5px solid #ffba00;
+.hobby-description, .address-and-map {
+  color: $blue;
+  h2 {
+    font-size: 25px;
+  }
+  p {
+    color: black;
+    font-size: 20px;
+  }
 }
-
-// .orange-underline {
-//   border-bottom: 5px solid #ffba00;
-// }
 
 .hobby-show-comments {
-  width: 100%;
-  height: 300px;
   ZZborder: 1px solid #ffba00;
   border-radius: 4px;
   overflow: hidden;
 }
 
+.address-and-map {
+  color: $blue;
+
+}

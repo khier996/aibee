@@ -1,49 +1,65 @@
-<div class="container">
-  <div>
+  <!-- carousel -->
+  <div class="container">
+    <div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
+      <div class="owl-carousel owl-theme">
+        <% @hobby.photos.each do |photo| %>
+          <div class="image-carousel owl-lazy-iamge">
+            <img class="owl-img-c" src="<%= cl_image_path(photo.path, width: 400, height: 300, crop: :fill) %>" >
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- end of carousel -->
+  <!-- Like functionality with heart icon -->
+  <div class="likes">
+    <h1 class="text-center"><span class="hobby-show-title"><%= @hobby.title%></span>
+      <% if @current_user && @current_user.voted_for?(@hobby) %>
+      <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
+      <% else %>
+      <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
+      <% end %>
+    </h1>
+  </div>
+  <!-- End of like functionality  -->
+
+  <!-- card event no title -->
+  <div class="wrapper event-card-index">
+    <div class="container">
+    <div class="row row-centered">
     <% @events.each do |event| %>
-      <div class="events-show-future-booking-card" style="width: 80%;">
-        <div class="events-show-future-booking-card-title-div">
-          <span class="dashboard-host-future-booking-card-title"><%= event.hobby.title %></span>
-        </div>
-
+    <div class="col-xs-12 col-sm-6 col-md-4 col-centered ">
+      <div class="events-show-new-booking-card">
         <div class="events-show-future-booking-card-date">
-          <div>Date:</div>
-          <div><%= event.start_time.strftime("%b %d - %H:%M") %></div>
-          <div><%= event.end_time.strftime("%b %d - %H:%M")  %></div>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <%= event.start_time.strftime("%b %d") %>
+            <%= event.start_time.strftime("%H:%M") %>
+            <%= event.end_time.strftime("%H:%M")  %>
         </div>
-
-        <div class="events-show-future-booking-card-date">
-          <div>Price:</div>
-          <div><%= event.price %>RMB</div>
-          <div style="width:172px;"></div>
+        <!-- <div class="events-show-future-booking-card-address">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+        </div> -->
+        <div class="events-show-future-booking-card-price">
+          <i class="fa fa-jpy" aria-hidden="true"></i>
+          <%= event.price %>RMB
         </div>
-
-        <div class="events-show-future-booking-card-date">
-          <div>Attendees:</div>
-          <div><%= event.bookings.size %></div>
-          <div style="width:282px;"></div>
-        </div>
-
-        <div class="event-card-icons">
-          <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-          <%= event.hobby.get_likes.size %>
-          <%= image_tag('man', {class: "hobby-card-icon"}) %>
-          <%= event.hobby.bookings.size %>
-        </div>
-
         <div class="events-show-future-booking-card-icons">
-          <p><a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a></p>
-          <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon", style: "margin-top: -5px;"), edit_hobby_event_path(event.hobby, event) %>
+          <p>
+            <a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a>
+          </p>
+          <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon"), edit_hobby_event_path(event.hobby, event) %>
         </div>
-
-        <div class="events-show-form">
+        <div class="events-join-form">
           <%= simple_form_for([@hobby, event, @booking]) do |f| %>
             <%= f.text_field :pax %> PAX
             <%= f.submit "Join", class: "join-btn" %>
           <% end %>
         </div>
       </div>
+      </div>
     <% end %>
+    </div>
+    </div>
   </div>
 </div>
 
