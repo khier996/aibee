@@ -26,10 +26,11 @@ font-size: 50px;
   font-size: 20px;
 }
 
-.specififications {
-  background-color: white;
-  padding-bottom: 30px;
-  padding-top: 50px;
+.section-specifications {
+ background-color: HSLA(0, 0%, 96%, 1);
+  padding-right: 30px;
+  padding-left: 50px;
+  padding-top: 40px;
 }
 
 .section-title {
@@ -43,6 +44,12 @@ font-size: 50px;
   margin: 2em 40px 1em 40px;
   z-index: 1;
   position: relative;
+
+}
+
+.section-big-title{
+background-color: HSLA(0, 0%, 96%, 1);
+
 }
 
 .form_update-wrapper {
@@ -63,12 +70,18 @@ font-size: 50px;
 }
 
 .fa {
-  color: #469AE1;
+
+  color: $blue;
   font-size: 25px;
   transition: color 0.5s ease;
 }
 
+ .wechat {color:7CF259;
+  }
+
+
 .wrapper-icones{
+  background-color: HSLA(0, 0%, 96%, 1);
   padding-bottom: 50px;
 }
 
@@ -78,6 +91,7 @@ font-size: 50px;
   margin-left: auto;
   margin-right: auto;
 }
+
 
 .radio input {
     margin-right: 10px;
@@ -103,3 +117,8 @@ font-size: 50px;
 .attachinary_container li a {
     font-size: 15px;
 }
+
+.section-space{
+  padding-top:50px;
+}
+
