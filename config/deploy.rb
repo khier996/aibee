@@ -3,7 +3,7 @@ lock '~> 3.8.0'
 
 set :application, 'aibee'
 # replace your repo_url and do not forget add machine id_rsa.pub to Settings->Deploy keys
-set :repo_url, 'https://github.com/khier996/aibee'
+set :repo_url, 'git@github.com:Eric-Guo/aibee.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
