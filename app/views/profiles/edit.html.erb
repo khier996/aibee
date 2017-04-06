@@ -1,7 +1,34 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :summary %>
-  <%= f.input :address %>
-  <%= f.submit %>
-<% end %>
+
+   
+
+  <div class="form_update-wrapper">
+
+  <h3 class="text-center">Hello <%=@user.first_name %></h3>
+  <p class="text-center">Edit your profile using this form</p>
+
+
+
+<%= simple_form_for(@user, url: profile_path, method: :put) do |f| %>
+  <%= f.input :first_name, label:false, placeholder: "First name", input_html: { class: 'no-border validate form-control' } %>
+  <%= f.input :last_name, label:false, placeholder: "Last name", input_html: { class: 'no-border form-control' } %>
+  <%= f.input :email, required: true, autofocus: true, label:false, placeholder: "e-mail", input_html: { class: 'no-border form-control' } %>
+  <div class="form-group form-inline">
+  	  <p class="sign-up-form-label">What is your gender?</p>
+	  <%= f.input :gender, label:false, collection: [ ['M', 'Male' ], ['F', 'Female'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @user.gender, item_wrapper_class: 'inline'%>
+  </div>
+  <div class="form-group form-inline">
+  	<p class="sign-up-form-label">Birthdate:</p>
+  	<%= f.input :birthdate, required: true, autofocus: true, label:false, input_html: { class: 'no-border' } %>
+  </div>
+  <%= f.input :phone_number, required: true, autofocus: true, label:false, placeholder: "Phone number", input_html: { class: 'no-border' } %>
+  <%= f.input :wechat_id, required: true, autofocus: true, label:false, placeholder: "Wechat:", input_html: { class: 'no-border' } %>
+  <%= f.input :password, required: true, label:false, placeholder: "Password", input_html: { class: 'no-border' } %>
+  <%= f.input :password_confirmation, required: true, label:false, placeholder: "Password confirmation", input_html: { class: 'no-border' } %>
+  <p class="sign-up-form-label">Favourite categories:</p>
+  <%= f.input :categories, label:false, item_wrapper_tag: :div, item_wrapper_class: "checkbox-inlin", :collection => Category.all, class: "input-field col s12", input_html: {multiple: true} %>
+  <%= f.input :bio, as: :text, required: true, autofocus: true, label:false, placeholder: "Bio", input_html: { class: 'no-border' } %>
+  <p class="sign-up-form-label">Profile picture:</p>
+  <%= f.input :photo, as: :attachinary, label:false, class:"section_profile_picture" %>
+  <%= f.button :submit, "Save my profile", class: "btn btn-primary btn-block button_update" %>
+      <% end %>
+    </div>

@@ -45,6 +45,14 @@ font-size: 50px;
   position: relative;
 }
 
+.form_update-wrapper {
+  width: 70%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .section-title-content {
   padding-right: 30px;
   padding-left: 30px;
@@ -62,4 +70,36 @@ font-size: 50px;
 
 .wrapper-icones{
   padding-bottom: 50px;
+}
+
+.button_update{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.radio input {
+    margin-right: 10px;
+}
+
+.radio {
+    margin-right: 15px;
+}
+
+.user_bio textarea {
+    min-height: 150px;
+}
+
+.attachinary_container ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.attachinary_container li {
+    margin-top: 10px;
+}
+
+.attachinary_container li a {
+    font-size: 15px;
 }

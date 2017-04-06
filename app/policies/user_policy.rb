@@ -14,7 +14,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.id == user.id
   end
 
   def show?
