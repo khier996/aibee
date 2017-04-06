@@ -122,3 +122,38 @@
   border-top: 1px solid #E6E6E6;
 }
 
+
+
+
+//Test (delete if found after pull)
+///////////////////////////////////////////////////////////
+.hidden {
+  display: none;
+}
+
+.navbar-menu-links {
+  position: relative;
+  left: -3%;
+  top: 90px;
+  background-color: white;
+  color: $blue;
+  opacity: 0.7;
+  padding: 10px 20px;
+  list-style-type: none;
+  border-radius: 3px;
+}
+
+.sandwich-menu {
+  position: absolute;
+  right: 7%;
+  top: 6%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 993px) {
+  .sandwich-menu {
+    display: none;
+  }
+}
+
+
