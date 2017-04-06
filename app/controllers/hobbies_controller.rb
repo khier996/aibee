@@ -105,6 +105,6 @@ class HobbiesController < ApplicationController
   end
 
   def hobby_params
-    params.require('hobby').permit(:title, :description, :summary, :address, photos: [])
+    params.require('hobby').permit(:title, :qr_code, :description, :summary, :address, photos: [])
   end
 end
