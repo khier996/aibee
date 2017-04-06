@@ -1,40 +1,51 @@
-<div class="container">
-  <div class="row ">
-    <!-- <h3 class="text-center padded" >Join <%= @hobby.user.first_name%> when she shares her passion for <%= @hobby.title%>: </h3> -->
-    <% if @events.present? %>
-      <div class="text-center padded">
-        <% @events.each do |event| %>
-          <%= form_for(@booking, url: hobby_event_bookings_path(@hobby, event)) do |f| %>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-                <div class="card-description">
-                  <label for="<%=event.id%>" >
-                    <h3> Date and Time: <%= event.start_time %> <%= event.end_time %></h3>
-                    <h3> Event Price: <%= event.price %> RMB </h3>
-                    <p>Minimum number of participants: <%= event.min_pax %></p>
-                    <p>Maximum number of participants: <%= event.max_pax %></p>
-                    <% if @hobby.user_id != current_user.id %>
-                      <div class="booking">
-                        <%= f.text_field :pax %> PAX
-                        <%= f.submit "Join" %>
-                      </div>
-                    </label>
-                  <% else %>
-                    <%= link_to("Update", edit_hobby_event_path(@hobby, event), class: "btn btn-primary card-link") %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    <% else %>
-      <!-- remark that no events are created -->
-      <div class="container text-center" style="margin-top: 100px">
-        <h3 id="empty">No events scheduled yet</h3>
-      </div>
-    <% end %>
+
+
+
+
+<% @events.each do |event| %>
+  <div class="events-show-future-booking-card" style="width: 80%;">
+    <div class="events-show-future-booking-card-title-div">
+      <span class="dashboard-host-future-booking-card-title"><%= event.hobby.title %></span>
+    </div>
+
+    <div class="events-show-future-booking-card-date">
+      <div>Date:</div>
+      <div><%= event.start_time.strftime("%b %d - %H:%M") %></div>
+      <div><%= event.end_time.strftime("%b %d - %H:%M")  %></div>
+    </div>
+
+    <div class="events-show-future-booking-card-date">
+      <div>Price:</div>
+      <div><%= event.price %>RMB</div>
+      <div style="width:172px;"></div>
+    </div>
+
+    <div class="events-show-future-booking-card-date">
+      <div>Attendees:</div>
+      <div><%= event.bookings.size %></div>
+      <div style="width:282px;"></div>
+    </div>
+
+    <div class="event-card-icons">
+      <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
+      <%= event.hobby.get_likes.size %>
+      <%= image_tag('man', {class: "hobby-card-icon"}) %>
+      <%= event.hobby.bookings.size %>
+    </div>
+
+    <div class="events-show-future-booking-card-icons">
+      <p><a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a></p>
+      <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon", style: "margin-top: -5px;"), edit_hobby_event_path(event.hobby, event) %>
+    </div>
+
+    <div class="events-show-form">
+      <%= simple_form_for([@hobby, event, @booking]) do |f| %>
+        <%= f.text_field :pax %> PAX
+        <%= f.submit "Join" %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
 
 
