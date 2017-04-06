@@ -1,18 +1,32 @@
+<div class="wrapper go-top" style="height:100vh;color:white;background: linear-gradient(-225deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 36, 61, 0) 100%), url(<%= asset_path 'sign-in-form-img.jpg' %>); background-size:cover;">
+  <div class="container padded">
+    <h2 class="text-center">Welcome to Aibee</h2>
+    <p class="text-center">A community for passionate people</p>
+    <br>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :email, required: false, autofocus: true, label:false, placeholder: "Email" %>
+      <%= f.input :password, required: false, label:false, placeholder: "Password" %>
+      <%= f.input :remember_me, label_html: { class: 'sign-in-form-remember' }, as: :boolean if devise_mapping.rememberable?  %>
+      <%= f.submit "Sign in", class: "btn btn-blue sign-in-form-btn btn-block" %>
+      <br>
+      <div class="text-center">
+        <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn btn-blue btn-sign-in-form-btn", id: "btn-#{OmniAuth::Utils.camelize(provider)}" %>
+        <% end -%>
+        <% end -%>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-green btn-sign-in-form" %><br />
+        <% end -%>  
+      </div>
+      <br><br><br><br>
+      <div class="text-center">
+        <%= render "devise/shared/links" %>
+      </div>
 
-<%= image_tag "sign-in-form-img" %>
-<div class="sign-in-form-wrapper text-center">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :email, required: false, autofocus: true, label:false, placeholder: "Email" %>
-    <%= f.input :password, required: false, label:false, placeholder: "Password" %>
-    <%= f.input :remember_me, label_html: { class: 'sign-in-form-remember' }, as: :boolean if devise_mapping.rememberable?  %>
-    <%= f.submit "Sign in", class: "btn btn-blue sign-in-form-btn" %>
-    <br><br><br><br>
-    <div class="flex">
-      <%= render "devise/shared/links" %>
-    </div>
-
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 
