@@ -174,9 +174,6 @@
 
 
 // hobby-card
-.hobby-cards-container {
-  margin-left: 5%;
-}
 
 .hobby-cards {
   margin: 0 auto;
@@ -185,12 +182,16 @@
 .hobby-card {
   background-color: white;
   width: 350px;
-  height: 300px;
+  height: 350px;
   border-radius: 3px;
   position: relative;
   box-shadow: 0.2px 0.2px 0.2px 0.2px lightgrey;
-  margin: 30px 30px;
+  margin: 15px 0px;
   z-index: 0;
+}
+
+.hobby-card:hover {
+  box-shadow: 0.5px 0.5px 0.5px 0.5px grey;
 }
 
 .hobby-card-link {
@@ -216,6 +217,7 @@
 .hobby-card-avatar {
   border-radius: 50%;
   width: 80px;
+  height:80px;
   border: solid 3px $yellow;
   position: absolute;
   bottom: 5px;
@@ -224,15 +226,15 @@
 .hobby-card-avatar-link {
   z-index: 10;
   position: absolute;
-  left: 0;
-  bottom: 85px;
+  left: 24px;
+  bottom: 135px;
 }
 
 .hobby-card-description {
-  width: 270px;
+  width: 320px;
   height: 120px;
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   right: 0px;
 }
 
@@ -269,18 +271,17 @@
 .hobby-card-icons {
   position: absolute;
   bottom: 5px;
-  left: 210px;
+  left: 30px;
   z-index: 2;
 }
 
 .hobby-card-icon-text {
-  font-size: 15px;
+  font-size: 12px;
   line-height: 32px;
 }
 
 .hobby-card-icon {
-  width: 15px;
-  margin-left: 25px;
+  width: 12px;
 }
 
 .hobby-card-rating {
@@ -288,8 +289,8 @@
   height: 65px;
   background-color: rgba(249, 184, 49, 0.8);
   position: absolute;
-  left: 270px;
-  bottom: 225px;
+  left: 276px;
+  bottom: 275px;
   z-index: 3;
   border-radius: 50%;
   border: 1.5px solid white;
