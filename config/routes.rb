@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :update, :edit]
-  resource :profile, only: [:show]
+  resource :profile, only: [:show, :update, :edit]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get('/dashboard_host', {to: 'pages#dashboard_host'})

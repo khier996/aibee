@@ -9,7 +9,7 @@
   <!-- end of carousel -->
 
 <div style="color: #2F4A71">
-  <h1 class="text-center hobby-show-margin-bottom-40"><span class="hobby-show-title"><%= @hobby.title%></span>
+  <h1 class="text-center"><span class="hobby-show-title"><%= @hobby.title%></span>
     <!-- Like functionality with heart icon -->
     <% if @current_user && @current_user.voted_for?(@hobby) %>
     <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
@@ -27,11 +27,11 @@
   <% count = @hobby.average_score %>
   <% 5.times do %>
   <% if count < 1 && count > 0 %>
-  <span> <%= image_tag('star-half', { class: "star" }) %> </span>
+  <span> <%= image_tag('blackstar-half', { class: "star" }) %> </span>
   <% elsif count >= 1 %>
-  <span> <%= image_tag('star-full', { class: "star" }) %> </span>
+  <span> <%= image_tag('blackstar-full', { class: "star" }) %> </span>
   <% elsif count <= 0 %>
-  <span> <%= image_tag('star-empty', { class: "star" }) %> </span>
+  <span> <%= image_tag('blackstar-empty', { class: "star" }) %> </span>
   <% end %>
   <% count = count - 1 %>
   <% end %>
