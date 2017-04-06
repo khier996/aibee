@@ -1,5 +1,4 @@
 .new-search-form {
-  padding: 50px;
   text-align: center;
   font-size: 20px;
   background-color: $white;
@@ -13,6 +12,10 @@
 
 .img-circle {
     border-radius: 50%;
+}
+
+.form-control {
+  height: 36px;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

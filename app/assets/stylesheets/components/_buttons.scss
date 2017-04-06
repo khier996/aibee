@@ -30,7 +30,6 @@
 
 .btn-green-lg {
   width: 349px;
-  height: 75px;
   border-radius: 40px;
   background-color: $green;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
@@ -40,6 +39,10 @@
 .btn-green-lg:hover {
   color: $yellow;
   transition: color 0.5s ease;
+}
+
+.btn-green-lg-padded {
+  padding: 20px;
 }
 
 // blue
