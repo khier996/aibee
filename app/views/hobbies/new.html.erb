@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container padded">
+  <br>
   <%= simple_form_for(@hobby) do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
@@ -10,4 +11,5 @@
     <%= f.input :photos, as: :attachinary %>
     <%= f.submit %>
   <% end %>
+  <br>
 </div>

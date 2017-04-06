@@ -1,8 +1,11 @@
+<div class="container text-center" >
+  <%= render 'pages/search_form'%>
+</div>
+
 <div class="container text-center" style="margin-top: 30px">
   <h2>Your search results</h2>
 </div>
 
-<%= render 'pages/search_form'%>
 <div class="container">
   <% @hobbies.each do |hobby| %>
   <div class="card col-xs-12 col-sm-6 col-md-4">
@@ -27,8 +30,8 @@
           <h2><a href="#"><%= hobby.summary %></a></h2>
           <p> <%= hobby.description %> </p>
         </article>
-        <%= link_to("Hobby details", hobby_path(hobby), class: "btn btn-primary card-link") %>
-        <%= link_to("Add an event", new_hobby_event_path(hobby), class: "btn btn-primary card-link") %>
+        <%= link_to("Hobby details", hobby_path(hobby), class: "btn btn-blue card-link") %>
+        <%= link_to("Add an event", new_hobby_event_path(hobby), class: "btn btn-blue card-link") %>
       </div>
     </div>
   </div>
