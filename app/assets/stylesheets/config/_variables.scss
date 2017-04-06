@@ -9,10 +9,10 @@ $base-font: "Quicksand", "sans-serif";
 
 // Local fonts (uncomment following lines)
 @font-face {
-  font-family: "Interstate";
-  src: font-url('fonts/interstate.eof');
-  src: font-url('fonts/interstate.eot?#iefix') format('embedded-opentype'),
-       font-url('fonts/interstate.woff') format('woff'),
+  //font-family: "Interstate";
+  //src: font-url('fonts/interstate.ttf');
+  //src: font-url('fonts/interstate.eot?#iefix') format('embedded-opentype'),
+    //   font-url('fonts/interstate.woff') format('woff'),
   src: font-url('fonts/interstate.ttf') format('truetype')
   }
   $header-font: "Interstate";
