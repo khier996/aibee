@@ -51,15 +51,23 @@
     </div>
   </div>
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle big-home-nav" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+
+    <i class="fa fa-bars sandwich-menu"></i>
+
+      <ul style="list-style-type: none;" class="navbar-menu-links hidden">
+        <a href="<%= new_user_session_path %>"><li>Login</li></a>
+        <li><a href="<%= dashboard_host_path %>">Host</a></li>
+        <li><a href="<%= dashboard_guest_path %>">Guest</a></li>
+        <li><a href="<%= profile_path %>">Profile</a></li>
       </ul>
-    </div>
-  </div>
+
+
 </div>
+
+<script>
+
+  $(".sandwich-menu").click(function() {
+    $(".navbar-menu-links").toggleClass("hidden")
+  })
+</script>
 
