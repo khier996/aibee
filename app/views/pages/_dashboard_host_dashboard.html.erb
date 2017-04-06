@@ -68,7 +68,10 @@
           <p id="hobby-card-category">
             <% string = "" %>
             <% hobby.categories.each { |category| string += "#{category.name} "}%>
-            belongs to: <%= string%>
+            belongs to: <%= string[0..20] %>
+            <% if string.length > 20 %>
+              ...
+            <% end %>
           </p>
         </div>
         <div class="hobby-card-icons">

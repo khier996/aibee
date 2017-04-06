@@ -29,61 +29,63 @@
   <div class="row text-center hobby-cards-container" style="margin-bottom: 50px">
     <h2 style="margin-bottom: 50px; margin-right: 95px">Recommended Hobbies</h2>
     <% @selected_hobbies.each do |hobby| %>
-      <div class="hobby-card col-xs-12 col-sm-6 col-md-6">
-        <div class="hobby-card-rating">
-          <span class="hobby-card-rating-score"><%= hobby.average_score %></span>
-          <div class="hobby-card-stars">
-            <% count = hobby.average_score %>
-            <% 5.times do %>
-              <% if count < 1 && count > 0 %>
-                <span> <%= image_tag('star-half', { class: "hobby-card-star" }) %> </span>
-              <% elsif count >= 1 %>
-                <span> <%= image_tag('star-full', { class: "hobby-card-star" }) %> </span>
-              <% elsif count <= 0 %>
-                <span> <%= image_tag('star-empty', { class: "hobby-card-star" }) %> </span>
-              <% end %>
-            <% count = count - 1 %>
-          <% end %>
-          <span class="hobby-card-stars-count">(<%= hobby.review_count %> reviews)</span>
+       <div class="hobby-card col-xs-12 col-sm-6 col-md-6">
+          <div class="hobby-card-rating">
+            <span class="hobby-card-rating-score"><%= hobby.average_score %></span>
+            <div class="hobby-card-stars">
+              <% count = hobby.average_score %>
+              <% 5.times do %>
+                <% if count < 1 && count > 0 %>
+                  <span> <%= image_tag('star-half', { class: "hobby-card-star" }) %> </span>
+                <% elsif count >= 1 %>
+                  <span> <%= image_tag('star-full', { class: "hobby-card-star" }) %> </span>
+                <% elsif count <= 0 %>
+                  <span> <%= image_tag('star-empty', { class: "hobby-card-star" }) %> </span>
+                <% end %>
+              <% count = count - 1 %>
+            <% end %>
+            <span class="hobby-card-stars-count">(<%= hobby.review_count %> reviews)</span>
+          </div>
         </div>
-      </div>
-      <% if hobby.photos.first %>
-        <img src="<%= cl_image_path hobby.photos.first.path, height: 180, width: 350, crop: :fill%>", class='hobby-card-img' >
-      <% else %>
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
-      <% end %>
-      <% if hobby.user.photo %>
-        <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
-          <%= cl_image_tag(hobby.user.photo.path, height: 60, width: 60, class: "hobby-card-avatar") %>
-        </a>
-      <% elsif hobby.user.facebook_picture_url %>
-        <a href="<%= user_path(hobby.user) %>", class="hobby-card-avatar-link">
-          <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
-        </a>
-      <% end %>
-      <div class="hobby-card-description text-left">
-        <p id="hobby-card-description-hobby-name"><%= hobby.title %></p>
-        <p id="hobby-card-summary"><%= hobby.summary %></p>
-        <p id="hobby-card-summary">
-        <%= hobby.summary[0..30] %>
-        <% if hobby.summary.length > 30 %>
-          ...
+        <% if hobby.photos.first %>
+          <img src="<%= cl_image_path hobby.photos.first.path, height: 180, width: 350, crop: :fill%>", class='hobby-card-img' >
+        <% else %>
+          <img src="https://s-media-cache-ak0.pinimg.com/originals/41/20/83/412083f76fe2e72b979902158f91d2bf.jpg" alt="image" class="hobby-card-img">
         <% end %>
-        </p>
-        <p id="hobby-card-category">
-          <% string = "" %>
-          <% hobby.categories.each { |category| string += "#{category.name} "}%>
-          belongs to: <%= string%>
-        </p>
+        <% if hobby.user.photo %>
+          <a href="<%= user_path(hobby.user) %>" class="hobby-card-avatar-link">
+            <%= cl_image_tag(hobby.user.photo.path, height: 60, width: 60, class: "hobby-card-avatar") %>
+          </a>
+        <% elsif hobby.user.facebook_picture_url %>
+          <a href="<%= user_path(hobby.user) %>", class="hobby-card-avatar-link">
+            <img src="<%= hobby.user.facebook_picture_url %>", class="hobby-card-avatar">
+          </a>
+        <% end %>
+        <div class="hobby-card-description text-left">
+          <p id="hobby-card-description-hobby-name"><%= hobby.title %></p>
+          <p id="hobby-card-summary">
+            <%= hobby.summary[0..30] %>
+            <% if hobby.summary.length > 30 %>
+              ...
+            <% end %>
+          </p>
+          <p id="hobby-card-category">
+            <% string = "" %>
+            <% hobby.categories.each { |category| string += "#{category.name} "}%>
+            belongs to: <%= string[0..20] %>
+            <% if string.length > 20 %>
+            ...
+            <% end %>
+          </p>
+        </div>
+        <div class="hobby-card-icons">
+          <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
+          <span class="hobby-card-icon-text"><%= hobby.get_likes.size %></span>
+          <%= image_tag('man', {class: "hobby-card-icon"}) %>
+          <span class="hobby-card-icon-text"><%= hobby.bookings.size %></span>
+        </div>
+        <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
       </div>
-      <div class="hobby-card-icons">
-        <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-        <span class="hobby-card-icon-text"><%= hobby.get_likes.size %></span>
-        <%= image_tag('man', {class: "hobby-card-icon"}) %>
-        <span class="hobby-card-icon-text"><%= hobby.bookings.size %></span>
-      </div>
-      <%= link_to "", hobby_path(hobby), class: "hobby-card-link" %>
-    </div>
     <% end %>
   </div>
 
