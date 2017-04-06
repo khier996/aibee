@@ -37,14 +37,14 @@ class BookingsController < ApplicationController
       existing_booking = Booking.where(event_id: @event.id, user_id: current_user.id)
       if existing_booking.present?
         flash[:notice] = "You already made a booking for this event"
-        redirect_to hobby_path(@event.hobby)
+        redirect_to dashboard_guest_path
       else
         @booking.status = "pending"
         @booking.user_id = current_user.id
         @booking.event_id = @event.id
         if @booking.save
           flash[:notice] = "Congrats! You booked this event"
-          redirect_to hobbies_path(@event.hobby)
+          redirect_to dashboard_guest_path
         else
           flash[:notice] = "Sorry, there is an internal error. We are working on it!"
           redirect_to hobby_path(@event.hobby)

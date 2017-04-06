@@ -1,51 +1,49 @@
+<div class="container">
+  <div>
+    <% @events.each do |event| %>
+      <div class="events-show-future-booking-card" style="width: 80%;">
+        <div class="events-show-future-booking-card-title-div">
+          <span class="dashboard-host-future-booking-card-title"><%= event.hobby.title %></span>
+        </div>
 
+        <div class="events-show-future-booking-card-date">
+          <div>Date:</div>
+          <div><%= event.start_time.strftime("%b %d - %H:%M") %></div>
+          <div><%= event.end_time.strftime("%b %d - %H:%M")  %></div>
+        </div>
 
+        <div class="events-show-future-booking-card-date">
+          <div>Price:</div>
+          <div><%= event.price %>RMB</div>
+          <div style="width:172px;"></div>
+        </div>
 
+        <div class="events-show-future-booking-card-date">
+          <div>Attendees:</div>
+          <div><%= event.bookings.size %></div>
+          <div style="width:282px;"></div>
+        </div>
 
-<% @events.each do |event| %>
-  <div class="events-show-future-booking-card" style="width: 80%;">
-    <div class="events-show-future-booking-card-title-div">
-      <span class="dashboard-host-future-booking-card-title"><%= event.hobby.title %></span>
-    </div>
+        <div class="event-card-icons">
+          <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
+          <%= event.hobby.get_likes.size %>
+          <%= image_tag('man', {class: "hobby-card-icon"}) %>
+          <%= event.hobby.bookings.size %>
+        </div>
 
-    <div class="events-show-future-booking-card-date">
-      <div>Date:</div>
-      <div><%= event.start_time.strftime("%b %d - %H:%M") %></div>
-      <div><%= event.end_time.strftime("%b %d - %H:%M")  %></div>
-    </div>
+        <div class="events-show-future-booking-card-icons">
+          <p><a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a></p>
+          <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon", style: "margin-top: -5px;"), edit_hobby_event_path(event.hobby, event) %>
+        </div>
 
-    <div class="events-show-future-booking-card-date">
-      <div>Price:</div>
-      <div><%= event.price %>RMB</div>
-      <div style="width:172px;"></div>
-    </div>
-
-    <div class="events-show-future-booking-card-date">
-      <div>Attendees:</div>
-      <div><%= event.bookings.size %></div>
-      <div style="width:282px;"></div>
-    </div>
-
-    <div class="event-card-icons">
-      <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-      <%= event.hobby.get_likes.size %>
-      <%= image_tag('man', {class: "hobby-card-icon"}) %>
-      <%= event.hobby.bookings.size %>
-    </div>
-
-    <div class="events-show-future-booking-card-icons">
-      <p><a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a></p>
-      <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon", style: "margin-top: -5px;"), edit_hobby_event_path(event.hobby, event) %>
-    </div>
-
-    <div class="events-show-form">
-      <%= simple_form_for([@hobby, event, @booking]) do |f| %>
-        <%= f.text_field :pax %> PAX
-        <%= f.submit "Join" %>
-      <% end %>
-    </div>
+        <div class="events-show-form">
+          <%= simple_form_for([@hobby, event, @booking]) do |f| %>
+            <%= f.text_field :pax %> PAX
+            <%= f.submit "Join", class: "join-btn" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-
+</div>
 
