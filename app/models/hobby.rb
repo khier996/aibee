@@ -2,6 +2,7 @@ class Hobby < ApplicationRecord
   acts_as_votable
 
   has_attachments :photos, maximum: 5
+  has_attachment :qr_code
 
   belongs_to :user
   has_many :events

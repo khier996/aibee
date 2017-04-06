@@ -9,6 +9,7 @@
     <%= f.input :categories, :collection => @categories, input_html: {multiple: true}, class: "form-control" %>
 
     <%= f.input :photos, as: :attachinary %>
+    <%= f.input :qr_code, as: :attachinary %>
     <%= f.submit %>
   <% end %>
   <br>
