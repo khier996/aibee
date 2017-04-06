@@ -199,13 +199,6 @@
   float:left;
 }
 
-.share-hobby-call-to-action {
-  height: 300px;
-  width: 100%;
-  background-color: $blue;
-  color: white;
-}
-
 .owl-dots {
   display: none;
 }
@@ -218,4 +211,31 @@
   font-size: 25px;
   color: white;
   font-weight: 900;
+}
+
+// create hobby
+.share-hobby {
+  position: relative
+}
+.share-hobby-call-to-action {
+  height: 300px;
+  width: 100%;
+  background-color: $blue;
+  color: white;
+  //margin-top: 30px;
+  //margin-bottom: 20px;
+  h3 {
+    position: relative;
+    top: 55px;
+  }
+  h5 {
+    position: relative;
+    top: 90px;
+    letter-spacing: 2px;
+  }
+  a {
+    position: relative;
+    top: 180px;
+    text-align: center;
+  }
 }
