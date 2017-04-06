@@ -2,7 +2,7 @@
 <div class="banner padded text-center" >
   <h1 id="main-title">Share your passion!</h1>
   <br>
-  <h3>Discover a new hobby through fun events</h3>
+  <h3 id="slogan">Discover a new hobby through fun events</h3>
   <div style="margin-top: 123px;">
     <%= render 'pages/search_form' %>
   </div>
@@ -150,6 +150,17 @@
     <div class="h-icon col-xs-12 col-md-4">
      <%= image_tag "wind128" %>
      <p>Go to the Netherlands</p>
+    </div>
+  </div>
+</div>
+<!-- create your first hobby -->
+<div class="container text-center share-hobby">
+  <div class="share-hobby-call-to-action text-center">
+    <h3>ANYONE CAN SHARE PASSION THROUGH AIBEE</h3>
+    <h2 class="underline">____________</h2>
+    <h5>Through aibee, hosts have have shared xx hobbies!</h5>
+    <div>
+      <a class="btn btn-green-lg text-center" href="<%= new_hobby_path%>">Create your hobby!</a>
     </div>
   </div>
 </div>

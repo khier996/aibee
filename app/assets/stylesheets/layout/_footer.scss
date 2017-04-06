@@ -5,6 +5,7 @@
   background-color: #454545;
   text-decoration: none;
   font-family: $base-font;
+  position: relative;
 }
 
 .footer-left {
@@ -39,18 +40,22 @@
 
 // Icons
 #footer_icons {
-
   .icons img {
     margin-top: 30px;
     width: 34px;
     height: 36px;
-    &:hover {
-      color: #2e496e;
-    }
   }
 }
 
 // Subscribe
+
+.asterisk {
+  span {
+  color: #C70008;
+  font-size: 25px;
+  }
+}
+
 #mc_embed_signup {
   font-family: $base-font;
   font-size: 24px;
@@ -63,15 +68,18 @@
   h2 {
     font-family: $base-font;
   }
-}
-
-.asterisk {
+  span {
   color: #C70008;
   font-size: 25px;
+  }
+  form {
+    padding: 0px;
+  }
 }
 
+
 .input-field {
-  color: black;
+  color: #787878;
   height: 30px;
 }
 
