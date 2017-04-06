@@ -46,8 +46,8 @@
         <div class="events-show-future-booking-card-icons">
           <p>
             <a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a>
+            <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon"), edit_hobby_event_path(event.hobby, event) %>
           </p>
-          <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon"), edit_hobby_event_path(event.hobby, event) %>
         </div>
         <div class="events-join-form">
           <%= simple_form_for([@hobby, event, @booking]) do |f| %>
