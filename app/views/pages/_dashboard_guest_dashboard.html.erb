@@ -12,6 +12,11 @@
     <input class="no-display" id="tab3" type="radio" name="tabs">
     <label for="tab3">Past events</label>
 
+    <input class="no-display" id="tab4" type="radio" name="tabs">
+    <label for="tab4">Past events</label>
+
+
+
 
 
     <section id="content1">
@@ -68,6 +73,33 @@
             <%= image_tag('man', {class: "hobby-card-icon"}) %>
             <%= booking.event.hobby.bookings.size %>
           </div>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-booking-<%= booking.id %>" style="position: absolute; left: 70%; top: 60%;"> Pay </button>
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal-booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center" id="exampleModalLabel">Host's QR Code</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                  <% if booking.event.hobby.qr_code %>
+                    <img style="width: 300px;" src="<%= cl_image_path(booking.event.hobby.qr_code.path) %>">
+                  <% else %>
+                    <p class="text-center">No QR code provided</p>
+                  <% end %>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of modal -->
 
           <div class="dashboard-guest-future-booking-card-icons">
             <p><a href="<%= hobby_event_path(booking.event.hobby, booking.event) %>"><%= image_tag("more-details", class: "dashboard-guest-future-booking-card-icon") %></a></p>
@@ -129,4 +161,10 @@
     </section>
   </main>
 </div>
+
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+  });
+</script>
 

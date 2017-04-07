@@ -17,7 +17,7 @@
   </div>
   <div class="form-group form-inline">
   	<p class="sign-up-form-label">Birthdate:</p>
-  	<%= f.input :birthdate, required: true, autofocus: true, label:false, input_html: { class: 'no-border' } %>
+  	<%= f.input :birthdate, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year, required: true, autofocus: true, label:false, input_html: { class: 'no-border' } %>
   </div>
   <%= f.input :phone_number, required: true, autofocus: true, label:false, placeholder: "Phone number", input_html: { class: 'no-border' } %>
   <%= f.input :wechat_id, required: true, autofocus: true, label:false, placeholder: "Wechat:", input_html: { class: 'no-border' } %>

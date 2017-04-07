@@ -61,7 +61,8 @@
 }
 
 .btn-blue {
-  width: 134px;
+  padding-left:10px;
+  padding-right:10px;
   background-color: $blue;
   color: $white;
   font-size: 16px;
@@ -83,3 +84,16 @@
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
   color: white;
 }
+
+// SOCIAL NETWORKS
+
+#btn-Wechat {
+    background-color: #029612;
+}
+
+#btn-Facebook {
+    background-color: #3B5998;
+}
+
+
+

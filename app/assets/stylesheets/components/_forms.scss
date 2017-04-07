@@ -6,7 +6,6 @@
 
 .search-form-input-fields {
   color: #787878;
-  background-color: $green;
   padding: 10px;
 }
 
@@ -21,6 +20,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // Sign up form styling:
+
+
+
 .sign-up-form-wrapper {
   width: 80%;
   margin-top: 100px;
@@ -87,4 +89,20 @@
 
 .new-event-form-title {
   color: white;
+}
+
+.new_user {
+    width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+.new_event {
+    width: 382px;
+    margin: 0 auto;
+    color: white;
+}
+
+.participant_select .form-control {
+  width: 188px;
 }
