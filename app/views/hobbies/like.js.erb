@@ -1,0 +1,5 @@
+<% if @current_user.voted_for? @hobby %>
+  $(".hobby-show-like").html("<%= j link_to image_tag('dislike', {class: 'hobby-show-img-like'}), hobby_like_path(@hobby), method: :patch, remote: true %> <span style='font-size: 30px;'><%= @hobby.get_likes.size %></span>")
+<% else %>
+  $(".hobby-show-like").html("<%= j link_to image_tag('like', {class: 'hobby-show-img-like'}), hobby_like_path(@hobby), method: :patch, remote: true %> <span style='font-size: 30px;'><%= @hobby.get_likes.size %></span>")
+<% end %>
