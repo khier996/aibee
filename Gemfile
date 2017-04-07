@@ -12,6 +12,7 @@ gem 'jquery-fileupload-rails'
 gem "pundit"
 gem 'omniauth-facebook'
 gem 'omniauth-wechat-oauth2'
+gem 'wechat'
 
 gem 'rails', '5.0.2'
 gem 'puma'
