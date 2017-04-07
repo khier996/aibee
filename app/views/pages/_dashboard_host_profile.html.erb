@@ -1,8 +1,11 @@
 <h1 style="color: #2f4a71">Profile</h1>
 <% if @current_user[:facebook_picture_url] %>
-  <img class="guest-dashboard-profile-img" src="<%= @current_user[:facebook_picture_url] %>">
+
+	<%= link_to cl_image_tag(@current_user[:facebook_picture_url], height: 100, width: 100, crop: :fill, class: "guest-dashboard-profile-img"), profile_path(@current_user) %>
+
 <% elsif @current_user.photo %>
-  <img class="guest-dashboard-profile-img" src="<%= cl_image_path(@current_user.photo.path, height: 400, width: 400, crop: :fill) %>">
+
+  <%= link_to cl_image_tag(@current_user.photo.path, height: 100, width: 100, crop: :fill, class: "guest-dashboard-profile-img"), profile_path(@current_user) %>
 <% end %>
 <div style="margin-top: 20px; color: black">
   <p>Name: <%= @current_user.first_name %> <%= @current_user.last_name %></p>
