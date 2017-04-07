@@ -148,6 +148,25 @@ handler.getMap().setZoom(14);
 
 
 
+<%= javascript_tag type: 'application/javascript' do %>
+  wx.ready(function() {
+    wx.onMenuShareTimeline({
+      title: "<%= @hobby.title -%>",
+      link: "<%= hobby_url(@hobby) -%>",
+      imgUrl: "<%= image_url 'wind128.png' -%>"
+    });
+
+    wx.onMenuShareAppMessage({
+      title: "<%= @hobby.title -%>",
+      desc: "<%= @hobby.description -%>",
+      link: "<%= hobby_url(@hobby) -%>",
+      imgUrl: "<%= image_url 'wind128.png' -%>",
+      success: function() {
+        alert('Shared successed');
+      }
+    });
+  });
+<% end  %>
 
 
 
