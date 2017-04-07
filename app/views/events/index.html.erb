@@ -41,15 +41,17 @@
           <i class="fa fa-jpy" aria-hidden="true"></i>
           <p><%= event.price %>RMB</p>
         </div>
+        <div class="events-sep"></div>
         <div class="events-join text-center">
           <p> <%= simple_form_for([@hobby, event, @booking]) do |f| %>
-            <%= f.input :pax, collection: 1..5, class: "booking_pax", selected: 1, placeholder: "Pax", lable: false %>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <%= f.input :pax, collection: 1..5, class: "booking_pax", selected: 1, label: false %>
             <%= f.submit "Book", class: "join-btn btn" %>
           </p>
           <% end %>
         </div>
         <div class="events-show-future-booking-card-icons">
-          <a href="<%= hobby_event_path(event.hobby, event) %>"><i class="fa fa-info events-show-future-booking-card-icon" aria-hidden="true"></i></a>
+          <a href="<%= hobby_event_path(event.hobby, event) %>"><i class="fa fa-info events-show-future-booking-card-icon" aria-hidden="true"> <span> Details </span></i></a>
         </div>
       </div>
       </div>
