@@ -101,53 +101,40 @@
     </div>
     </div>
     </section>
-
-
-
-
     <section id="content3">
       <% @past_bookings.each do |booking| %>
-        <div class="dashboard-guest-future-booking-card">
-          <div class="dashboard-guest-future-booking-card-title-div">
-            <span class="dashboard-guest-future-booking-card-title"><%= booking.event.hobby.title %></span>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Date:</div>
-            <div><%= booking.event.start_time.strftime("%b %d - %H:%M") %></div>
-            <div><%= booking.event.end_time.strftime("%b %d - %H:%M")  %></div>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Price:</div>
-            <div><%= booking.event.price %>RMB</div>
-            <div style="width:185px;"></div>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Status:</div>
-            <div><%= booking.status %></div>
-            <div style="width:185px;"></div>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Pax:</div>
-            <div><%= booking.pax %></div>
-            <div style="width:235px;"></div>
-          </div>
-
-          <div class="event-card-icons">
-            <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-            <%= booking.event.hobby.get_likes.size %>
-            <%= image_tag('man', {class: "hobby-card-icon"}) %>
-            <%= booking.event.hobby.bookings.size %>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-icons">
-            <p><a href="<%= hobby_event_path(booking.event.hobby, booking.event) %>"><%= image_tag("more-details", class: "dashboard-guest-future-booking-card-icon") %></a></p>
-          </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-centered ">
+        <div class="dashboard-guest-new-booking-card">
+            <div class="dashboard-guest-future-booking-card-title-div">
+              <span class="dashboard-guest-future-booking-card-title"><%= booking.event.hobby.title %></span>
+            </div>
+            <div class="dashboard-guest-future-booking-card-date">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <p class="date"> <strong><%= booking.event.start_time.strftime("%b %d") %></strong>
+                <span>
+                <%= booking.event.start_time.strftime("%H:%M") %> -
+                <%= booking.event.end_time.strftime("%H:%M")  %></span> </p>
+            </div>
+            <div class="dashboard-guest-future-booking-card-price">
+              <i class="fa fa-jpy" aria-hidden="true"></i>
+              <p><%= booking.event.price %>RMB</p>
+            </div>
+            <div class="dashboard-sep"></div>
+            <div class="events-join text-center">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span class="dashboard-pax"><%= booking.pax %></span>
+                <span class="dashboard-status"><%= booking.status %></span>
+            </div>
+            <div class="dashboard-guest-future-booking-card-icons">
+              <a href="<%= hobby_event_path(booking.event.hobby, booking.event) %>"><i class="fa fa-info dashboard-guest-future-booking-card-icon" aria-hidden="true"> <span> Details </span></i></a>
+            </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
+    <!-- End of iteration -->
+    </div>
+    </div>
+    </div>
     </section>
   </main>
 </div>
