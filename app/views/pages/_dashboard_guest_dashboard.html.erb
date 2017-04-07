@@ -12,13 +12,6 @@
     <input class="no-display" id="tab3" type="radio" name="tabs">
     <label for="tab3">Past events</label>
 
-    <input class="no-display" id="tab4" type="radio" name="tabs">
-    <label for="tab4">Past events</label>
-
-
-
-
-
     <section id="content1">
       <!-- notification is actually a booking  -->
       <% @notifications.each do |notification| %>
@@ -37,83 +30,80 @@
     </section>
 
     <section id="content2">
+    <!-- new card  css in eventsindex scss-->
+    <div class="wrapper event-card-index">
+      <div class="container-fluid">
+      <div class="row row-centered">
       <% @future_bookings.each do |booking| %>
-        <div class="dashboard-guest-future-booking-card" id="future-booking-card-<%= booking.id %>">
-          <div class="dashboard-guest-future-booking-card-title-div">
-            <span class="dashboard-guest-future-booking-card-title"><%= booking.event.hobby.title %></span>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Date:</div>
-            <div><%= booking.event.start_time.strftime("%b %d - %H:%M") %></div>
-            <div><%= booking.event.end_time.strftime("%b %d - %H:%M")  %></div>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Price:</div>
-            <div><%= booking.event.price %>RMB</div>
-            <div style="width:185px;"></div>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Status:</div>
-            <div><%= booking.status %></div>
-            <div style="width:185px;"></div>
-          </div>
-
-          <div class="dashboard-guest-future-booking-card-date">
-            <div>Pax:</div>
-            <div><%= booking.pax %></div>
-            <div style="width:235px;"></div>
-          </div>
-
-          <div class="event-card-icons">
-            <%= image_tag('dislike', {class: "hobby-card-icon"}) %>
-            <%= booking.event.hobby.get_likes.size %>
-            <%= image_tag('man', {class: "hobby-card-icon"}) %>
-            <%= booking.event.hobby.bookings.size %>
-          </div>
-
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-booking-<%= booking.id %>" style="position: absolute; left: 70%; top: 60%;"> Pay </button>
-
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal-booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-center" id="exampleModalLabel">Host's QR Code</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body text-center">
-                  <% if booking.event.hobby.qr_code %>
-                    <img style="width: 300px;" src="<%= cl_image_path(booking.event.hobby.qr_code.path) %>">
-                  <% else %>
-                    <p class="text-center">No QR code provided</p>
-                  <% end %>
-                </div>
-                <div class="modal-footer">
-                </div>
-              </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-centered ">
+        <div class="dashboard-guest-new-booking-card">
+            <div class="dashboard-guest-future-booking-card-title-div">
+              <span class="dashboard-guest-future-booking-card-title"><%= booking.event.hobby.title %></span>
             </div>
+            <div class="dashboard-guest-future-booking-card-date">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <p class="date"> <strong><%= booking.event.start_time.strftime("%b %d") %></strong>
+                <span>
+                <%= booking.event.start_time.strftime("%H:%M") %> -
+                <%= booking.event.end_time.strftime("%H:%M")  %></span> </p>
+            </div>
+            <div class="dashboard-guest-future-booking-card-price">
+              <i class="fa fa-jpy" aria-hidden="true"></i>
+              <p><%= booking.event.price %>RMB</p>
+            </div>
+            <div class="dashboard-sep"></div>
+            <div class="events-join text-center">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span class="dashboard-pax"><%= booking.pax %></span>
+                <button type="button" class="btn join-btn" data-toggle="modal" data-target="#myModal-booking-<%= booking.id %>" id="dashboard-pay"> Pay </button>
+                <span class="dashboard-status"><%= booking.status %></span>
+            </div>
+            <div class="dashboard-guest-future-booking-card-icons">
+              <a href="<%= hobby_event_path(booking.event.hobby, booking.event) %>"><i class="fa fa-info dashboard-guest-future-booking-card-icon" aria-hidden="true"> <span> Details </span></i></a>
+            </div>
+            <div class="dashboard-guest-future-booking-card-utilities">
+              <%= simple_form_for([booking.event.hobby, booking.event, booking], remote: true) do |f|%>
+                  <%= f.hidden_field :status, value: "cancelled" %>
+                  <%= f.submit "Delete",class: "dashboard-guest-future-booking-card-icon" %>
+                <% end %>
+                <% if booking.status != "cancelled" %>
+                  <%= link_to "Update", edit_hobby_event_booking_path(booking.event.hobby, booking.event, booking) %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal-booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLabel">Host's QR Code</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <!-- End of modal -->
-
-          <div class="dashboard-guest-future-booking-card-icons">
-            <p><a href="<%= hobby_event_path(booking.event.hobby, booking.event) %>"><%= image_tag("more-details", class: "dashboard-guest-future-booking-card-icon") %></a></p>
-            <%= simple_form_for([booking.event.hobby, booking.event, booking], remote: true) do |f|%>
-                <%= f.hidden_field :status, value: "cancelled" %>
-                <%= f.submit "Submit", :type => :image, :src => image_path("trash.svg"),class: "dashboard-guest-future-booking-card-icon" %>
+          <div class="modal-body text-center">
+            <% if booking.event.hobby.qr_code %>
+              <img style="width: 300px;" src="<%= cl_image_path(booking.event.hobby.qr_code.path) %>">
+            <% else %>
+              <p class="text-center">No QR code provided</p>
             <% end %>
-            <% if booking.status != "cancelled" %>
-              <%= link_to image_tag("eraser", class: "dashboard-guest-future-booking-card-icon", style: "margin-top: 15px;"), edit_hobby_event_booking_path(booking.event.hobby, booking.event, booking) %>
-            <% end %>
+          </div>
+          <div class="modal-footer">
           </div>
         </div>
-      <% end %>
+      </div>
+    </div>
+    <!-- End of modal -->
+    <% end %>
+    <!-- End of iteration -->
+    </div>
+    </div>
+    </div>
     </section>
+
+
+
 
     <section id="content3">
       <% @past_bookings.each do |booking| %>

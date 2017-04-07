@@ -1,28 +1,3 @@
-  <!-- carousel -->
-  <div class="container">
-    <div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
-      <div class="owl-carousel owl-theme">
-        <% @hobby.photos.each do |photo| %>
-          <div class="image-carousel owl-lazy-iamge">
-            <img class="owl-img-c" src="<%= cl_image_path(photo.path, width: 400, height: 300, crop: :fill) %>" >
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <!-- end of carousel -->
-  <!-- Like functionality with heart icon -->
-  <div class="likes">
-    <h1 class="text-center"><span class="hobby-show-title"><%= @hobby.title%></span>
-      <% if @current_user && @current_user.voted_for?(@hobby) %>
-      <%= link_to image_tag('dislike', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
-      <% else %>
-      <%= link_to image_tag('like', {class: "hobby-show-img-like"}), hobby_like_path(@hobby), method: "patch" %> <span style="font-size: 30px;"><%= @hobby.get_likes.size %></span>
-      <% end %>
-    </h1>
-  </div>
-  <!-- End of like functionality  -->
-
   <!-- card event no title -->
   <div class="wrapper event-card-index">
     <div class="container">
