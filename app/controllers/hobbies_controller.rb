@@ -95,10 +95,12 @@ class HobbiesController < ApplicationController
     else
       @hobby.liked_by @current_user
     end
-    respond_to do |format|
-      format.html { redirect_to dashboard_guest_path }
-      format.js
-    end
+
+    redirect_to hobby_path(@hobby)
+    # respond_to do |format|
+    #   format.html { redirect_to dashboard_guest_path }
+    #   format.js
+    # end
   end
 
 
