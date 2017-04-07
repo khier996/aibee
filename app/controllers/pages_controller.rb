@@ -28,7 +28,7 @@ class PagesController < ApplicationController
     @notifications = @notifications.select { |booking| booking.event.end_time < Time.now }
 
     @bookings = @current_user.bookings
-    @future_bookings = @bookings.select { |booking| booking.event.end_time >= Time.now }
+    @future_bookings = @bookings.select { |booking| booking.event.end_time >= Time.now && booking.status != "cancelled" && booking.status != "rejected" }
     @past_bookings = @bookings.select { |booking| booking.event.end_time <= Time.now }
 
   end

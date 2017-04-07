@@ -34,7 +34,11 @@ class BookingsController < ApplicationController
       redirect_to hobby_path(@event.hobby)
     else
       # event cannot be booked twice the by one person
-      existing_booking = Booking.where(event_id: @event.id, user_id: current_user.id)
+      existing_booking = Booking.where(event_id: @event.id, user_id: current_user.id, status: "pending")
+      if existing_booking.empty?
+        existing_booking = Booking.where(event_id: @event.id, user_id: current_user.id, status: "accepted")
+      end
+
       if existing_booking.present?
         flash[:notice] = "You already made a booking for this event"
         redirect_to dashboard_guest_path
