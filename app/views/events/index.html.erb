@@ -32,28 +32,24 @@
       <div class="events-show-new-booking-card">
         <div class="events-show-future-booking-card-date">
             <i class="fa fa-calendar" aria-hidden="true"></i>
-            <%= event.start_time.strftime("%b %d") %>
-            <%= event.start_time.strftime("%H:%M") %>
-            <%= event.end_time.strftime("%H:%M")  %>
+            <p class="date"> <strong><%= event.start_time.strftime("%b %d") %></strong>
+            <span>
+            <%= event.start_time.strftime("%H:%M") %> -
+            <%= event.end_time.strftime("%H:%M")  %></span> </p>
         </div>
-        <!-- <div class="events-show-future-booking-card-address">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-        </div> -->
         <div class="events-show-future-booking-card-price">
           <i class="fa fa-jpy" aria-hidden="true"></i>
-          <%= event.price %>RMB
+          <p><%= event.price %>RMB</p>
+        </div>
+        <div class="events-join text-center">
+          <p> <%= simple_form_for([@hobby, event, @booking]) do |f| %>
+            <%= f.input :pax, collection: 1..5, class: "booking_pax", selected: 1, placeholder: "Pax", lable: false %>
+            <%= f.submit "Book", class: "join-btn btn" %>
+          </p>
+          <% end %>
         </div>
         <div class="events-show-future-booking-card-icons">
-          <p>
-            <a href="<%= hobby_event_path(event.hobby, event) %>"><%= image_tag("more-details", class: "events-show-future-booking-card-icon") %></a>
-            <%= link_to image_tag("eraser", class: "dashboard-host-future-booking-card-icon"), edit_hobby_event_path(event.hobby, event) %>
-          </p>
-        </div>
-        <div class="events-join-form">
-          <%= simple_form_for([@hobby, event, @booking]) do |f| %>
-            I would like to join with <%= f.text_field :pax, class: "booking_pax" %> persons.
-          <%= f.submit "Join", class: "join-btn" %>
-          <% end %>
+          <a href="<%= hobby_event_path(event.hobby, event) %>"><i class="fa fa-info events-show-future-booking-card-icon" aria-hidden="true"></i></a>
         </div>
       </div>
       </div>

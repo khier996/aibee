@@ -10,72 +10,94 @@
   margin-bottom: 100px;
 }
 
-// card
+// Card content
 .events-show-new-booking-card {
   height: 170px;
   border-radius: 3px;
   margin: 0 auto;
-  box-shadow: 1px 1px 1px 1px lightgrey;
+  box-shadow: 0.2px 0.2px 0.2px 0.2px lightgrey;
   background-color: white;
   position: relative;
   margin: 40px 0px 30px 0px;
-  position: relative;
+}
+
+.events-show-new-booking-card:hover {
+  box-shadow: 0.5px 0.5px 0.5px 0.5px grey;
 }
 
 .events-show-future-booking-card-date {
   color: black;
-  font-size: 20px;
-  .fa {
-    color: grey;
-    font-size: 18px;
+  font-size: 16px;
+  .date {
+    position: absolute;
+    top: 45px;
+    left: 55px;
+    margin-right: 20px;
   }
-  position: absolute;
-  top: 45px;
-  left: 25px;
+  .fa {
+    color: $blue;
+    font-size: 18px;
+    position: absolute;
+    top: 47px;
+    left: 27px;
+  }
+  span {
+    padding-left: 15px;
+  }
 }
 
 .events-show-future-booking-card-price {
   color: black;
-  font-size: 20px;
+  font-size: 16px;
   .fa {
-    color: grey;
+    color: $blue;
     font-size: 18px;
   }
-  position: absolute;
-  top: 80px;
-  left: 25px;
+  p {
+    position: absolute;
+    top: 84px;
+    left: 55px;
+  }
+  .fa-jpy {
+    position: absolute;
+    top: 85px;
+    left: 30px;
+  }
 }
 
 .events-show-future-booking-card-icons {
-  position: relative;
-  top: 10px;
-  left: 85px;
-}
-
-.events-show-future-booking-card-icon {
   width: 20px;
-  position: relative;
+  position: absolute;
   top: 10px;
-  left: 290px;
-}
-
-
-
-.events-join-form {
-  position: relative;
-  left: 25px;
-  top: 70px;
-  .booking_pax {
-    color: red;
+  left: 330px;
+  .fa {
+    color: $blue;
+    font-size: 18px;
   }
 }
 
+// Booking
+.events-join {
+  color: black;
+  font-size: 16px;
+  .booking_pax {
+    width: 38px;
+  }
+}
+
+.form-control {
+  height: 21px;
+  color: black;
+  font-size: 16px;
+}
+
 .join-btn {
-  border: none;
-  background-color: white;
+  font-family: $base-font;
+  font-weight: bold;
   color: $blue;
+  border: none;
   font-weight: 900;
-  position: relative;
+  background-color: white;
 }
 
 // bootstrap grid for responsiveness
@@ -91,8 +113,6 @@
     /* inline-block space fix */
     margin-right:-4px;
 }
-
-
 
 
 //used??
