@@ -1,9 +1,21 @@
-<div class="container">
-  <%= simple_form_for(@hobby) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :summary %>
-    <%= f.input :address %>
-    <%= f.submit %>
-  <% end %>
+<div class="wrapper go-top" style="color:white;background: linear-gradient(-225deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 36, 61, 0) 100%), url(<%= asset_path 'new-hobby-form.jpg' %>); background-size:cover; ">
+
+  <div class="container padded">
+    <h2 class="text-center">What is your passion?</h2>
+    <p class="text-center">Share it with others now.</p>
+    <br>
+    <%= simple_form_for(@hobby) do |f| %>
+      <%= f.input :title,label:false, placeholder: "Title", input_html: { class: 'border validate form-control' } %>
+      <%= f.input :description,label:false, placeholder: "Description", input_html: { class: 'border validate form-control' } %>
+      <%= f.input :summary,label:false, placeholder: "Summary", input_html: { class: 'border validate form-control' }  %>
+      <%= f.input :address, label:false, placeholder: "Address", input_html: { class: 'border validate form-control' } %>
+
+      <%= f.input :categories, :collection => @categories, input_html: {multiple: true}, class: "form-control" %>
+
+      <%= f.input :photos, label:false, as: :attachinary %>
+      <%= f.input :qr_code, as: :attachinary %>
+      <%= f.button :submit, "Update hobby", class: "btn btn-primary btn-block button_update" %>
+    <% end %>
+    <br>
+  </div>
 </div>
