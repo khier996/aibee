@@ -15,6 +15,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Khand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 
   <%= javascript_include_tag "application" %>
 
@@ -24,6 +25,7 @@
 
   </head>
   <body>
+<%= wechat_config_js debug: false, api: %w(onMenuShareTimeline onMenuShareAppMessage) -%>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
