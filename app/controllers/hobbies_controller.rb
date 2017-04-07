@@ -66,11 +66,11 @@ class HobbiesController < ApplicationController
 
   def edit
     authorize @hobby
+    @categories = Category.all
   end
 
   def update
     authorize @hobby
-
     if @hobby.update(hobby_params)
       redirect_to hobby_path(@hobby)
     else
