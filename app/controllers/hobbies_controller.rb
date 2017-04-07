@@ -87,14 +87,18 @@ class HobbiesController < ApplicationController
   end
 
   def like
-    hobby = Hobby.find(params[:hobby_id])
-    authorize hobby
-    if current_user.voted_for? hobby
-      current_user.unlike hobby
+    @hobby = Hobby.find(params[:hobby_id])
+    @current_user = current_user
+    authorize @hobby
+    if @current_user.voted_for? @hobby
+      @current_user.unlike @hobby
     else
-      hobby.liked_by current_user
+      @hobby.liked_by @current_user
     end
-    redirect_to hobby_path(hobby)
+    respond_to do |format|
+      format.html { redirect_to dashboard_guest_path }
+      format.js
+    end
   end
 
 
