@@ -1,5 +1,5 @@
 
-<div class="section-space" >
+<div class="section-space">
 </div>
   
 
@@ -7,7 +7,7 @@
  <div class="row">
 
   <div class="col-xs-12 col-sm-12 section-big-title">
-    <h1 class: "title"> </h1>
+  <br>
     <% if  @user.photo %>
       <%= cl_image_tag @user.photo.path, width: 100, height: 100, crop: :fill, class: "img-circle profile_picture"%>
     <% elsif @user.facebook_picture_url %>
@@ -17,12 +17,12 @@
   </div>
   <div class="col-xs-12 col-sm-12 section-specifications">
     <ul class="list-inline">
-      <li> Gender:
-      <li> <%= @user.gender %>
+      <li><strong>Gender:</strong></li>
+      <li><%= @user.gender %></li>
     </ul>
     <ul class="list-inline">
-      <li> Birthdate:
-      <li> <%= @user.birthdate %>
+      <li> <strong>Birthdate:</strong></li>
+      <li> <%= @user.birthdate %></li>
     </ul>
   </div>
   <div class="col-xs-12 col-sm-12 wrapper-icones">
@@ -45,7 +45,6 @@
 
 <p class="text-center" style="padding-top:40px; padding-bottom:80px;">
 <%= link_to('Edit Profile', edit_profile_path, { class: "btn btn-green" })%>
-<%= link_to('Home', root_path, { class: "btn btn-green" })%>
 </p>
 
 
