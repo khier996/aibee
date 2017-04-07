@@ -72,6 +72,7 @@ class HobbiesController < ApplicationController
   def update
     authorize @hobby
     if @hobby.update(hobby_params)
+      params[:hobby][:categories][1..-1].each { |category_id| HobbyCategory.create(category_id: category_id, hobby_id: @hobby.id) }
       redirect_to hobby_path(@hobby)
     else
       render :new
