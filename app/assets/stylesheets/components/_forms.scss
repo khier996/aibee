@@ -92,9 +92,16 @@
 }
 
 .new_user {
-    width: 500px;
+    width: 50%;
     margin: 0 auto;
     color: white;
+}
+
+
+@media screen and (max-width: 800px) {
+  .new_user {
+    width: 80%;
+  }
 }
 
 .new_event {
