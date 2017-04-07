@@ -92,11 +92,14 @@
 .events-join {
   color: black;
   font-size: 16px;
-  .booking_pax {
+  #booking_pax {
     width: 38px;
     position: absolute;
     top: 120px;
     left: 56px;
+    height: 21px;
+    color: black;
+    font-size: 16px;
   }
   .fa {
     font-size: 18px;
@@ -105,12 +108,6 @@
     left: 26px;
     color: $blue;
   }
-}
-
-.form-control {
-  height: 21px;
-  color: black;
-  font-size: 16px;
 }
 
 .join-btn {

@@ -10,7 +10,6 @@
   }
 }
 
-
 .guest-dashboard-profile-img {
   border-radius: 50%;
   width: 100px;
@@ -34,24 +33,19 @@
 }
 
 
-.dashboard-guest-notification-card {
-  width: 80%;
-  box-shadow: 1px 1px 1px 1px lightgrey;
-  padding: 10px 20px;
-  border-radius: 4px;
-  background-color: white;
-  margin: 15px auto;
-}
-
-.dashboard-guest-future-booking-card {
-  width: 90%;
+//card
+.dashboard-guest-new-booking-card {
   height: 170px;
   border-radius: 3px;
   margin: 0 auto;
-  box-shadow: 1px 1px 1px 1px lightgrey;
+  box-shadow: 0.2px 0.2px 0.2px 0.2px lightgrey;
   background-color: white;
   position: relative;
-  margin-bottom: 20px;
+  margin: 40px 0px 30px 0px;
+}
+
+.dashboard-guest-future-booking-card:hover {
+  box-shadow: 0.5px 0.5px 0.5px 0.5px grey;
 }
 
 @media screen and (max-width: 480px) {
@@ -60,17 +54,13 @@
   }
 }
 
-.dashboard-guest-future-booking-card-title-div {
-  width: 80%;
-  height: 50px;
-  margin-left: 5%;
-  border-bottom: 3px solid #00895f;
-}
-
 .dashboard-guest-future-booking-card-title {
-  font-size: 35px;
+  font-size: 25px;
   color: #23385b;
   font-family: $header-font;
+  position: absolute;
+  left: 24px;
+  top: 14px;
 }
 
 .event-card-icons {
@@ -80,21 +70,94 @@
 }
 
 .dashboard-guest-future-booking-card-date {
-  display: flex;
-  width: 78%;
-  justify-content: space-between;
-  margin-left: 5%;
-  margin-top: 0px;
   color: black;
-  font-size: 20px;
+  font-size: 16px;
+  .date {
+    position: absolute;
+    top: 54px;
+    left: 55px;
+    margin-right: 20px;
+  }
+  .fa {
+    color: $blue;
+    font-size: 18px;
+    position: absolute;
+    top: 56px;
+    left: 27px;
+  }
+  span {
+    padding-left: 29px;
+  }
+}
+
+.dashboard-guest-future-booking-card-price {
+  color: black;
+  font-size: 16px;
+  .fa {
+    color: $blue;
+    font-size: 18px;
+  }
+  p {
+    position: absolute;
+    top: 85px;
+    left: 55px;
+  }
+  .fa-jpy {
+    position: absolute;
+    top: 88px;
+    left: 30px;
+  }
 }
 
 .dashboard-guest-future-booking-card-icons {
-    position: relative;
-    left: 700px;
-    bottom: 135px;
+  width: 65px;
+  position: absolute;
+  top: 117px;
+  right: 25px;
+  span {
+    font-family: $base-font;
+    font-size: 16px;
+  }
+  .fa {
+    color: $blue;
+    font-size: 18px;
+  }
 }
 
-.dashboard-guest-future-booking-card-icon {
-  width: 25px;
+.dashboard-sep {
+  border-bottom: 1px solid $green;
+  position: absolute;
+  top: 44px;
+  left: 23px;
+  width: 88%;
+}
+
+.dashboard-pax {
+    position: absolute;
+    top: 120px;
+    left: 56px;
+}
+
+.dashboard-status {
+    position: absolute;
+    top: 120px;
+    left: 80px;
+}
+
+#dashboard-pay {
+    position: absolute;
+    left: 179px;
+}
+.edit_booking .dashboard-guest-future-booking-card-icon {
+    font-family: "Quicksand", "sans-serif";
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    color: $blue;
+}
+
+.dashboard-guest-future-booking-card-utilities {
+    position: absolute;
+    top: 17px;
+    right: 20px;
 }

@@ -11,7 +11,6 @@
     </div>
   </div>
 <!-- end of carousel -->
-
 <!-- Like functionality with heart icon -->
 <div class="likes">
   <h1 class="text-center"><span class="hobby-show-title"><%= @hobby.title%></span>
@@ -27,8 +26,6 @@
   </h1>
 </div>
 <!-- End of like functionality  -->
-
-
 <!-- star calculation -->
 <!-- .star is in _hobby_show.scss -->
 <div class="text-center hobby-star-review" style="color: #2F4A71">
@@ -64,43 +61,6 @@
     <% end %>
   </div>
 </div>
-<!-- card event no title -->
-  <div class="wrapper event-card-index">
-    <div class="container">
-    <div class="row row-centered">
-    <% @events.each do |event| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-centered ">
-      <div class="events-show-new-booking-card">
-        <div class="events-show-future-booking-card-date">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            <p class="date"> <strong><%= event.start_time.strftime("%b %d") %></strong>
-            <span>
-            <%= event.start_time.strftime("%H:%M") %> -
-            <%= event.end_time.strftime("%H:%M")  %></span> </p>
-        </div>
-        <div class="events-show-future-booking-card-price">
-          <i class="fa fa-jpy" aria-hidden="true"></i>
-          <p><%= event.price %>RMB</p>
-        </div>
-        <div class="events-sep"></div>
-        <div class="events-join text-center">
-          <p> <%= simple_form_for([@hobby, event, @booking]) do |f| %>
-            <i class="fa fa-users" aria-hidden="true"></i>
-            <%= f.input :pax, collection: 1..5, class: "booking_pax", selected: 1, label: false %>
-            <%= f.submit "Book", class: "join-btn btn" %>
-          </p>
-          <% end %>
-        </div>
-        <div class="events-show-future-booking-card-icons">
-          <a href="<%= hobby_event_path(event.hobby, event) %>"><i class="fa fa-info events-show-future-booking-card-icon" aria-hidden="true"> <span> Details </span></i></a>
-        </div>
-      </div>
-      </div>
-    <% end %>
-    </div>
-    </div>
-  </div>
-</div>
 <!-- action links if host-->
 <% if @hobby.user_id == current_user.id %>
 <div>
@@ -111,7 +71,43 @@
   <% elsif @events.present? %>
   <!-- leads to event booking compare events index only visible as guest-->
   <div class="wrapper_form text-center">
-    <%= link_to("Join one of #{@hobby.user.first_name}'s events", hobby_events_path(@hobby), class: "btn btn-blue-lg") %>
+    <!-- card event no title -->
+    <div class="wrapper event-card-index">
+      <div class="container">
+      <div class="row row-centered">
+      <% @hobby.events.each do |event| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-centered ">
+        <div class="events-show-new-booking-card">
+          <div class="events-show-future-booking-card-date">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <p class="date"> <strong><%= event.start_time.strftime("%b %d") %></strong>
+              <span>
+              <%= event.start_time.strftime("%H:%M") %> -
+              <%= event.end_time.strftime("%H:%M")  %></span> </p>
+          </div>
+          <div class="events-show-future-booking-card-price">
+            <i class="fa fa-jpy" aria-hidden="true"></i>
+            <p><%= event.price %>RMB</p>
+          </div>
+          <div class="events-sep"></div>
+          <div class="events-join text-center">
+            <p> <%= simple_form_for([@hobby, event, Booking.new]) do |f| %>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <%= f.input :pax, collection: 1..5, class: "booking_pax", selected: 1, label: false %>
+              <%= f.submit "Book", class: "join-btn btn" %>
+            </p>
+            <% end %>
+          </div>
+          <div class="events-show-future-booking-card-icons">
+            <a href="<%= hobby_event_path(event.hobby, event) %>"><i class="fa fa-info events-show-future-booking-card-icon" aria-hidden="true"> <span> Details </span></i></a>
+          </div>
+        </div>
+        </div>
+      <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
   </div>
   <% end %>
 </div>
